@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.IntStream;
-import java.lang.Math;
 
 
 public class App {
@@ -25,7 +24,7 @@ public class App {
 
 
     // function to move all customers for a given order to process
-    private static State serveCustomer(double v_waiter, double v_cust, double t_serving, State state, int indexNextCustomer){
+    private static State serveCustomer(double vWaiter, double vCustomer, double tServing, State state, int indexNextCustomer){
         Customer nextCustomer = state.customers.get(indexNextCustomer);
         int servedOrderAt = nextCustomer.orders.remove(0);
 
@@ -34,9 +33,9 @@ public class App {
         double walkedDistance = Math.abs(servedOrderAt-state.waiterPosition);
         state.walkedDistance += walkedDistance;
 
-        double delta_t = Math.max(servedOrderAt - nextCustomer.position/v_cust, walkedDistance/v_waiter) + t_serving; // time required to serve customer
+        double deltaTime = Math.max(servedOrderAt - nextCustomer.position/vCustomer, walkedDistance/vWaiter) + tServing; // time required to serve customer
 
-        state.time += delta_t;
+        state.time += deltaTime;
         state.waiterPosition = servedOrderAt;
         nextCustomer.position = servedOrderAt;
 
@@ -45,7 +44,7 @@ public class App {
         for (Iterator<Customer> it= (new ArrayList<>(state.customers)).iterator();it.hasNext();){
             Customer c = it.next();
             if(!nextCustomer.equals(c)){
-                c.position = Math.min(c.position + delta_t * v_cust, previousPosition - 1);//update position ignoring next order
+                c.position = Math.min(c.position + deltaTime * vCustomer, previousPosition - 1);//update position ignoring next order
                 
                 if(!c.orders.isEmpty()){ // take order into account if one exists
                     c.position = Math.min(c.orders.get(0), c.position);
@@ -58,7 +57,7 @@ public class App {
     }
 
     private static void testServeCustomer(){
-        // Test of serve Customer functio
+        // Test of serve Customer function
         State s = new State();
 
         int pos = -1;
@@ -67,12 +66,12 @@ public class App {
         s.customers.add(new Customer(2, pos, List.of(2)));
 
         List<Integer> servedOrder= List.of(0,1,0,2);
-        double v_waiter = 1.0;
-        double v_cust = 1.0;
-        double t_serving = 2.0;
+        double vWaiter = 1.0;
+        double vCustomer = 1.0;
+        double tServing = 2.0;
 
         for (int indexNextCustomer : servedOrder){
-            State newState = serveCustomer(v_waiter, v_cust, t_serving, s, indexNextCustomer);
+            State newState = serveCustomer(vWaiter, vCustomer, tServing, s, indexNextCustomer);
             System.out.println("Time: " + newState.time);
         }
     }
@@ -94,8 +93,8 @@ public class App {
         return candidates;
     }
 
-    // Beamsearch
-    private static State beamSearch(int beta, double v_waiter, double v_cust, double t_serving, State state){
+    // Beam search
+    private static State beamSearch(int beta, double vWaiter, double vCustomer, double tServing, State state){
         state.reset();
 
         int totalOrders = state.customers.stream().mapToInt(c-> c.orders.size()).sum();
@@ -103,7 +102,7 @@ public class App {
         List<State> currentLevel = new ArrayList<>(List.of(state));//  list containing states at current level
         for(int i = 0; i<totalOrders; i++){ // the tree must be expanded once for every order
             List<State> newLevel = currentLevel.stream().parallel().map(s->
-                getCandidates(s).stream().map(c-> serveCustomer(v_waiter, v_cust, t_serving, new State(s), c)).toList()
+                getCandidates(s).stream().map(c-> serveCustomer(vWaiter, vCustomer, tServing, new State(s), c)).toList()
             ).flatMap(List::stream).toList();
 
             if (newLevel.size()> beta){
@@ -125,17 +124,17 @@ public class App {
         s.customers.add(new Customer(1, pos--, List.of(1)));
         s.customers.add(new Customer(2, pos, List.of(2)));
 
-        double v_waiter = 1.0;
-        double v_cust = 1.0;
-        double t_serving = 2.0;
+        double vWaiter = 1.0;
+        double vCustomer = 1.0;
+        double tServing = 2.0;
         int beta = 100;
 
-        State result = beamSearch(beta, v_waiter, v_cust, t_serving, s);
+        State result = beamSearch(beta, vWaiter, vCustomer, tServing, s);
         System.out.println("Time: " + result.time + " servicedOrder: " + String.join(" ", result.servicedOrder.stream().map(o-> "["+o[0]+","+o[1]+"]").toList()));
     }
 
-    private static State optimizationSSA(double tempInitial, double tempFinal, double alfa, int meanMarkov, int beta, double v_waiter, double v_cust, double t_serving, State state){
-        State initialState = beamSearch(beta, v_waiter, v_cust, t_serving, state);
+    private static State optimizationSSA(double tempInitial, double tempFinal, double alfa, int meanMarkov, int beta, double vWaiter, double vCustomer, double tServing, State state){
+        State initialState = beamSearch(beta, vWaiter, vCustomer, tServing, state);
 
         // ====== Simulated annealing algorithm initialization ======
         State currentState = new State(initialState);
@@ -173,7 +172,7 @@ public class App {
                 modifiedState.customers.set(s2, new Customer(currentState.customers.get(s1), currentState.customers.get(s2).nr));
 
                 // --- calculate the new time required to finish all orders
-                State nextState = beamSearch(beta, v_waiter, v_cust, t_serving, modifiedState);
+                State nextState = beamSearch(beta, vWaiter, vCustomer, tServing, modifiedState);
 
                 // --- Press Metropolis The criteria accept new interpretations
                 // Accept judgment ： according to Metropolis the criteria decides whether to accept the new interpretation
@@ -205,7 +204,7 @@ public class App {
             }
             // --- Data processing after the end of the inner loop
             // Complete the current temperature search, save data and output
-            double pBadAccept = ((double)kBadAccept) / (kBadAccept + kBadRefuse); // the acceptance probability of the inferior solution
+            double pBadAccept = ((double)kBadAccept) / ((kBadAccept + kBadRefuse) != 0? (kBadAccept + kBadRefuse):1); // the acceptance probability of the inferior solution
             recordIter.add(kIter); // the current number of external loops
             recordCurrentState.add(currentState); // the objective function value of the current solution
             recordOptimalState.add(optimalState); // the objective function value of the best solution
@@ -224,6 +223,7 @@ public class App {
     public static void main(String[] args) {
         rand.setSeed(42);
 
+        // --- test functions
         //testServeCustomer();
         //testBeamSearch();
 
@@ -233,7 +233,7 @@ public class App {
         int meanMarkov = 50; // Markov Chain length, that is the number of internal circulation runs
         int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal/tempInitial) / Math.log(alfa));
         System.out.println("Outer loop (temp reduction): " + outerLoopIterations + " iterations");
-        System.out.println("Ineer loop (Markov Chain): " + meanMarkov + " iterations");
+        System.out.println("Inner loop (Markov Chain): " + meanMarkov + " iterations");
         System.out.println("Total (inner + outer loop): " + outerLoopIterations * meanMarkov + " iterations\n");
 
         int beta = 100; // beams search width
@@ -243,9 +243,9 @@ public class App {
         int m = 10; //number of counters
         int minRequest = 1;
         int maxRequest = Math.min(10,m);
-        double v_waiter = 1.0;
-        double v_cust = 1.0;
-        double t_serving = 2.0;
+        double vWaiter = 1.0;
+        double vCustomer = 1.0;
+        double tServing = 2.0;
 
         State startState = new State();
         for (int i = 1; i <= n; i++){
@@ -260,12 +260,12 @@ public class App {
         
         // Simulated annealing algorithm
         long startTime = System.currentTimeMillis();
-        State finalState = optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, v_waiter, v_cust, t_serving, startState);
+        State finalState = optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, vWaiter, vCustomer, tServing, startState);
         long stopTime = System.currentTimeMillis();
 
         System.out.println("Runtime: " + (stopTime-startTime)/1000.0 + " sec") ;
     
-        System.out.println("Best Result: " + finalState.time + "\n\tOrders:" + finalState.customers.stream().map(c->"\n\t\tNR: "+c.nr+" ("+c.initalNr+")\tOrders: "+c.initialOrders).toList());
+        System.out.println("Best Result: " + finalState.time + "\n\tOrders:" + finalState.customers.stream().map(c->"\n\t\tNR: "+c.nr+" ("+c.initialNr+")\tOrders: "+c.initialOrders).toList());
         //print(f'Best Result: order={bestResult.orders} time={bestResult.time} sequence:{bestResult.served}')
     }
     

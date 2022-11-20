@@ -16,7 +16,7 @@ public class State {
         time = 0;
     }
 
-    public State(State s){
+    public State(State s) {
         servicedOrder = new ArrayList<>(s.servicedOrder);
         waiterPosition = s.waiterPosition;
         walkedDistance = s.walkedDistance;
@@ -24,15 +24,15 @@ public class State {
         time = s.time;
     }
 
-    public static int compare(State a, State b){
+    public static int compare(State a, State b) {
         int result = Double.compare(a.time, b.time);
-        if (result == 0){
+        if (result == 0) {
             result = Double.compare(a.walkedDistance, b.walkedDistance);
         }
         return result;
     }
 
-    public void reset(){
+    public void reset() {
         customers.stream().forEach(Customer::reset);
         waiterPosition = 0.0;
         walkedDistance = 0.0;
