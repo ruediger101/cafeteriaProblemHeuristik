@@ -224,7 +224,7 @@ public class App {
 
         double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
-        double alfa = 0.90; // set the cooling parameters ,T(k)=alfa*T(k-1)
+        double alfa = 0.99; // set the cooling parameters ,T(k)=alfa*T(k-1)
         int meanMarkov = 50; // Markov Chain length, that is the number of internal circulation runs
         int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal / tempInitial) / Math.log(alfa));
         System.out.println("Outer loop (temp reduction): " + outerLoopIterations + " iterations");
