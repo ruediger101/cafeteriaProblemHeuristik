@@ -1,3 +1,4 @@
+package simulated_annealing;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -56,7 +57,6 @@ public class App {
         // Test of serve Customer function
         State s = new State();
 
-        int pos = -1;
         s.addCustomer(new Customer(0, List.of(1, 3)));
         s.addCustomer(new Customer(1, List.of(1)));
         s.addCustomer(new Customer(2, List.of(2)));
@@ -362,7 +362,7 @@ public class App {
 
         System.out.println("Runtime: " + (stopTime - startTime) / 1000.0 + " sec");
 
-        if (resultStates.stream().mapToDouble(s -> s.getTime()).distinct().count() == 1) {
+        if (resultStates.stream().mapToDouble(State::getTime).distinct().count() == 1) {
             System.out.println("All start states lead to an equal optimal solution. First solution will be shown in detail.");
         } else {
             System.out.println("Start states produced states with different optimality. Best solution will be shown in detail.");
