@@ -121,7 +121,7 @@ public class App {
         double vWaiter = 1.0;
         double vCustomer = 1.0;
         double tServing = 2.0;
-        int beta = 100;
+        int beta = 300;
 
         State result = beamSearch(beta, vWaiter, vCustomer, tServing, s);
         System.out.println("Time: " + result.time + " waiterSchedule: " + String.join(" ", result.waiterSchedule.stream().map(o -> "[" + o[0] + "," + o[1] + "]").toList()));
@@ -149,6 +149,15 @@ public class App {
             }
             startState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
         }
+
+        // Simulated annealing algorithm
+        long startTime = System.currentTimeMillis();
+        State finalState = beamSearch(beta, vWaiter, vCustomer, tServing, startState);
+        long stopTime = System.currentTimeMillis();
+
+        System.out.println("Runtime: " + (stopTime - startTime) / 1000.0 + " sec");
+        System.out.println("Time: " + finalState.time + " sec");
+        System.out.println("\n\tWaiter schedule:" + finalState.waiterSchedule.stream().map(w -> String.format("%n\t\t Customer No %2d served at counter %2d", w[0], w[1])).toList());
     }
 
     private static State optimizationSSA(double tempInitial, double tempFinal, double alfa, int meanMarkov, int beta, double vWaiter, double vCustomer, double tServing, State state) {
@@ -240,13 +249,7 @@ public class App {
         return optimalState;
     }
 
-    public static void main(String[] args) {
-        rand.setSeed(42);
-
-        // --- test functions
-        // testServeCustomer();
-        // testBeamSearch();
-
+    void customerSequencingAndCwspComplete() {
         double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
         double alfa = 0.98; // set the cooling parameters ,T(k)=alfa*T(k-1)
@@ -259,7 +262,7 @@ public class App {
         System.out.println("Inner loop (Markov Chain): " + meanMarkov + " iterations");
         System.out.println("Total (outer * inner loop): " + outerLoopIterations * meanMarkov + " iterations\n");
 
-        int beta = 50; // beams search width
+        int beta = 300; // beams search width
 
         System.out.println("Beta: " + beta + "\n");
 
@@ -291,8 +294,19 @@ public class App {
 
         System.out.println("\tCustomer Order:" + finalState.customers.stream().map(c -> "\n\t\tNo (original No): " + c.no + " (" + c.initialNo + ")\tOrders: " + c.initialOrders).toList());
 
-        System.out.println("\n\tWaiter schedule:" + finalState.waiterSchedule.stream().map(w -> "\n\t\t Customer No " + w[0] + " served at counter " + w[1]).toList());
-        // print(f'Best Result: order={bestResult.orders} time={bestResult.time} sequence:{bestResult.served}')
+        System.out.println("\n\tWaiter schedule:" + finalState.waiterSchedule.stream().map(w -> String.format("%n\t\t Customer No %2d served at counter %2d", w[0], w[1])).toList());
+    }
+
+    public static void main(String[] args) {
+        rand.setSeed(42);
+
+        // --- test functions
+        // testServeCustomer();
+        // testBeamSearch3FixedCustomers();
+        testBeamSearch();
+
+        // customerSequencingAndCwspComplete();
+
     }
 
 }
