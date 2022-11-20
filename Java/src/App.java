@@ -103,7 +103,7 @@ public class App {
         List<State> currentLevel = new ArrayList<>(List.of(state));//  list containing states at current level
         for(int i = 0; i<totalOrders; i++){ // the tree must be expanded once for every order
             List<State> newLevel = currentLevel.stream().parallel().map(s->
-                getCandidates(s).stream().parallel().map(c-> serveCustomer(v_waiter, v_cust, t_serving, new State(s), c)).toList()
+                getCandidates(s).stream().map(c-> serveCustomer(v_waiter, v_cust, t_serving, new State(s), c)).toList()
             ).flatMap(List::stream).toList();
 
             if (newLevel.size()> beta){
@@ -167,9 +167,10 @@ public class App {
                 int s1 = rand.nextInt(state.customers.size()); // first element to switch
                 int s2 = IntStream.rangeClosed(0, state.customers.size()).filter(i -> i!=s1).toArray()[rand.nextInt(state.customers.size()-1)];
 
+                //switch customers and update their respective position in line
                 State modifiedState = new State(currentState);
-                modifiedState.customers.set(s1, new Customer(currentState.customers.get(s2)));
-                modifiedState.customers.set(s2, new Customer(currentState.customers.get(s1)));
+                modifiedState.customers.set(s1, new Customer(currentState.customers.get(s2), currentState.customers.get(s1).nr)); 
+                modifiedState.customers.set(s2, new Customer(currentState.customers.get(s1), currentState.customers.get(s2).nr));
 
                 // --- calculate the new time required to finish all orders
                 State nextState = beamSearch(beta, v_waiter, v_cust, t_serving, modifiedState);
@@ -221,23 +222,27 @@ public class App {
 
 
     public static void main(String[] args) {
-        rand.setSeed(2805);
+        rand.setSeed(42);
 
         //testServeCustomer();
         //testBeamSearch();
 
-        double tempInitial = 100.0; // set the initial annealing temperature
+        double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
-        double alfa = 0.98; // set the cooling parameters ,T(k)=alfa*T(k-1)
-        int meanMarkov = 10; // Markov Chain length, that is the number of internal circulation runs
+        double alfa = 0.90; // set the cooling parameters ,T(k)=alfa*T(k-1)
+        int meanMarkov = 50; // Markov Chain length, that is the number of internal circulation runs
+        int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal/tempInitial) / Math.log(alfa));
+        System.out.println("Outer loop (temp reduction): " + outerLoopIterations + " iterations");
+        System.out.println("Ineer loop (Markov Chain): " + meanMarkov + " iterations");
+        System.out.println("Total (inner + outer loop): " + outerLoopIterations * meanMarkov + " iterations\n");
 
-        int beta = 50; // beams search width
+        int beta = 100; // beams search width
      
         
         int n = 10; // number of customers
         int m = 10; //number of counters
-        int minRequest = 0;
-        int maxRequest = 10;
+        int minRequest = 1;
+        int maxRequest = Math.min(10,m);
         double v_waiter = 1.0;
         double v_cust = 1.0;
         double t_serving = 2.0;
@@ -254,9 +259,13 @@ public class App {
 
         
         // Simulated annealing algorithm
+        long startTime = System.currentTimeMillis();
         State finalState = optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, v_waiter, v_cust, t_serving, startState);
+        long stopTime = System.currentTimeMillis();
+
+        System.out.println("Runtime: " + (stopTime-startTime)/1000.0 + " sec") ;
     
-        System.out.println("Best Result: " + finalState.time + " Orders: " + finalState.customers.stream().map(c->""+c.initialOrders).toList());
+        System.out.println("Best Result: " + finalState.time + "\n\tOrders:" + finalState.customers.stream().map(c->"\n\t\tNR: "+c.nr+" ("+c.initalNr+")\tOrders: "+c.initialOrders).toList());
         //print(f'Best Result: order={bestResult.orders} time={bestResult.time} sequence:{bestResult.served}')
     }
     
