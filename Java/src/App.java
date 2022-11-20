@@ -249,11 +249,11 @@ public class App {
         return optimalState;
     }
 
-    void customerSequencingAndCwspComplete() {
+    private static void customerSequencingAndCwspComplete() {
         double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
-        double alfa = 0.98; // set the cooling parameters ,T(k)=alfa*T(k-1)
-        int meanMarkov = 50; // Markov Chain length, that is the number of internal circulation runs
+        double alfa = 0.90; // set the cooling parameters ,T(k)=alfa*T(k-1)
+        int meanMarkov = 100; // Markov Chain length, that is the number of internal circulation runs
         int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal / tempInitial) / Math.log(alfa));
         System.out.println("Initial Temperature: " + tempInitial);
         System.out.println("Final Temperature: " + tempFinal);
@@ -269,19 +269,33 @@ public class App {
         int n = 4; // number of customers
         int m = 4; // number of counters
         int minRequest = 1;
-        int maxRequest = Math.min(10, m);
+        int maxRequest = 10;
         double vWaiter = 1.0;
         double vCustomer = 1.0;
         double tServing = 2.0;
 
+        boolean uniqueOrders = false; // defines if a customer may have multiple orders of the same kind
+        if (uniqueOrders && (maxRequest > m || minRequest > m)) {
+            throw new IllegalArgumentException("There must not be more requests than counters!");
+        }
+
         State startState = new State();
         for (int i = 1; i <= n; i++) {
             int noDishes = rand.nextInt(maxRequest - minRequest + 1) + minRequest;
-            Set<Integer> order = new HashSet<>();
-            while (order.size() < noDishes) {
-                order.add(rand.nextInt(m));
+            if (uniqueOrders) {
+                Set<Integer> order = new HashSet<>();
+                while (order.size() < noDishes) {
+                    order.add(rand.nextInt(m));
+                }
+                startState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
+            } else {
+                List<Integer> order = new ArrayList<>();
+                for (int d = 0; d < noDishes; d++) {
+                    order.add(rand.nextInt(m));
+                }
+                order.sort(Integer::compare);
+                startState.customers.add(new Customer(i, -i, order));
             }
-            startState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
         }
 
         // Simulated annealing algorithm
@@ -298,14 +312,14 @@ public class App {
     }
 
     public static void main(String[] args) {
-        rand.setSeed(42);
+        rand.setSeed(42); // "Answer to the Ultimate Question of Life, the Universe, and Everything" ... and a good seed
 
         // --- test functions
         // testServeCustomer();
         // testBeamSearch3FixedCustomers();
-        testBeamSearch();
+        // testBeamSearch();
 
-        // customerSequencingAndCwspComplete();
+        customerSequencingAndCwspComplete();
 
     }
 
