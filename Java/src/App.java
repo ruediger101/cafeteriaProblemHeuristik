@@ -300,8 +300,8 @@ public class App {
     private static void customerSequencingAndCwspComplete() {
         double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
-        double alfa = 0.90; // set the cooling parameters ,T(k)=alfa*T(k-1)
-        int meanMarkov = 10; // Markov Chain length, that is the number of internal circulation runs
+        double alfa = 0.99; // set the cooling parameters ,T(k)=alfa*T(k-1)
+        int meanMarkov = 100; // Markov Chain length, that is the number of internal circulation runs
         int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal / tempInitial) / Math.log(alfa));
         System.out.println("Initial Temperature: " + tempInitial);
         System.out.println("Final Temperature: " + tempFinal);
@@ -310,16 +310,16 @@ public class App {
         System.out.println("Inner loop (Markov Chain): " + meanMarkov + " iterations");
         System.out.println("Total (outer * inner loop): " + outerLoopIterations * meanMarkov + " iterations\n");
 
-        int beta = 30; // beams search width
+        int beta = 300; // beams search width
 
         System.out.println("Beta: " + beta + "\n");
 
-        int noCustomers = 4;
-        int noCounters = 4;
+        int noCustomers = 10;
+        int noCounters = 10;
         int minRequest = 1; // minimum no of request per customer
-        int maxRequest = 4; // maximum no of request per customer
+        int maxRequest = 10; // maximum no of request per customer
         boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
-        int noStartStates = 4;
+        int noStartStates = 10;
 
         System.out.println("No Customers: " + noCustomers);
         System.out.println("No Counters: " + noCounters);
@@ -344,10 +344,13 @@ public class App {
         System.out.println("Runtime: " + (stopTime - startTime) / 1000.0 + " sec");
 
         if (resultStates.stream().mapToDouble(s -> s.time).distinct().count() == 1) {
-            System.out.println("All start states lead to an equal optimal solution.");
+            System.out.println("All start states lead to an equal optimal solution. First solution will be shown in detail.");
+        } else {
+            System.out.println("Start states produced states with different optimality. Best solution will be shown in detail.");
+            resultStates.stream().sorted(State::compare).forEach(s -> System.out.println("\tResult: " + s.time + " sec"));
         }
 
-        System.out.println("\nBest Result: " + bestState.time + "sec");
+        System.out.println("\nBest Result: " + bestState.time + " sec");
 
         System.out.println("\tCustomer Order:" + bestState.customers.stream().map(c -> "\n\t\tNo (original No): " + c.no + " (" + c.initialNo + ")\tOrders: " + c.initialOrders).toList());
 
