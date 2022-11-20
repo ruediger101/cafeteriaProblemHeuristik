@@ -166,10 +166,10 @@ public class App {
         // ====== Simulated annealing algorithm initialization ======
         State currentState = new State(initialState);
         State optimalState = new State(initialState);
-        List<Long> recordIter = new ArrayList<>();
-        List<State> recordCurrentState = new ArrayList<>();
-        List<State> recordOptimalState = new ArrayList<>();
-        List<Double> recordPBad = new ArrayList<>(); // the acceptance probability of the inferior solution
+        // List<Long> recordIter = new ArrayList<>();
+        // List<State> recordCurrentState = new ArrayList<>();
+        // List<State> recordOptimalState = new ArrayList<>();
+        // List<Double> recordPBad = new ArrayList<>(); // the acceptance probability of the inferior solution
         long kIter = 0; // the number of iterations of the outer loop , the number of temperature states
         long totalMarkov = 0; // total markov chain length
         long totalImprove = 0; // the number of found improvements
@@ -234,26 +234,74 @@ public class App {
             // --- Data processing after the end of the inner loop
             // Complete the current temperature search, save data and output
             double pBadAccept = ((double) kBadAccept) / ((kBadAccept + kBadRefuse) != 0 ? (kBadAccept + kBadRefuse) : 1); // the acceptance probability of the inferior solution
-            recordIter.add(kIter); // the current number of external loops
-            recordCurrentState.add(currentState); // the objective function value of the current solution
-            recordOptimalState.add(optimalState); // the objective function value of the best solution
-            recordPBad.add(pBadAccept); // the objective function value of the best solution
+            // recordIter.add(kIter); // the current number of external loops
+            // recordCurrentState.add(currentState); // the objective function value of the current solution
+            // recordOptimalState.add(optimalState); // the objective function value of the best solution
+            // recordPBad.add(pBadAccept); // the objective function value of the best solution
             // Slow down to a new temperature according to the cooling curve ：T(k)=alfa*T(k-1)
             tempNow = tempNow * alfa;
             kIter++;
             // fxBest = cal_Energy(xBest, nVar, kIter) // Because the penalty factor increases after iteration , Then we need to reconstruct the augmented objective
             // function
 
+            /*
+             * if (recordOptimalState.size() > 1 && recordOptimalState.get(recordOptimalState.size() - 1).time < recordOptimalState.get(recordOptimalState.size() - 2).time)
+             * System.err.println("Better solution found: " + optimalState.time + " sec");
+             */
+
         }
         // ====== End the simulated annealing process ======
         return optimalState;
+    }
+
+    private static List<State> generateStartStates(int noCustomers, int noCounters, int minRequest, int maxRequest, boolean uniqueOrders, int noStartStates) {
+        if (uniqueOrders && (maxRequest > noCounters || minRequest > noCounters)) {
+            throw new IllegalArgumentException("There must not be more requests than counters!");
+        }
+
+        State firstState = new State();
+        for (int i = 1; i <= noCustomers; i++) {
+            int noDishes = rand.nextInt(maxRequest - minRequest + 1) + minRequest;
+            if (uniqueOrders) {
+                Set<Integer> order = new HashSet<>();
+                while (order.size() < noDishes) {
+                    order.add(rand.nextInt(noCounters));
+                }
+                firstState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
+            } else {
+                List<Integer> order = new ArrayList<>();
+                for (int d = 0; d < noDishes; d++) {
+                    order.add(rand.nextInt(noCounters));
+                }
+                order.sort(Integer::compare);
+                firstState.customers.add(new Customer(i, -i, order));
+            }
+        }
+
+        List<State> startStates = new ArrayList<>();
+        startStates.add(firstState); // add first generate state
+
+        IntStream.range(1, noStartStates).forEach(i -> {
+            State newState = new State(firstState);
+            startStates.add(newState);
+
+            newState.customers.clear();
+            List<Integer> positions = new ArrayList<>(IntStream.range(0, firstState.customers.size()).boxed().toList());
+            int newNo = 1;
+            while (!positions.isEmpty()) {
+                // add randomly selected customer of original state
+                newState.customers.add(new Customer(firstState.customers.get(positions.remove(rand.nextInt(positions.size()))), newNo++));
+            }
+        });
+
+        return startStates;
     }
 
     private static void customerSequencingAndCwspComplete() {
         double tempInitial = 50.0; // set the initial annealing temperature
         double tempFinal = 1.0; // set the ending/stop annealing temperature
         double alfa = 0.90; // set the cooling parameters ,T(k)=alfa*T(k-1)
-        int meanMarkov = 100; // Markov Chain length, that is the number of internal circulation runs
+        int meanMarkov = 10; // Markov Chain length, that is the number of internal circulation runs
         int outerLoopIterations = (int) Math.ceil(Math.log(tempFinal / tempInitial) / Math.log(alfa));
         System.out.println("Initial Temperature: " + tempInitial);
         System.out.println("Final Temperature: " + tempFinal);
@@ -262,53 +310,48 @@ public class App {
         System.out.println("Inner loop (Markov Chain): " + meanMarkov + " iterations");
         System.out.println("Total (outer * inner loop): " + outerLoopIterations * meanMarkov + " iterations\n");
 
-        int beta = 300; // beams search width
+        int beta = 30; // beams search width
 
         System.out.println("Beta: " + beta + "\n");
 
-        int n = 4; // number of customers
-        int m = 4; // number of counters
-        int minRequest = 1;
-        int maxRequest = 10;
-        double vWaiter = 1.0;
-        double vCustomer = 1.0;
-        double tServing = 2.0;
+        int noCustomers = 4;
+        int noCounters = 4;
+        int minRequest = 1; // minimum no of request per customer
+        int maxRequest = 4; // maximum no of request per customer
+        boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
+        int noStartStates = 4;
 
-        boolean uniqueOrders = false; // defines if a customer may have multiple orders of the same kind
-        if (uniqueOrders && (maxRequest > m || minRequest > m)) {
-            throw new IllegalArgumentException("There must not be more requests than counters!");
-        }
+        System.out.println("No Customers: " + noCustomers);
+        System.out.println("No Counters: " + noCounters);
+        System.out.println("Min Request: " + minRequest);
+        System.out.println("Max Request: " + maxRequest);
+        System.out.println("Unique Orders: " + uniqueOrders);
+        System.out.println("No Start States: " + noStartStates + "\n");
 
-        State startState = new State();
-        for (int i = 1; i <= n; i++) {
-            int noDishes = rand.nextInt(maxRequest - minRequest + 1) + minRequest;
-            if (uniqueOrders) {
-                Set<Integer> order = new HashSet<>();
-                while (order.size() < noDishes) {
-                    order.add(rand.nextInt(m));
-                }
-                startState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
-            } else {
-                List<Integer> order = new ArrayList<>();
-                for (int d = 0; d < noDishes; d++) {
-                    order.add(rand.nextInt(m));
-                }
-                order.sort(Integer::compare);
-                startState.customers.add(new Customer(i, -i, order));
-            }
-        }
+        List<State> startStates = generateStartStates(noCustomers, noCounters, minRequest, maxRequest, uniqueOrders, noStartStates);
+
+        double vWaiter = 1.0; // waiter walking speed
+        double vCustomer = 1.0; // customer walking speed
+        double tServing = 2.0; // time required to serve a customer
 
         // Simulated annealing algorithm
         long startTime = System.currentTimeMillis();
-        State finalState = optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, vWaiter, vCustomer, tServing, startState);
+        List<State> resultStates = startStates.stream().parallel().map(startState -> optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, vWaiter, vCustomer, tServing, startState)).toList();
+        State bestState = resultStates.stream().sorted(State::compare).findFirst().orElse(new State());
+
         long stopTime = System.currentTimeMillis();
 
         System.out.println("Runtime: " + (stopTime - startTime) / 1000.0 + " sec");
-        System.out.println("\nBest Result: " + finalState.time + "sec");
 
-        System.out.println("\tCustomer Order:" + finalState.customers.stream().map(c -> "\n\t\tNo (original No): " + c.no + " (" + c.initialNo + ")\tOrders: " + c.initialOrders).toList());
+        if (resultStates.stream().mapToDouble(s -> s.time).distinct().count() == 1) {
+            System.out.println("All start states lead to an equal optimal solution.");
+        }
 
-        System.out.println("\n\tWaiter schedule:" + finalState.waiterSchedule.stream().map(w -> String.format("%n\t\t Customer No %2d served at counter %2d", w[0], w[1])).toList());
+        System.out.println("\nBest Result: " + bestState.time + "sec");
+
+        System.out.println("\tCustomer Order:" + bestState.customers.stream().map(c -> "\n\t\tNo (original No): " + c.no + " (" + c.initialNo + ")\tOrders: " + c.initialOrders).toList());
+
+        System.out.println("\n\tWaiter schedule:" + bestState.waiterSchedule.stream().map(w -> String.format("%n\t\t Customer No %2d served at counter %2d", w[0], w[1])).toList());
     }
 
     public static void main(String[] args) {
