@@ -21,7 +21,8 @@ public class App {
 
 
     // function to move all customers for a given order to process
-    private static State serveCustomer(double v_waiter, double v_cust, double t_serving, State state, Customer nextCustomer){
+    private static State serveCustomer(double v_waiter, double v_cust, double t_serving, State state, int indexNextCustomer){
+        Customer nextCustomer = state.customers.get(indexNextCustomer);
         int servedOrderAt = nextCustomer.orders.remove(0);
 
         state.servicedOrder.add(new int[]{nextCustomer.nr, servedOrderAt});
@@ -52,27 +53,8 @@ public class App {
         return state;
     }
 
-    private static List<Customer> getCandidates(State state){
-        List<Customer> candidates = new ArrayList<>();
-        if (!state.customers.get(0).orders.isEmpty()){ // first customer is always possible if order are present
-            candidates.add(state.customers.get(0));
-        }
-
-        IntStream.range(1, state.customers.size()).forEach(j->{
-            if (!state.customers.get(j).orders.isEmpty()
-                && IntStream.range(0,j)
-                .allMatch(i->state.customers.get(i).orders.isEmpty() || !mustPrecede(state.customers.get(i), state.customers.get(j)))){
-                    candidates.add(state.customers.get(j));
-            }
-        });
-
-        return candidates;
-    }
-
     private static void testServeCustomer(){
-        // Test of serve Customer function
-        int n=3; //number of customers
-
+        // Test of serve Customer functio
         State s = new State();
 
         int pos = -1;
@@ -85,38 +67,72 @@ public class App {
         double v_cust = 1.0;
         double t_serving = 2.0;
 
-        for (int nextCustomer : servedOrder){
-            State newState = serveCustomer(v_waiter, v_cust, t_serving, s, s.customers.get(nextCustomer));
+        for (int indexNextCustomer : servedOrder){
+            State newState = serveCustomer(v_waiter, v_cust, t_serving, s, indexNextCustomer);
             System.out.println("Time: " + newState.time);
         }
     }
 
+    private static List<Integer> getCandidates(State state){
+        List<Integer> candidates = new ArrayList<>();
+        if (!state.customers.get(0).orders.isEmpty()){ // first customer is always possible if order are present
+            candidates.add(0);
+        }
+
+        IntStream.range(1, state.customers.size()).forEach(j->{
+            if (!state.customers.get(j).orders.isEmpty()
+                && IntStream.range(0,j)
+                .allMatch(i->state.customers.get(i).orders.isEmpty() || !mustPrecede(state.customers.get(i), state.customers.get(j)))){
+                    candidates.add(j);
+            }
+        });
+
+        return candidates;
+    }
 
     // Beamsearch
-    State beamSearch(int beta, double v_waiter, double v_cust, double t_serving, State state){
+    private static State beamSearch(int beta, double v_waiter, double v_cust, double t_serving, State state){
         int totalOrders = state.customers.stream().mapToInt(c-> c.orders.size()).sum();
 
 
         List<State> currentLevel = new ArrayList<>(List.of(state));//  list containing states at current level
         for(int i = 0; i<totalOrders; i++){ // the tree must be expanded once for every order
             List<State> newLevel = currentLevel.stream().parallel().map(s->
-                getCandidates(s).stream().parallel().map(c-> serveCustomer(v_waiter, v_cust, t_serving, s, c)).toList()
+                getCandidates(s).stream().parallel().map(c-> serveCustomer(v_waiter, v_cust, t_serving, new State(s), c)).toList()
             ).flatMap(List::stream).toList();
 
             if (newLevel.size()> beta){
-                newLevel.sort(State::compare);
-                currentLevel = newLevel.subList(0, beta);
+                currentLevel = currentLevel.stream().sorted(State::compare).toList().subList(0, beta);
             }else{
                 currentLevel = newLevel;
             }
         }
-        currentLevel.sort(State::compare);
-        return currentLevel.get(0); // we only return the best result
+        
+        return currentLevel.stream().sorted(State::compare).toList().get(0); // we only return the best result
+    }
+
+    private static void testBeamSearch(){
+        // Test of Beams Search
+        State s = new State();
+
+        int pos = -1;
+        s.customers.add(new Customer(0, pos--, List.of(1,3)));
+        s.customers.add(new Customer(1, pos--, List.of(1)));
+        s.customers.add(new Customer(2, pos--, List.of(2)));
+
+        double v_waiter = 1.0;
+        double v_cust = 1.0;
+        double t_serving = 2.0;
+        int beta = 10;
+
+        State result = beamSearch(beta, v_waiter, v_cust, t_serving, s);
+        System.out.println("Time: " + result.time + " servicedOrder: " + String.join(" ", result.servicedOrder.stream().map(o-> "["+o[0]+"|"+o[1]+"]").toList()));
     }
 
 
     public static void main(String[] args) {
         testServeCustomer();
+        testBeamSearch();
     }
     
 }
