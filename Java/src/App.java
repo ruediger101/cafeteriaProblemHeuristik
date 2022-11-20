@@ -96,7 +96,7 @@ public class App {
         int totalOrders = state.customers.stream().mapToInt(c -> c.orders.size()).sum();
 
         List<State> currentLevel = new ArrayList<>(List.of(state));// list containing states at current level
-        for (int i = 0; i < totalOrders; i++) { // the tree must be expanded once for every order
+        for (int i = 0; i < totalOrders; i++) { // the tree must be expanded once for every order to finish all orders
             List<State> newLevel = currentLevel.stream().parallel().map(s -> getCandidates(s).stream().map(c -> serveCustomer(vWaiter, vCustomer, tServing, new State(s), c)).toList()).flatMap(List::stream).toList();
 
             if (newLevel.size() > beta) {
