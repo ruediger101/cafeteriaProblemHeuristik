@@ -20,7 +20,7 @@ public class State {
         servicedOrder = new ArrayList<>(s.servicedOrder);
         waiterPosition = s.waiterPosition;
         walkedDistance = s.walkedDistance;
-        customers = s.customers.stream().map(Customer::new).toList();
+        customers = new ArrayList<>(s.customers.stream().map(Customer::new).toList());
         time = s.time;
     }
 
@@ -30,5 +30,13 @@ public class State {
             result = Double.compare(a.walkedDistance, b.walkedDistance);
         }
         return result;
+    }
+
+    public void reset(){
+        customers.stream().forEach(Customer::reset);
+        waiterPosition = 0.0;
+        walkedDistance = 0.0;
+        time = 0.0;
+        servicedOrder.clear();
     }
 }

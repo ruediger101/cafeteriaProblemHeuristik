@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.IntStream;
 import java.lang.Math;
 
 
 public class App {
+    private static Random rand = new Random();
 
     // function checks if order must not be changed
     private static boolean mustPrecede(Customer i, Customer j) {
@@ -61,7 +64,7 @@ public class App {
         int pos = -1;
         s.customers.add(new Customer(0, pos--, List.of(1,3)));
         s.customers.add(new Customer(1, pos--, List.of(1)));
-        s.customers.add(new Customer(2, pos--, List.of(2)));
+        s.customers.add(new Customer(2, pos, List.of(2)));
 
         List<Integer> servedOrder= List.of(0,1,0,2);
         double v_waiter = 1.0;
@@ -93,8 +96,9 @@ public class App {
 
     // Beamsearch
     private static State beamSearch(int beta, double v_waiter, double v_cust, double t_serving, State state){
-        int totalOrders = state.customers.stream().mapToInt(c-> c.orders.size()).sum();
+        state.reset();
 
+        int totalOrders = state.customers.stream().mapToInt(c-> c.orders.size()).sum();
 
         List<State> currentLevel = new ArrayList<>(List.of(state));//  list containing states at current level
         for(int i = 0; i<totalOrders; i++){ // the tree must be expanded once for every order
@@ -103,7 +107,7 @@ public class App {
             ).flatMap(List::stream).toList();
 
             if (newLevel.size()> beta){
-                currentLevel = currentLevel.stream().sorted(State::compare).toList().subList(0, beta);
+                currentLevel = new ArrayList<>(newLevel.stream().sorted(State::compare).toList()).subList(0, beta);
             }else{
                 currentLevel = newLevel;
             }
@@ -119,7 +123,7 @@ public class App {
         int pos = -1;
         s.customers.add(new Customer(0, pos--, List.of(1,3)));
         s.customers.add(new Customer(1, pos--, List.of(1)));
-        s.customers.add(new Customer(2, pos--, List.of(2)));
+        s.customers.add(new Customer(2, pos, List.of(2)));
 
         double v_waiter = 1.0;
         double v_cust = 1.0;
@@ -131,9 +135,6 @@ public class App {
     }
 
     private static State optimizationSSA(double tempInitial, double tempFinal, double alfa, int meanMarkov, int beta, double v_waiter, double v_cust, double t_serving, State state){
-        Random rand = new Random();
-        rand.setSeed(42);
-
         State initialState = beamSearch(beta, v_waiter, v_cust, t_serving, state);
 
         // ====== Simulated annealing algorithm initialization ======
@@ -180,8 +181,8 @@ public class App {
                     accept = true;
                     kBetter++;
                 } else { // tolerance solution ： If the objective function of the new solution is worse than the current solution, the new solution is accepted with a certain probability
-                    double deltaTemp = nextState.time - currentState.time;
-                    double pAccept = Math.exp(- deltaTemp / tempNow); // calculate the state transition probability of the tolerant solution
+                    double deltaTime = nextState.time - currentState.time;
+                    double pAccept = Math.exp(- deltaTime / tempNow); // calculate the state transition probability of the tolerant solution
                     if (pAccept > rand.nextDouble()){
                         accept = true; // accept the bad solution
                         kBadAccept++;
@@ -203,7 +204,7 @@ public class App {
             }
             // --- Data processing after the end of the inner loop
             // Complete the current temperature search, save data and output
-            double pBadAccept = kBadAccept / (kBadAccept + kBadRefuse); // the acceptance probability of the inferior solution
+            double pBadAccept = ((double)kBadAccept) / (kBadAccept + kBadRefuse); // the acceptance probability of the inferior solution
             recordIter.add(kIter); // the current number of external loops
             recordCurrentState.add(currentState); // the objective function value of the current solution
             recordOptimalState.add(optimalState); // the objective function value of the best solution
@@ -220,8 +221,43 @@ public class App {
 
 
     public static void main(String[] args) {
-        testServeCustomer();
-        testBeamSearch();
+        rand.setSeed(2805);
+
+        //testServeCustomer();
+        //testBeamSearch();
+
+        double tempInitial = 100.0; // set the initial annealing temperature
+        double tempFinal = 1.0; // set the ending/stop annealing temperature
+        double alfa = 0.98; // set the cooling parameters ,T(k)=alfa*T(k-1)
+        int meanMarkov = 10; // Markov Chain length, that is the number of internal circulation runs
+
+        int beta = 50; // beams search width
+     
+        
+        int n = 10; // number of customers
+        int m = 10; //number of counters
+        int minRequest = 0;
+        int maxRequest = 10;
+        double v_waiter = 1.0;
+        double v_cust = 1.0;
+        double t_serving = 2.0;
+
+        State startState = new State();
+        for (int i = 1; i <= n; i++){
+            int nrDishes = rand.nextInt(maxRequest - minRequest + 1) + minRequest;
+            Set<Integer> order = new HashSet<>();
+            while (order.size() < nrDishes){
+                order.add(rand.nextInt(m));
+            }
+            startState.customers.add(new Customer(i, -i, new ArrayList<>(order)));
+        }
+
+        
+        // Simulated annealing algorithm
+        State finalState = optimizationSSA(tempInitial, tempFinal, alfa, meanMarkov, beta, v_waiter, v_cust, t_serving, startState);
+    
+        System.out.println("Best Result: " + finalState.time + " Orders: " + finalState.customers.stream().map(c->""+c.initialOrders).toList());
+        //print(f'Best Result: order={bestResult.orders} time={bestResult.time} sequence:{bestResult.served}')
     }
     
 }
