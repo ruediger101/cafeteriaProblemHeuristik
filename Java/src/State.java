@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class State {
-    protected List<int[]> servicedOrder;
+    protected List<int[]> waiterSchedule;
     protected double waiterPosition;
     protected double walkedDistance;
     protected double time;
     protected List<Customer> customers;
 
     public State() {
-        servicedOrder = new ArrayList<>();
+        waiterSchedule = new ArrayList<>();
         waiterPosition = 0.0;
         walkedDistance = 0.0;
         customers = new ArrayList<>();
@@ -17,7 +17,7 @@ public class State {
     }
 
     public State(State s) {
-        servicedOrder = new ArrayList<>(s.servicedOrder);
+        waiterSchedule = new ArrayList<>(s.waiterSchedule);
         waiterPosition = s.waiterPosition;
         walkedDistance = s.walkedDistance;
         customers = new ArrayList<>(s.customers.stream().map(Customer::new).toList());
@@ -37,6 +37,6 @@ public class State {
         waiterPosition = 0.0;
         walkedDistance = 0.0;
         time = 0.0;
-        servicedOrder.clear();
+        waiterSchedule.clear();
     }
 }

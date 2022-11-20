@@ -4,40 +4,40 @@ import java.util.List;
 public class Customer {
     protected List<Integer> initialOrders;
     protected List<Integer> orders;
-    protected int nr;
-    protected int initialNr;
+    protected int no;
+    protected int initialNo;
     protected double position;
 
     public Customer() {
         initialOrders = new ArrayList<>();
         orders = new ArrayList<>();
         position = 0.0;
-        initialNr = -1;
-        nr = -1;
+        initialNo = -1;
+        no = -1;
     }
 
-    public Customer(Customer c, int newNr) {
+    public Customer(Customer c, int newNo) {
         initialOrders = new ArrayList<>(c.initialOrders);
         orders = new ArrayList<>(c.orders);
         position = c.position;
-        initialNr = c.initialNr;
-        nr = newNr;
+        initialNo = c.initialNo;
+        no = newNo;
     }
 
     public Customer(Customer c) {
-        this(c, c.nr);
+        this(c, c.no);
     }
 
-    public Customer(int nr, double position, List<Integer> orders) {
+    public Customer(int no, double position, List<Integer> orders) {
         initialOrders = new ArrayList<>(orders);
         this.orders = new ArrayList<>(orders);
-        this.initialNr = nr;
-        this.nr = nr;
+        this.initialNo = no;
+        this.no = no;
         this.position = position;
     }
 
     public void reset() {
         orders = new ArrayList<>(initialOrders);
-        position = -nr;
+        position = -no;
     }
 }
