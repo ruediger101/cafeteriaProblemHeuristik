@@ -128,7 +128,7 @@ public class App {
     }
 
     private static void testBeamSearch() {
-        int beta = 50; // beams search width
+        int beta = 300; // beams search width
 
         System.out.println("Beta: " + beta + "\n\n");
 
