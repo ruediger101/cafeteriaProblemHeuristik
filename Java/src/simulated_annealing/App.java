@@ -1,4 +1,5 @@
 package simulated_annealing;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -12,12 +13,12 @@ public class App {
 
     // function checks if order must not be changed
     private static boolean mustPrecede(Customer i, Customer j) {
-        if (i.getId() == j.getId()) // could be removed due to implementation only left to be in line with original paper
+        if (i.getId() == j.getId()) { // could be removed due to implementation only left to be in line with original paper
             return i.getOrders().get(0) < j.getOrders().get(0);
-        else if (i.getId() < j.getId())
-            return i.getOrders().get(0) <= j.getOrders().get(0);
-        else
-            return j.getOrders().get(0) < i.getOrders().get(0) && i.getOrders().get(0) <= j.getOrders().get(0) + (j.getId() - i.getId() - 1);
+        } else if (i.getId() < j.getId()) {
+            return i.getOrders().get(0) <= j.getOrders().get(0) + (j.getId() - i.getId() - 1);
+        } else
+            return false;
     }
 
     // function to move all customers for a given order to process
@@ -113,15 +114,15 @@ public class App {
         // Test of Beams Search
         State s = new State();
 
-        s.addCustomer(new Customer(0, List.of(1, 3)));
-        s.addCustomer(new Customer(1, List.of(1)));
-        s.addCustomer(new Customer(2, List.of(2)));
+        // s.addCustomer(new Customer(0, List.of(1, 3)));
+        // s.addCustomer(new Customer(1, List.of(1)));
+        // s.addCustomer(new Customer(2, List.of(2)));
 
         // ======== Beispiel Seminararbeit ========
-        // s.addCustomer(new Customer(0, List.of(0, 1)));
-        // s.addCustomer(new Customer(1, List.of( 1)));
-        // s.addCustomer(new Customer(2, List.of(1, 2, 3)));
-        // s.addCustomer(new Customer(3, List.of(1, 3)));
+        s.addCustomer(new Customer(0, List.of(1)));
+        s.addCustomer(new Customer(1, List.of(1, 2, 3)));
+        s.addCustomer(new Customer(2, List.of(0, 1)));
+        s.addCustomer(new Customer(3, List.of(1, 3)));
         // ======== Ende des Beispiels ========
 
         double vWaiter = 1.0;
@@ -342,9 +343,9 @@ public class App {
 
         // ======== Beispiel aus Seminararbeit ========
         // State state = new State();
-        // state.addCustomer(new Customer(0, new ArrayList(List.of(1))));
-        // state.addCustomer(new Customer(1, new ArrayList(List.of(1, 2, 3))));
-        // state.addCustomer(new Customer(2, new ArrayList(List.of(0, 1))));
+        // state.addCustomer(new Customer(0, new ArrayList(List.of(0, 1))));
+        // state.addCustomer(new Customer(1, new ArrayList(List.of(1))));
+        // state.addCustomer(new Customer(2, new ArrayList(List.of(1, 2, 3))));
         // state.addCustomer(new Customer(3, new ArrayList(List.of(1, 3))));
         // List<State> startStates = generateStatePermutations(state, noStartStates);
         // ======== Ende Beispiel ========
@@ -381,10 +382,10 @@ public class App {
 
         // --- test functions
         // testServeCustomer();
-        // testBeamSearchFixedCustomers();
+        testBeamSearchFixedCustomers();
         // testBeamSearch();
 
-        customerSequencingAndCwspComplete();
+        // customerSequencingAndCwspComplete();
 
     }
 
