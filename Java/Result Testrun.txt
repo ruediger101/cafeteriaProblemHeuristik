@@ -1,0 +1,85 @@
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alfa: 0.99
+Outer loop (temp reduction): 390 iterations
+Inner loop (Markov Chain): 100 iterations
+Total (outer * inner loop): 39000 iterations
+
+Beta: 300
+
+No Customers: 10
+No Counters: 10
+Min Request: 1
+Max Request: 10
+Unique Orders: true
+No Start States: 10
+
+Runtime: 7125.604 sec
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+
+Best Result: 156.0 sec
+        Customer Order:[
+                ID (original ID): 0 (6) Orders: [0, 1, 5, 8, 9],
+                ID (original ID): 1 (5) Orders: [0, 1, 2, 3, 4, 7, 9],
+                ID (original ID): 2 (3) Orders: [0, 2, 3, 4, 5, 6, 7, 9],
+                ID (original ID): 3 (4) Orders: [0, 3, 4, 5, 7, 8],
+                ID (original ID): 4 (1) Orders: [0, 1, 2, 3, 4, 5, 6, 8, 9],
+                ID (original ID): 5 (8) Orders: [0, 2, 3, 4, 7, 9],
+                ID (original ID): 6 (7) Orders: [0, 3, 6, 9],
+                ID (original ID): 7 (9) Orders: [3, 6, 7, 8, 9],
+                ID (original ID): 8 (0) Orders: [3],
+                ID (original ID): 9 (2) Orders: [8]]
+
+        Waiter schedule:[
+                 Customer ID  0 served at counter  0,
+                 Customer ID  1 served at counter  0,
+                 Customer ID  2 served at counter  0,
+                 Customer ID  3 served at counter  0,
+                 Customer ID  4 served at counter  0,
+                 Customer ID  5 served at counter  0,
+                 Customer ID  6 served at counter  0,
+                 Customer ID  0 served at counter  1,
+                 Customer ID  1 served at counter  1,
+                 Customer ID  1 served at counter  2,
+                 Customer ID  2 served at counter  2,
+                 Customer ID  4 served at counter  1,
+                 Customer ID  4 served at counter  2,
+                 Customer ID  5 served at counter  2,
+                 Customer ID  1 served at counter  3,
+                 Customer ID  2 served at counter  3,
+                 Customer ID  3 served at counter  3,
+                 Customer ID  4 served at counter  3,
+                 Customer ID  5 served at counter  3,
+                 Customer ID  6 served at counter  3,
+                 Customer ID  7 served at counter  3,
+                 Customer ID  8 served at counter  3,
+                 Customer ID  1 served at counter  4,
+                 Customer ID  0 served at counter  5,
+                 Customer ID  2 served at counter  4,
+                 Customer ID  3 served at counter  4,
+                 Customer ID  4 served at counter  4,
+                 Customer ID  5 served at counter  4,
+                 Customer ID  2 served at counter  5,
+                 Customer ID  3 served at counter  5,
+                 Customer ID  2 served at counter  6,
+                 Customer ID  4 served at counter  5,
+                 Customer ID  4 served at counter  6,
+                 Customer ID  1 served at counter  7,
+                 Customer ID  2 served at counter  7,
+                 Customer ID  3 served at counter  7,
+                 Customer ID  0 served at counter  8,
+                 Customer ID  0 served at counter  9,
+                 Customer ID  1 served at counter  9,
+                 Customer ID  2 served at counter  9,
+                 Customer ID  3 served at counter  8,
+                 Customer ID  4 served at counter  8,
+                 Customer ID  5 served at counter  7,
+                 Customer ID  6 served at counter  6,
+                 Customer ID  7 served at counter  6,
+                 Customer ID  7 served at counter  7,
+                 Customer ID  7 served at counter  8,
+                 Customer ID  4 served at counter  9,
+                 Customer ID  5 served at counter  9,
+                 Customer ID  6 served at counter  9,
+                 Customer ID  7 served at counter  9,
+                 Customer ID  9 served at counter  8]
