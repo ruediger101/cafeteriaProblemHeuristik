@@ -1,4 +1,5 @@
 package simulated_annealing;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Customer {
     private int id;
     private int initialId;
     private double position;
+    private double velocity = 1.0;
 
     public Customer() {
         initialOrders = new ArrayList<>();
@@ -64,5 +66,9 @@ public class Customer {
 
     public List<Integer> getInitialOrders() {
         return initialOrders;
+    }
+
+    public double getVelocity() {
+        return velocity;
     }
 }
