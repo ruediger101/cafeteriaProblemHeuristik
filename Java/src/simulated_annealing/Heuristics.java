@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 
 public class Heuristics {
@@ -251,22 +250,31 @@ public class Heuristics {
         return optimalState;
     }
 
-    private static int countBlockings(Customer c, State state) {
-        return state.getCustomers().stream().filter(c2 -> !Objects.equals(c, c2)).mapToInt(c3 -> {
-            for (int i = 0; i < Math.min(c.getOrders().size(), c3.getOrders().size()); i++) {
-                if (c.getOrders().get(i) <= c3.getOrders().get(i)) {
-                    return 1;
+    private static int compareCustomers(Customer c, Customer c2, State state) {
+
+        for (int i = 0; i < Math.min(c.getOrders().size(), c2.getOrders().size()); i++) {
+            long no1 = 0;
+            long no2 = 0;
+
+            for (Customer cust : state.getCustomers()) {
+                if (cust.getOrders().size() > i) {
+                    if (!cust.equals(c) && c.getOrders().get(i) <= cust.getOrders().get(i))
+                        no1++;
+                    if (!cust.equals(c2) && c2.getOrders().get(i) <= cust.getOrders().get(i))
+                        no2++;
                 }
             }
-            return 0;
-        }).sum();
 
+            int result = Long.compare(no1, no2);
+            if (true || result != 0) {
+                return result;
+            }
+        }
+        return Integer.compare(c.getOrders().size(), c2.getOrders().size());
     }
 
     public static State priorityBasedCustomerSorting(State state, int noCounters) {
-        Map<Customer, Integer> blockings = new HashMap<>();
-
-        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> Integer.compare(countBlockings(a, state), countBlockings(b, state))).toList();
+        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> compareCustomers(a, b, state)).toList();
 
         List<List<Customer>> clusters = new ArrayList<>();
         for (int i = 0; i < noCounters; i++) {
@@ -286,6 +294,7 @@ public class Heuristics {
         for (int i = 0; i < state.getCustomers().size(); i++) {
             state.getCustomers().get(i).setId(i);
         }
+
         return Heuristics.beamSearch(state);
     }
 }

@@ -164,7 +164,7 @@ public class App {
     }
 
     private static void customerSequencingAndCwspComplete() {
-        int noCustomers = 10;
+        int noCustomers = 50;
         int noCounters = 10;
         int minRequest = 1; // minimum no of request per customer
         int maxRequest = 10; // maximum no of request per customer
@@ -207,10 +207,10 @@ public class App {
 
     private static void testPriorityBasedSequence() {
         System.out.println("Priority Based Sequence");
-        int noCustomers = 10;
-        int noCounters = 4;
+        int noCustomers = 50;
+        int noCounters = 10;
         int minRequest = 1; // minimum no of request per customer
-        int maxRequest = 4; // maximum no of request per customer
+        int maxRequest = 10; // maximum no of request per customer
         boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
         int noStartStates = 1;
 
