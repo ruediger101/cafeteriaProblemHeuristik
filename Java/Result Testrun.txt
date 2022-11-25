@@ -1,85 +1,907 @@
+❯  /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
 Initial Temperature: 50.0
 Final Temperature: 1.0
-Alfa: 0.99
-Outer loop (temp reduction): 390 iterations
-Inner loop (Markov Chain): 100 iterations
-Total (outer * inner loop): 39000 iterations
+Alpha: 0.95
+Outer loop (temp reduction): 77 iterations
+Inner loop (Markov Chain): 50 iterations
+Total (outer * inner loop): 3850 iterations
+
+Beta: 100
+
+No Start States: 1
+
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 37.036 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 163.0 units of time, 45.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 2: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 3: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 4: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 5: original-position =  3, Orders = [9]
+                 6: original-position =  1, Orders = [4]
+                 7: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                 8: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 9: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                10: original-position =  8, Orders = [1, 4, 7, 10]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  1 served at counter  2
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  4 served at counter  1
+                Customer  3 served at counter  2
+                Customer  3 served at counter  3
+                Customer  2 served at counter  4
+                Customer  4 served at counter  3
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  1 served at counter  6
+                Customer  2 served at counter  6
+                Customer  3 served at counter  5
+                Customer  4 served at counter  4
+                Customer  4 served at counter  5
+                Customer  3 served at counter  6
+                Customer  3 served at counter  7
+                Customer  2 served at counter  8
+                Customer  1 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter  9
+                Customer  4 served at counter  8
+                Customer  3 served at counter  9
+                Customer  3 served at counter 10
+                Customer  4 served at counter 10
+                Customer  5 served at counter  9
+                Customer  6 served at counter  4
+                Customer  7 served at counter  4
+                Customer  8 served at counter  1
+                Customer  9 served at counter  1
+                Customer 10 served at counter  1
+                Customer  9 served at counter  2
+                Customer  8 served at counter  3
+                Customer  9 served at counter  3
+                Customer  8 served at counter  4
+                Customer  9 served at counter  4
+                Customer  8 served at counter  5
+                Customer 10 served at counter  4
+                Customer  9 served at counter  5
+                Customer  8 served at counter  6
+                Customer  7 served at counter  7
+                Customer  8 served at counter  7
+                Customer  7 served at counter  8
+                Customer  7 served at counter  9
+                Customer  8 served at counter  8
+                Customer 10 served at counter  7
+                Customer  9 served at counter  8
+                Customer  7 served at counter 10
+                Customer  8 served at counter 10
+                Customer  9 served at counter 10
+                Customer 10 served at counter 10
+Outer loop no 0
+        No of found better solutions: 2
+        CurrentState: time = 180,00     distance = 63,00
+        Optimal State: time = 169,00    distance = 51,00
+        Percentage of accepted bad solutions = 0,93
+Outer loop no 7
+        No of found better solutions: 2
+        CurrentState: time = 175,00     distance = 60,00
+        Optimal State: time = 169,00    distance = 51,00
+        Percentage of accepted bad solutions = 0,87
+Outer loop no 14
+        No of found better solutions: 3
+        CurrentState: time = 174,00     distance = 59,00
+        Optimal State: time = 169,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,86
+Outer loop no 21
+        No of found better solutions: 6
+        CurrentState: time = 181,00     distance = 61,00
+        Optimal State: time = 167,00    distance = 53,00
+        Percentage of accepted bad solutions = 0,81
+Outer loop no 28
+        No of found better solutions: 7
+        CurrentState: time = 183,00     distance = 67,00
+        Optimal State: time = 167,00    distance = 52,00
+        Percentage of accepted bad solutions = 0,59
+Outer loop no 35
+        No of found better solutions: 9
+        CurrentState: time = 178,00     distance = 55,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,68
+Outer loop no 42
+        No of found better solutions: 9
+        CurrentState: time = 174,00     distance = 55,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,59
+Outer loop no 49
+        No of found better solutions: 9
+        CurrentState: time = 172,00     distance = 57,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,47
+Outer loop no 56
+        No of found better solutions: 11
+        CurrentState: time = 170,00     distance = 53,00
+        Optimal State: time = 165,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,28
+Outer loop no 63
+        No of found better solutions: 11
+        CurrentState: time = 174,00     distance = 59,00
+        Optimal State: time = 165,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,29
+Outer loop no 70
+        No of found better solutions: 12
+        CurrentState: time = 165,00     distance = 45,00
+        Optimal State: time = 163,00    distance = 45,00
+        Percentage of accepted bad solutions = 0,07
+Outer loop no 76
+        No of found better solutions: 12
+        CurrentState: time = 167,00     distance = 46,00
+        Optimal State: time = 163,00    distance = 45,00
+        Percentage of accepted bad solutions = 0,06
+❯  cd /home/ruediger/git/Simulated\ Anealing/Java ; /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alpha: 0.95
+Outer loop (temp reduction): 77 iterations
+Inner loop (Markov Chain): 50 iterations
+Total (outer * inner loop): 3850 iterations
 
 Beta: 300
 
+No Start States: 1
+
 No Customers: 10
-No Counters: 10
-Min Request: 1
-Max Request: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
 Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 134.973 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 165.0 units of time, 44.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  8, Orders = [1, 4, 7, 10]
+                 2: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 3: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 4: original-position =  1, Orders = [4]
+                 5: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 6: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 7: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 8: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 9: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                10: original-position =  3, Orders = [9]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  2 served at counter  2
+                Customer  2 served at counter  3
+                Customer  1 served at counter  4
+                Customer  2 served at counter  4
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  3 served at counter  5
+                Customer  2 served at counter  6
+                Customer  1 served at counter  7
+                Customer  2 served at counter  7
+                Customer  3 served at counter  6
+                Customer  4 served at counter  4
+                Customer  5 served at counter  1
+                Customer  6 served at counter  1
+                Customer  5 served at counter  2
+                Customer  7 served at counter  1
+                Customer  8 served at counter  1
+                Customer  7 served at counter  2
+                Customer  6 served at counter  3
+                Customer  7 served at counter  3
+                Customer  6 served at counter  4
+                Customer  8 served at counter  3
+                Customer  7 served at counter  4
+                Customer  6 served at counter  5
+                Customer  5 served at counter  6
+                Customer  3 served at counter  8
+                Customer  2 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter 10
+                Customer  3 served at counter  9
+                Customer  5 served at counter  9
+                Customer  6 served at counter  8
+                Customer  7 served at counter  5
+                Customer  8 served at counter  4
+                Customer  9 served at counter  4
+                Customer  8 served at counter  5
+                Customer  8 served at counter  6
+                Customer  8 served at counter  7
+                Customer  7 served at counter  8
+                Customer  5 served at counter 10
+                Customer  6 served at counter 10
+                Customer  7 served at counter 10
+                Customer  8 served at counter  8
+                Customer  9 served at counter  7
+                Customer  9 served at counter  8
+                Customer  9 served at counter  9
+                Customer  8 served at counter 10
+                Customer  9 served at counter 10
+                Customer 10 served at counter  9
+
+Outer loop no 0
+        No of found better solutions: 3
+        CurrentState: time = 175,00     distance = 59,00
+        Optimal State: time = 171,00    distance = 57,00
+        Percentage of accepted bad solutions = 0,96
+
+Outer loop no 7
+        No of found better solutions: 8
+        CurrentState: time = 171,00     distance = 54,00
+        Optimal State: time = 168,00    distance = 49,00
+        Percentage of accepted bad solutions = 1,00
+
+Outer loop no 14
+        No of found better solutions: 9
+        CurrentState: time = 179,00     distance = 63,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,81
+
+Outer loop no 21
+        No of found better solutions: 9
+        CurrentState: time = 184,00     distance = 67,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,77
+
+Outer loop no 28
+        No of found better solutions: 9
+        CurrentState: time = 185,00     distance = 69,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,74
+
+Outer loop no 35
+        No of found better solutions: 9
+        CurrentState: time = 176,00     distance = 61,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,83
+
+Outer loop no 42
+        No of found better solutions: 9
+        CurrentState: time = 176,00     distance = 59,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,49
+
+Outer loop no 49
+        No of found better solutions: 9
+        CurrentState: time = 174,00     distance = 59,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,44
+
+Outer loop no 56
+        No of found better solutions: 9
+        CurrentState: time = 173,00     distance = 52,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,54
+
+Outer loop no 63
+        No of found better solutions: 10
+        CurrentState: time = 167,00     distance = 49,00
+        Optimal State: time = 165,00    distance = 46,00
+        Percentage of accepted bad solutions = 0,10
+
+Outer loop no 70
+        No of found better solutions: 11
+        CurrentState: time = 173,00     distance = 56,00
+        Optimal State: time = 165,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,38
+Outer loop no 76
+        No of found better solutions: 11
+        CurrentState: time = 167,00     distance = 47,00
+        Optimal State: time = 165,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,16
+❯  cd /home/ruediger/git/Simulated\ Anealing/Java ; /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alpha: 0.95
+Outer loop (temp reduction): 77 iterations
+Inner loop (Markov Chain): 100 iterations
+Total (outer * inner loop): 7700 iterations
+
+Beta: 300
+
+No Start States: 1
+
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 314.792 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 163.0 units of time, 45.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 2: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 3: original-position =  8, Orders = [1, 4, 7, 10]
+                 4: original-position =  3, Orders = [9]
+                 5: original-position =  1, Orders = [4]
+                 6: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 7: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 8: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 9: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                10: original-position = 10, Orders = [4, 7, 8, 9, 10]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  2 served at counter  2
+                Customer  1 served at counter  3
+                Customer  2 served at counter  3
+                Customer  1 served at counter  4
+                Customer  2 served at counter  4
+                Customer  1 served at counter  5
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  1 served at counter  6
+                Customer  1 served at counter  7
+                Customer  1 served at counter  8
+                Customer  3 served at counter  7
+                Customer  2 served at counter  8
+                Customer  1 served at counter 10
+                Customer  2 served at counter 10
+                Customer  3 served at counter 10
+                Customer  4 served at counter  9
+                Customer  5 served at counter  4
+                Customer  6 served at counter  1
+                Customer  7 served at counter  1
+                Customer  6 served at counter  2
+                Customer  8 served at counter  1
+                Customer  9 served at counter  1
+                Customer  8 served at counter  2
+                Customer  7 served at counter  3
+                Customer  8 served at counter  3
+                Customer  7 served at counter  4
+                Customer  8 served at counter  4
+                Customer  7 served at counter  5
+                Customer  6 served at counter  6
+                Customer  8 served at counter  5
+                Customer  9 served at counter  4
+                Customer 10 served at counter  4
+                Customer  9 served at counter  5
+                Customer  8 served at counter  6
+                Customer  9 served at counter  6
+                Customer  8 served at counter  7
+                Customer  7 served at counter  8
+                Customer  6 served at counter  9
+                Customer  6 served at counter 10
+                Customer  7 served at counter 10
+                Customer  8 served at counter  9
+                Customer  9 served at counter  8
+                Customer 10 served at counter  7
+                Customer 10 served at counter  8
+                Customer  9 served at counter  9
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
+                Customer 10 served at counter 10
+
+Outer loop no 0
+        No of found better solutions: 6
+        CurrentState: time = 179,00     distance = 57,00
+        Optimal State: time = 169,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,93
+
+Outer loop no 7
+        No of found better solutions: 10
+        CurrentState: time = 190,00     distance = 77,00
+        Optimal State: time = 166,00    distance = 50,00
+        Percentage of accepted bad solutions = 0,93
+
+Outer loop no 14
+        No of found better solutions: 10
+        CurrentState: time = 177,00     distance = 65,00
+        Optimal State: time = 166,00    distance = 50,00
+        Percentage of accepted bad solutions = 0,95
+
+Outer loop no 21
+        No of found better solutions: 11
+        CurrentState: time = 185,00     distance = 73,00
+        Optimal State: time = 166,00    distance = 46,00
+        Percentage of accepted bad solutions = 0,92
+
+Outer loop no 28
+        No of found better solutions: 11
+        CurrentState: time = 185,00     distance = 69,00
+        Optimal State: time = 166,00    distance = 46,00
+        Percentage of accepted bad solutions = 0,82
+
+Outer loop no 35
+        No of found better solutions: 12
+        CurrentState: time = 179,00     distance = 59,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,83
+
+Outer loop no 42
+        No of found better solutions: 12
+        CurrentState: time = 173,00     distance = 55,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,70
+
+Outer loop no 49
+        No of found better solutions: 12
+        CurrentState: time = 173,00     distance = 57,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,46
+
+Outer loop no 56
+        No of found better solutions: 12
+        CurrentState: time = 174,00     distance = 55,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,26
+
+Outer loop no 63
+        No of found better solutions: 12
+        CurrentState: time = 173,00     distance = 57,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,21
+
+Outer loop no 70
+        No of found better solutions: 14
+        CurrentState: time = 177,00     distance = 59,00
+        Optimal State: time = 165,00    distance = 45,00
+        Percentage of accepted bad solutions = 0,36
+Outer loop no 76
+        No of found better solutions: 17
+        CurrentState: time = 167,00     distance = 47,00
+        Optimal State: time = 163,00    distance = 45,00
+        Percentage of accepted bad solutions = 0,12
+❯  cd /home/ruediger/git/Simulated\ Anealing/Java ; /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alpha: 0.99
+Outer loop (temp reduction): 390 iterations
+Inner loop (Markov Chain): 10 iterations
+Total (outer * inner loop): 3900 iterations
+
+Beta: 300
+
+No Start States: 1
+
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 144.28 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 165.0 units of time, 48.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  8, Orders = [1, 4, 7, 10]
+                 2: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 3: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 4: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 5: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 6: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                 7: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 8: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 9: original-position =  1, Orders = [4]
+                10: original-position =  3, Orders = [9]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  2 served at counter  1
+                Customer  2 served at counter  2
+                Customer  2 served at counter  3
+                Customer  1 served at counter  4
+                Customer  2 served at counter  4
+                Customer  3 served at counter  1
+                Customer  4 served at counter  1
+                Customer  5 served at counter  1
+                Customer  5 served at counter  2
+                Customer  4 served at counter  3
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  4 served at counter  4
+                Customer  3 served at counter  5
+                Customer  2 served at counter  6
+                Customer  1 served at counter  7
+                Customer  2 served at counter  7
+                Customer  3 served at counter  6
+                Customer  4 served at counter  5
+                Customer  6 served at counter  4
+                Customer  7 served at counter  1
+                Customer  8 served at counter  1
+                Customer  7 served at counter  2
+                Customer  7 served at counter  3
+                Customer  8 served at counter  3
+                Customer  7 served at counter  4
+                Customer  5 served at counter  6
+                Customer  3 served at counter  8
+                Customer  2 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter 10
+                Customer  3 served at counter  9
+                Customer  4 served at counter  8
+                Customer  6 served at counter  7
+                Customer  7 served at counter  5
+                Customer  8 served at counter  4
+                Customer  9 served at counter  4
+                Customer  8 served at counter  5
+                Customer  8 served at counter  6
+                Customer  6 served at counter  8
+                Customer  5 served at counter  9
+                Customer  4 served at counter 10
+                Customer  5 served at counter 10
+                Customer  6 served at counter  9
+                Customer  7 served at counter  8
+                Customer  8 served at counter  7
+                Customer  8 served at counter  8
+                Customer  6 served at counter 10
+                Customer  7 served at counter 10
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
+
+Outer loop no 0
+        No of found better solutions: 1
+        CurrentState: time = 182,00     distance = 68,00
+        Optimal State: time = 173,00    distance = 56,00
+        Percentage of accepted bad solutions = 1,00
+
+Outer loop no 39
+        No of found better solutions: 8
+        CurrentState: time = 171,00     distance = 54,00
+        Optimal State: time = 168,00    distance = 49,00
+        Percentage of accepted bad solutions = 1,00
+
+Outer loop no 78
+        No of found better solutions: 9
+        CurrentState: time = 181,00     distance = 61,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,75
+
+Outer loop no 117
+        No of found better solutions: 9
+        CurrentState: time = 178,00     distance = 59,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 1,00
+
+Outer loop no 156
+        No of found better solutions: 9
+        CurrentState: time = 169,00     distance = 52,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,50
+
+Outer loop no 195
+        No of found better solutions: 9
+        CurrentState: time = 169,00     distance = 53,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,50
+
+Outer loop no 234
+        No of found better solutions: 9
+        CurrentState: time = 169,00     distance = 53,00
+        Optimal State: time = 166,00    distance = 49,00
+        Percentage of accepted bad solutions = 0,40
+
+Outer loop no 273
+        No of found better solutions: 10
+        CurrentState: time = 177,00     distance = 57,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,75
+
+Outer loop no 312
+        No of found better solutions: 10
+        CurrentState: time = 169,00     distance = 53,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,00
+
+Outer loop no 351
+        No of found better solutions: 10
+        CurrentState: time = 170,00     distance = 53,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,11
+Outer loop no 389
+        No of found better solutions: 10
+        CurrentState: time = 170,00     distance = 51,00
+        Optimal State: time = 165,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,11
+❯  cd /home/ruediger/git/Simulated\ Anealing/Java ; /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alpha: 0.99
+Outer loop (temp reduction): 390 iterations
+Inner loop (Markov Chain): 20 iterations
+Total (outer * inner loop): 7800 iterations
+
+Beta: 300
+
+No Start States: 1
+
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 327.88 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 163.0 units of time, 44.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 2: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 3: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 4: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 5: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 6: original-position =  8, Orders = [1, 4, 7, 10]
+                 7: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 8: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                 9: original-position =  1, Orders = [4]
+                10: original-position =  3, Orders = [9]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  1 served at counter  2
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  4 served at counter  1
+                Customer  5 served at counter  1
+                Customer  4 served at counter  2
+                Customer  3 served at counter  3
+                Customer  2 served at counter  4
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  1 served at counter  6
+                Customer  2 served at counter  6
+                Customer  3 served at counter  5
+                Customer  4 served at counter  3
+                Customer  5 served at counter  2
+                Customer  6 served at counter  1
+                Customer  7 served at counter  1
+                Customer  5 served at counter  3
+                Customer  4 served at counter  4
+                Customer  5 served at counter  4
+                Customer  4 served at counter  5
+                Customer  4 served at counter  6
+                Customer  2 served at counter  8
+                Customer  1 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter  9
+                Customer  3 served at counter  8
+                Customer  4 served at counter  7
+                Customer  5 served at counter  5
+                Customer  6 served at counter  4
+                Customer  7 served at counter  3
+                Customer  7 served at counter  4
+                Customer  8 served at counter  4
+                Customer  7 served at counter  5
+                Customer  9 served at counter  4
+                Customer  7 served at counter  6
+                Customer  6 served at counter  7
+                Customer  5 served at counter  8
+                Customer  4 served at counter  9
+                Customer  3 served at counter 10
+                Customer  4 served at counter 10
+                Customer  5 served at counter 10
+                Customer  6 served at counter 10
+                Customer  7 served at counter  7
+                Customer  8 served at counter  7
+                Customer  7 served at counter  8
+                Customer  8 served at counter  8
+                Customer  8 served at counter  9
+                Customer  7 served at counter 10
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
+
+Outer loop no 0
+        No of found better solutions: 1
+        CurrentState: time = 178,00     distance = 59,00
+        Optimal State: time = 173,00    distance = 56,00
+        Percentage of accepted bad solutions = 0,92
+
+Outer loop no 39
+        No of found better solutions: 8
+        CurrentState: time = 179,00     distance = 59,00
+        Optimal State: time = 167,00    distance = 48,00
+        Percentage of accepted bad solutions = 0,82
+
+Outer loop no 78
+        No of found better solutions: 9
+        CurrentState: time = 182,00     distance = 65,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,93
+
+Outer loop no 117
+        No of found better solutions: 9
+        CurrentState: time = 173,00     distance = 57,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,67
+
+Outer loop no 156
+        No of found better solutions: 9
+        CurrentState: time = 171,00     distance = 57,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,70
+
+Outer loop no 195
+        No of found better solutions: 9
+        CurrentState: time = 173,00     distance = 60,00
+        Optimal State: time = 166,00    distance = 47,00
+        Percentage of accepted bad solutions = 0,71
+
+Outer loop no 234
+        No of found better solutions: 10
+        CurrentState: time = 178,00     distance = 59,00
+        Optimal State: time = 166,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,67
+
+Outer loop no 273
+        No of found better solutions: 12
+        CurrentState: time = 171,00     distance = 53,00
+        Optimal State: time = 164,00    distance = 45,00
+        Percentage of accepted bad solutions = 0,54
+
+Outer loop no 312
+        No of found better solutions: 13
+        CurrentState: time = 174,00     distance = 55,00
+        Optimal State: time = 163,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,38
+
+Outer loop no 351
+        No of found better solutions: 13
+        CurrentState: time = 176,00     distance = 57,00
+        Optimal State: time = 163,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,38
+Outer loop no 389
+        No of found better solutions: 13
+        CurrentState: time = 167,00     distance = 43,00
+        Optimal State: time = 163,00    distance = 44,00
+        Percentage of accepted bad solutions = 0,29
+❯  cd /home/ruediger/git/Simulated\ Anealing/Java ; /usr/bin/env /usr/lib/jvm/java-17-openjdk-17.0.5.0.8-2.fc36.x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/ruediger/git/Simulated\ Anealing/Java/bin simulated_annealing.App
+
+Initial Temperature: 50.0
+Final Temperature: 1.0
+Alpha: 0.95
+Outer loop (temp reduction): 77 iterations
+Inner loop (Markov Chain): 10 iterations
+Total (outer x inner loop): 770 iterations
+
+Beta: 300
+
 No Start States: 10
 
-Runtime: 7125.604 sec
-All start states lead to an equal optimal solution. First solution will be shown in detail.
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
 
-Best Result: 156.0 sec
-        Customer Order:[
-                ID (original ID): 0 (6) Orders: [0, 1, 5, 8, 9],
-                ID (original ID): 1 (5) Orders: [0, 1, 2, 3, 4, 7, 9],
-                ID (original ID): 2 (3) Orders: [0, 2, 3, 4, 5, 6, 7, 9],
-                ID (original ID): 3 (4) Orders: [0, 3, 4, 5, 7, 8],
-                ID (original ID): 4 (1) Orders: [0, 1, 2, 3, 4, 5, 6, 8, 9],
-                ID (original ID): 5 (8) Orders: [0, 2, 3, 4, 7, 9],
-                ID (original ID): 6 (7) Orders: [0, 3, 6, 9],
-                ID (original ID): 7 (9) Orders: [3, 6, 7, 8, 9],
-                ID (original ID): 8 (0) Orders: [3],
-                ID (original ID): 9 (2) Orders: [8]]
+Start states produced states with different optimality. Best solution will be shown in detail.
+        Result: 164.0 sec
+        Result: 164.0 sec
+        Result: 165.0 sec
+        Result: 165.0 sec
+        Result: 166.0 sec
+        Result: 166.0 sec
+        Result: 166.0 sec
+        Result: 166.0 sec
+        Result: 167.0 sec
+        Result: 167.0 sec
+Runtime: 193.125 sec
 
-        Waiter schedule:[
-                 Customer ID  0 served at counter  0,
-                 Customer ID  1 served at counter  0,
-                 Customer ID  2 served at counter  0,
-                 Customer ID  3 served at counter  0,
-                 Customer ID  4 served at counter  0,
-                 Customer ID  5 served at counter  0,
-                 Customer ID  6 served at counter  0,
-                 Customer ID  0 served at counter  1,
-                 Customer ID  1 served at counter  1,
-                 Customer ID  1 served at counter  2,
-                 Customer ID  2 served at counter  2,
-                 Customer ID  4 served at counter  1,
-                 Customer ID  4 served at counter  2,
-                 Customer ID  5 served at counter  2,
-                 Customer ID  1 served at counter  3,
-                 Customer ID  2 served at counter  3,
-                 Customer ID  3 served at counter  3,
-                 Customer ID  4 served at counter  3,
-                 Customer ID  5 served at counter  3,
-                 Customer ID  6 served at counter  3,
-                 Customer ID  7 served at counter  3,
-                 Customer ID  8 served at counter  3,
-                 Customer ID  1 served at counter  4,
-                 Customer ID  0 served at counter  5,
-                 Customer ID  2 served at counter  4,
-                 Customer ID  3 served at counter  4,
-                 Customer ID  4 served at counter  4,
-                 Customer ID  5 served at counter  4,
-                 Customer ID  2 served at counter  5,
-                 Customer ID  3 served at counter  5,
-                 Customer ID  2 served at counter  6,
-                 Customer ID  4 served at counter  5,
-                 Customer ID  4 served at counter  6,
-                 Customer ID  1 served at counter  7,
-                 Customer ID  2 served at counter  7,
-                 Customer ID  3 served at counter  7,
-                 Customer ID  0 served at counter  8,
-                 Customer ID  0 served at counter  9,
-                 Customer ID  1 served at counter  9,
-                 Customer ID  2 served at counter  9,
-                 Customer ID  3 served at counter  8,
-                 Customer ID  4 served at counter  8,
-                 Customer ID  5 served at counter  7,
-                 Customer ID  6 served at counter  6,
-                 Customer ID  7 served at counter  6,
-                 Customer ID  7 served at counter  7,
-                 Customer ID  7 served at counter  8,
-                 Customer ID  4 served at counter  9,
-                 Customer ID  5 served at counter  9,
-                 Customer ID  6 served at counter  9,
-                 Customer ID  7 served at counter  9,
-                 Customer ID  9 served at counter  8]
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+Best Result: 164.0 units of time, 46.0 walked units of distance
+
+        Customer Order:
+                 1: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 2: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 3: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 4: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 5: original-position =  8, Orders = [1, 4, 7, 10]
+                 6: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                 7: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 8: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 9: original-position =  1, Orders = [4]
+                10: original-position =  3, Orders = [9]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  1 served at counter  2
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  4 served at counter  1
+                Customer  5 served at counter  1
+                Customer  4 served at counter  2
+                Customer  3 served at counter  3
+                Customer  2 served at counter  4
+                Customer  4 served at counter  3
+                Customer  3 served at counter  4
+                Customer  2 served at counter  5
+                Customer  1 served at counter  6
+                Customer  2 served at counter  6
+                Customer  3 served at counter  5
+                Customer  4 served at counter  4
+                Customer  5 served at counter  4
+                Customer  4 served at counter  5
+                Customer  3 served at counter  6
+                Customer  3 served at counter  7
+                Customer  2 served at counter  8
+                Customer  1 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter  9
+                Customer  3 served at counter  8
+                Customer  4 served at counter  8
+                Customer  5 served at counter  7
+                Customer  6 served at counter  4
+                Customer  7 served at counter  1
+                Customer  8 served at counter  1
+                Customer  7 served at counter  2
+                Customer  7 served at counter  3
+                Customer  8 served at counter  3
+                Customer  7 served at counter  4
+                Customer  8 served at counter  4
+                Customer  7 served at counter  5
+                Customer  9 served at counter  4
+                Customer  8 served at counter  5
+                Customer  7 served at counter  6
+                Customer  6 served at counter  7
+                Customer  3 served at counter 10
+                Customer  4 served at counter 10
+                Customer  5 served at counter 10
+                Customer  6 served at counter  8
+                Customer  7 served at counter  7
+                Customer  6 served at counter  9
+                Customer  8 served at counter  8
+                Customer  7 served at counter  9
+                Customer  6 served at counter 10
+                Customer  7 served at counter 10
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
+❯
