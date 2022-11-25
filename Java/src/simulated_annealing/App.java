@@ -32,13 +32,13 @@ public class App {
 
     private static void printResult(State state, long runtime) {
         int offset = 1; // offset to make comparison easier (convert from index to id)
-        System.out.println("Runtime: " + runtime / 1000.0 + " sec");
+        System.out.println(String.format("Runtime: %.3f sec", runtime / 1000.0));
 
-        System.out.println("\nServing time: " + state.getServingTime());
-        System.out.println("Waiter velocity: " + state.getWaiterVelocity());
-        System.out.println("Customer velocities: " + state.getCustomers().stream().map(Customer::getVelocity).toList());
+        System.out.println(String.format("%nServing time: %.2f", state.getServingTime()));
+        System.out.println(String.format("Waiter velocity: %.2f", state.getWaiterVelocity()));
+        System.out.println("Customer velocities: [" + String.join(" | ", state.getCustomers().stream().map(c -> String.format("%.2f", c.getVelocity())).toList()) + "]");
 
-        System.out.println("\nBest Result: " + state.getTime() + " sec\n");
+        System.out.println(String.format("%nBest Result: %.2f units of time, %.2f walked units of distance%n", state.getTime(), state.getWalkedDistance()));
 
         System.out.println("\tCustomer Order:");
 
@@ -52,7 +52,7 @@ public class App {
     private static void printResult(List<State> states, long runtime) {
         State bestState = states.stream().sorted(State::compare).findFirst().orElse(new State());
 
-        if (states.stream().mapToDouble(State::getTime).distinct().count() == 1) {
+        if (states.stream().filter(s -> bestState.compareTo(s) < 0).count() == 0) {
             System.out.println("All start states lead to an equal optimal solution. First solution will be shown in detail.");
         } else {
             System.out.println("Start states produced states with different optimality. Best solution will be shown in detail.");
@@ -169,12 +169,8 @@ public class App {
         int minRequest = 1; // minimum no of request per customer
         int maxRequest = 10; // maximum no of request per customer
         boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
-        int noStartStates = 10;
+        int noStartStates = 1;
 
-        Heuristics.printParameters();
-
-
-        
         System.out.println("No Start States: " + noStartStates + "\n");
         List<State> startStates = generateRandomStartStates(noCustomers, noCounters, minRequest, maxRequest, uniqueOrders, noStartStates);
         startStates.get(0).printStats();
@@ -187,18 +183,16 @@ public class App {
     }
 
     private static void customerSequencingAndCwspCompleteSeminararbeit() {
-        Heuristics.printParameters();
-
-        int noStartStates = 10;
+        int noStartStates = 1;
 
         System.out.println("No Start States: " + noStartStates + "\n");
 
         // ======== Beispiel aus Seminararbeit ========
         State state = new State();
-        state.addCustomer(new Customer(0, new ArrayList<>(List.of(0, 1))));
-        state.addCustomer(new Customer(1, new ArrayList<>(List.of(1))));
+        state.addCustomer(new Customer(0, new ArrayList<>(List.of(1, 3))));
+        state.addCustomer(new Customer(1, new ArrayList<>(List.of(0, 1))));
         state.addCustomer(new Customer(2, new ArrayList<>(List.of(1, 2, 3))));
-        state.addCustomer(new Customer(3, new ArrayList<>(List.of(1, 3))));
+        state.addCustomer(new Customer(3, new ArrayList<>(List.of(1))));
         List<State> startStates = generateStatePermutations(state, noStartStates);
         startStates.get(0).printStats();
         // ======== Ende Beispiel ========
@@ -215,6 +209,13 @@ public class App {
         long seed = 42; // "Answer to the Ultimate Question of Life, the Universe, and Everything" ... and a good seed
         Heuristics.setRandSeed(seed);
         rand.setSeed(seed);
+        Heuristics.setAlpha(0.99);
+        Heuristics.setMeanMarkov(100);
+        Heuristics.setBeta(300);
+
+        Heuristics.setLogSimulatedAnnealing(false);
+
+        Heuristics.printParameters();
 
         // --- test functions
         // testServeCustomer();
@@ -225,6 +226,7 @@ public class App {
         // customerSequencingAndCwspCompleteSeminararbeit();
         customerSequencingAndCwspComplete();
 
+        // Heuristics.printSaStats(10);
     }
 
 }

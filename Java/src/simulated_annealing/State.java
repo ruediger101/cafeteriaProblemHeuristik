@@ -114,6 +114,14 @@ public class State {
         return result;
     }
 
+    public int compareTo(State other) {
+        int result = Double.compare(this.totalTime, other.totalTime);
+        if (result == 0) {
+            result = Double.compare(this.walkedDistance, other.walkedDistance);
+        }
+        return result;
+    }
+
     public void reset() {
         customers.stream().forEach(Customer::reset);
         waiterPosition = 0.0;
@@ -168,5 +176,9 @@ public class State {
 
     public void setServingTime(double servingTime) {
         this.servingTime = servingTime;
+    }
+
+    public double getWalkedDistance() {
+        return walkedDistance;
     }
 }
