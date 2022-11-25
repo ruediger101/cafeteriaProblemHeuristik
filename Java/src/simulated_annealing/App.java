@@ -43,7 +43,7 @@ public class App {
         System.out.println("\tCustomer Order:");
 
         state.getCustomers().stream().map(c -> String.format("\t\t%2d: original-position = %2d, Orders = ", (c.getId() + offset), (c.getInitialId() + offset)) + c.getInitialOrders().stream().map(o -> o + offset).toList())
-                .forEach(t -> System.out.println(t));
+                .forEach(System.out::println);
 
         System.out.println("\n\tWaiter schedule:");
         state.getWaiterSchedule().stream().forEach(w -> System.out.println(String.format("\t\tCustomer %2d served at counter %2d", (w[0] + offset), (w[1] + offset))));
@@ -180,7 +180,7 @@ public class App {
         startStates.get(0).printStats();
 
         long startTime = System.currentTimeMillis();
-        List<State> resultStates = startStates.stream().parallel().map(startState -> Heuristics.simulatedAnnealing(startState)).toList();
+        List<State> resultStates = startStates.stream().parallel().map(Heuristics::simulatedAnnealing).toList();
         long stopTime = System.currentTimeMillis();
 
         printResult(resultStates, stopTime - startTime);
@@ -205,7 +205,7 @@ public class App {
 
         // Simulated annealing algorithm
         long startTime = System.currentTimeMillis();
-        List<State> resultStates = startStates.stream().parallel().map(startState -> Heuristics.simulatedAnnealing(startState)).toList();
+        List<State> resultStates = startStates.stream().parallel().map(Heuristics::simulatedAnnealing).toList();
         long stopTime = System.currentTimeMillis();
 
         printResult(resultStates, stopTime - startTime);
