@@ -71,4 +71,8 @@ public class Customer {
     public double getVelocity() {
         return velocity;
     }
+
+    public void setId(int newId) {
+        this.id = newId;
+    }
 }

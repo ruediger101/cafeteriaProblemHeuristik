@@ -1,7 +1,10 @@
 package simulated_annealing;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class Heuristics {
@@ -246,5 +249,43 @@ public class Heuristics {
         }
         // ====== End the simulated annealing process ======
         return optimalState;
+    }
+
+    private static int countBlockings(Customer c, State state) {
+        return state.getCustomers().stream().filter(c2 -> !Objects.equals(c, c2)).mapToInt(c3 -> {
+            for (int i = 0; i < Math.min(c.getOrders().size(), c3.getOrders().size()); i++) {
+                if (c.getOrders().get(i) <= c3.getOrders().get(i)) {
+                    return 1;
+                }
+            }
+            return 0;
+        }).sum();
+
+    }
+
+    public static State priorityBasedCustomerSorting(State state, int noCounters) {
+        Map<Customer, Integer> blockings = new HashMap<>();
+
+        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> Integer.compare(countBlockings(a, state), countBlockings(b, state))).toList();
+
+        List<List<Customer>> clusters = new ArrayList<>();
+        for (int i = 0; i < noCounters; i++) {
+            List<Customer> temp = new ArrayList<>();
+            for (int j = i; j < sorted.size(); j += noCounters) {
+                temp.add(sorted.get(j));
+            }
+            clusters.add(temp);
+        }
+
+        state.getCustomers().clear();
+        while (!clusters.isEmpty()) {
+            int index = rand.nextInt(clusters.size());
+            state.getCustomers().addAll(clusters.remove(index));
+        }
+
+        for (int i = 0; i < state.getCustomers().size(); i++) {
+            state.getCustomers().get(i).setId(i);
+        }
+        return Heuristics.beamSearch(state);
     }
 }

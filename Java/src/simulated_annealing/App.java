@@ -56,7 +56,7 @@ public class App {
             System.out.println("All start states lead to an equal optimal solution. First solution will be shown in detail.");
         } else {
             System.out.println("Start states produced states with different optimality. Best solution will be shown in detail.");
-            states.stream().sorted(State::compare).forEach(s -> System.out.println("\tResult: " + s.getTime() + " sec"));
+            states.stream().sorted(State::compare).forEach(s -> System.out.println(String.format("\tResult: %.2f units of time", s.getTime())));
         }
 
         printResult(bestState, runtime);
@@ -169,7 +169,7 @@ public class App {
         int minRequest = 1; // minimum no of request per customer
         int maxRequest = 10; // maximum no of request per customer
         boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
-        int noStartStates = 1;
+        int noStartStates = 10;
 
         System.out.println("No Start States: " + noStartStates + "\n");
         List<State> startStates = generateRandomStartStates(noCustomers, noCounters, minRequest, maxRequest, uniqueOrders, noStartStates);
@@ -183,7 +183,7 @@ public class App {
     }
 
     private static void customerSequencingAndCwspCompleteSeminararbeit() {
-        int noStartStates = 1;
+        int noStartStates = 10;
 
         System.out.println("No Start States: " + noStartStates + "\n");
 
@@ -203,6 +203,25 @@ public class App {
         long stopTime = System.currentTimeMillis();
 
         printResult(resultStates, stopTime - startTime);
+    }
+
+    private static void testPriorityBasedSequence() {
+        System.out.println("Priority Based Sequence");
+        int noCustomers = 10;
+        int noCounters = 4;
+        int minRequest = 1; // minimum no of request per customer
+        int maxRequest = 4; // maximum no of request per customer
+        boolean uniqueOrders = true; // defines if a customer may have multiple orders of the same kind
+        int noStartStates = 1;
+
+        List<State> startStates = generateRandomStartStates(noCustomers, noCounters, minRequest, maxRequest, uniqueOrders, noStartStates);
+        startStates.get(0).printStats();
+
+        long startTime = System.currentTimeMillis();
+        State resultState = Heuristics.priorityBasedCustomerSorting(startStates.get(0), noCounters);
+        long stopTime = System.currentTimeMillis();
+
+        printResult(resultState, stopTime - startTime);
     }
 
     public static void main(String[] args) {
@@ -225,6 +244,7 @@ public class App {
 
         // customerSequencingAndCwspCompleteSeminararbeit();
         customerSequencingAndCwspComplete();
+        // testPriorityBasedSequence();
 
         // Heuristics.printSaStats(10);
     }

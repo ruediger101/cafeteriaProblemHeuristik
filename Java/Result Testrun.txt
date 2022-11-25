@@ -23,7 +23,7 @@ Runtime: 37.036 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 163.0 units of time, 45.0 walked units of distance
 
@@ -177,7 +177,7 @@ Runtime: 134.973 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 165.0 units of time, 44.0 walked units of distance
 
@@ -342,7 +342,7 @@ Runtime: 314.792 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 163.0 units of time, 45.0 walked units of distance
 
@@ -507,7 +507,7 @@ Runtime: 144.28 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 165.0 units of time, 48.0 walked units of distance
 
@@ -666,7 +666,7 @@ Runtime: 327.88 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 163.0 units of time, 44.0 walked units of distance
 
@@ -821,21 +821,21 @@ Max no Request: 9
 Unique Orders: true
 
 Start states produced states with different optimality. Best solution will be shown in detail.
-        Result: 164.0 sec
-        Result: 164.0 sec
-        Result: 165.0 sec
-        Result: 165.0 sec
-        Result: 166.0 sec
-        Result: 166.0 sec
-        Result: 166.0 sec
-        Result: 166.0 sec
-        Result: 167.0 sec
-        Result: 167.0 sec
+        Result: 164.0 units of time
+        Result: 164.0 units of time
+        Result: 165.0 units of time
+        Result: 165.0 units of time
+        Result: 166.0 units of time
+        Result: 166.0 units of time
+        Result: 166.0 units of time
+        Result: 166.0 units of time
+        Result: 167.0 units of time
+        Result: 167.0 units of time
 Runtime: 193.125 sec
 
 Serving time: 2.0
 Waiter velocity: 1.0
-Customer velocities: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
 
 Best Result: 164.0 units of time, 46.0 walked units of distance
 
@@ -905,3 +905,107 @@ Best Result: 164.0 units of time, 46.0 walked units of distance
                 Customer  8 served at counter 10
                 Customer 10 served at counter  9
 ❯
+
+PS C:\Users\Ruediger\git\cafeteriaProblemHeuristik>  & 'C:\Program Files\Eclipse Adoptium\jdk-17.0.5.8-hotspot\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'C:\Users\Ruediger\AppData\Roaming\Code\User\workspaceStorage\69c085ada55d994407e3077b3a9b6e2b\redhat.java\jdt_ws\cafeteriaProblemHeuristik_b4c3fa8f\bin' 'simulated_annealing.App'
+
+Beta: 300
+Initial Temperature: 50.0
+Final Temperature: 1.0   
+Alpha: 0.99
+Outer loop (temp reduction): 390 iterations
+Inner loop (Markov Chain): 100 iterations
+Total (outer * inner loop): 39000 iterations
+
+No Start States: 10
+
+No Customers: 10
+No of possible customer sequences: 3628800
+Last served counter: 10
+Min no Request: 1
+Max no Request: 9
+Unique Orders: true
+
+Start states produced states with different optimality. Best solution will be shown in detail.
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 163.0 units of time
+        Result: 164.0 units of time
+Runtime: 5982.433 sec
+
+Serving time: 2.0
+Waiter velocity: 1.0
+Customer velocities: [1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0]
+
+Best Result: 163,00 units of time, 42,00 walked units of distance
+
+        Customer Order:
+                 1: original-position =  8, Orders = [1, 4, 7, 10]
+                 2: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 3: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                 4: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                 5: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                 6: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                 7: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                 8: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                 9: original-position =  1, Orders = [4]
+                10: original-position =  3, Orders = [9]
+
+        Waiter schedule:
+                Customer  1 served at counter  1
+                Customer  2 served at counter  1
+                Customer  3 served at counter  1
+                Customer  2 served at counter  2
+                Customer  3 served at counter  2
+                Customer  2 served at counter  3
+                Customer  1 served at counter  4
+                Customer  2 served at counter  4
+                Customer  2 served at counter  5
+                Customer  2 served at counter  6
+                Customer  1 served at counter  7
+                Customer  2 served at counter  7
+                Customer  3 served at counter  6
+                Customer  4 served at counter  4
+                Customer  5 served at counter  1
+                Customer  6 served at counter  1
+                Customer  7 served at counter  1
+                Customer  8 served at counter  1
+                Customer  7 served at counter  2
+                Customer  6 served at counter  3
+                Customer  5 served at counter  4
+                Customer  5 served at counter  5
+                Customer  6 served at counter  4
+                Customer  7 served at counter  3
+                Customer  8 served at counter  3
+                Customer  7 served at counter  4
+                Customer  6 served at counter  5
+                Customer  5 served at counter  6
+                Customer  4 served at counter  7
+                Customer  2 served at counter  9
+                Customer  1 served at counter 10
+                Customer  2 served at counter 10
+                Customer  3 served at counter  9
+                Customer  4 served at counter  8
+                Customer  6 served at counter  6
+                Customer  7 served at counter  5
+                Customer  8 served at counter  4
+                Customer  9 served at counter  4
+                Customer  8 served at counter  5
+                Customer  6 served at counter  7
+                Customer  5 served at counter  8
+                Customer  4 served at counter  9
+                Customer  3 served at counter 10
+                Customer  4 served at counter 10
+                Customer  5 served at counter  9
+                Customer  6 served at counter  8
+                Customer  7 served at counter  8
+                Customer  8 served at counter  8
+                Customer  6 served at counter 10
+                Customer  7 served at counter 10
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
