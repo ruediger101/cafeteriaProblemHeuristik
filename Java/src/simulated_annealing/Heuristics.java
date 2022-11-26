@@ -25,7 +25,7 @@ public class Heuristics {
     // =======================
     // ==== BS Statistics ====
     // =======================
-    private static List<Integer> generatedNoStates = new ArrayList<>();
+    private static List<List<State>> generatedStates = new ArrayList<>();
     private static int totalNoStates = 0;
     private static int trackedNoStates = 0;
 
@@ -120,9 +120,14 @@ public class Heuristics {
         System.out.println("\nTotal no generated states: " + totalNoStates);
         System.out.println("No tracked states: " + trackedNoStates);
 
-        for (int i = 0; i < generatedNoStates.size() - 1; i += Math.max(1,
-                (generatedNoStates.size() + 0.5) / noResults)) {
-            System.out.println(String.format("Level %3d: No generated States: %d", i, generatedNoStates.get(i)));
+        for (int i = 0; i < generatedStates.size() - 1; i += Math.max(1, (generatedStates.size() + 0.5) / noResults)) {
+            System.out.println(String.format("Level %3d: No generated States: %d", i, generatedStates.get(i).size()));
+            generatedStates.get(i).stream().forEach(c -> {
+                System.out.println(
+                        "\t" + c.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
+                                .toList());
+            });
+
         }
     }
 
@@ -143,8 +148,7 @@ public class Heuristics {
         state.reset();
 
         if (logBeamSearch) {
-            generatedNoStates.clear();
-            generatedNoStates.add(1);
+            generatedStates.clear();
             totalNoStates = 1;
             trackedNoStates = 1;
         }
@@ -166,7 +170,7 @@ public class Heuristics {
             }
 
             if (logBeamSearch) {
-                generatedNoStates.add(newLevel.size());
+                generatedStates.add(newLevel);
                 totalNoStates += newLevel.size();
                 trackedNoStates += currentLevel.size();
             }
