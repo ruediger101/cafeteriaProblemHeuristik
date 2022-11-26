@@ -122,13 +122,25 @@ public class Heuristics {
 
         for (int i = 0; i < generatedStates.size() - 1; i += Math.max(1, (generatedStates.size() + 0.5) / noResults)) {
             System.out.println(String.format("Level %3d: No generated States: %d", i, generatedStates.get(i).size()));
-            generatedStates.get(i).stream().forEach(c -> {
+            generatedStates.get(i).stream().forEach(s -> {
                 System.out.println(
-                        "\t" + c.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
-                                .toList());
+                        "\t WS: " + s.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
+                                .toList() + " | Time: " + s.getTime() + " | WP: " + (s.getWaiterPosition() + 1)
+                                + " | CP: "
+                                + s.getCustomers().stream().map(c -> c.getPosition() + 1).toList() + " | WD: "
+                                + s.getWalkedDistance());
             });
 
         }
+
+        int i = generatedStates.size() - 1;
+        System.out.println(String.format("Level %3d: No generated States: %d", i, generatedStates.get(i).size()));
+        generatedStates.get(i).stream().forEach(s -> {
+            System.out.println(
+                    "\t WS: " + s.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
+                            .toList() + " | Time: " + s.getTime() + " | WP: " + (s.getWaiterPosition() + 1) + " | CP: "
+                            + s.getCustomers().stream().map(c -> c.getPosition() + 1).toList());
+        });
     }
 
     public static void printParameters() {
@@ -149,6 +161,7 @@ public class Heuristics {
 
         if (logBeamSearch) {
             generatedStates.clear();
+            generatedStates.add(List.of(state));
             totalNoStates = 1;
             trackedNoStates = 1;
         }

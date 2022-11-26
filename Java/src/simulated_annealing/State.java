@@ -81,7 +81,7 @@ public class State {
 
     // function checks if order must not be changed
     private static boolean mustPrecede(Customer i, Customer j) {
-        (i.getId() < j.getId()) {
+        if (i.getId() < j.getId()) {
             return i.getOrders().get(0) <= j.getOrders().get(0) + (j.getId() - i.getId() - 1);
         } else
             return false;
