@@ -117,10 +117,11 @@ public class Heuristics {
     }
 
     public static void printBsStats(int noResults) {
-        System.out.println("Total no generated states: " + totalNoStates);
+        System.out.println("\nTotal no generated states: " + totalNoStates);
         System.out.println("No tracked states: " + trackedNoStates);
 
-        for (int i = 0; i < recordNoBetter.size() - 1; i += Math.max(1, (recordNoBetter.size() + 0.5) / noResults)) {
+        for (int i = 0; i < generatedNoStates.size() - 1; i += Math.max(1,
+                (generatedNoStates.size() + 0.5) / noResults)) {
             System.out.println(String.format("Level %3d: No generated States: %d", i, generatedNoStates.get(i)));
         }
     }
@@ -178,6 +179,9 @@ public class Heuristics {
     public static State simulatedAnnealing(State state) {
         State initialState = beamSearch(state);
 
+        if (logBeamSearch)
+            Heuristics.printBsStats(10);
+
         // ====== Simulated annealing algorithm initialization ======
         State currentState = new State(initialState);
         State optimalState = new State(initialState);
@@ -227,6 +231,8 @@ public class Heuristics {
 
                 // calculate the new time required to finish all orders
                 State nextState = beamSearch(modifiedState);
+                if (logBeamSearch)
+                    Heuristics.printBsStats(10);
 
                 // Accept judgment ： according to Metropolis this criteria decides whether to
                 // accept the new interpretation
