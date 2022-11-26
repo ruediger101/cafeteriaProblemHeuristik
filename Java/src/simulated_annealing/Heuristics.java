@@ -1,9 +1,7 @@
 package simulated_annealing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class Heuristics {
@@ -23,6 +21,13 @@ public class Heuristics {
     private static List<State> recordOptimalState = new ArrayList<>();
     private static List<Long> recordNoBetter = new ArrayList<>();
     private static List<Double> recordPBad = new ArrayList<>(); // the acceptance probability of the inferior solution
+
+    // =======================
+    // ==== BS Statistics ====
+    // =======================
+    private static List<Integer> generatedNoStates = new ArrayList<>();
+    private static int totalNoStates = 0;
+    private static int trackedNoStates = 0;
 
     private Heuristics() {
         throw new IllegalStateException("Utility class");
@@ -92,8 +97,10 @@ public class Heuristics {
         for (int i = 0; i < recordNoBetter.size() - 1; i += Math.max(1, (recordNoBetter.size() + 0.5) / noResults)) {
             System.out.println("\nOuter loop no " + (i));
             System.out.println("\tNo of found better solutions: " + recordNoBetter.get(i));
-            System.out.println(String.format("\tCurrentState: time = %.2f\tdistance = %.2f", recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
-            System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f", recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
+            System.out.println(String.format("\tCurrentState: time = %.2f\tdistance = %.2f",
+                    recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
+            System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f",
+                    recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
             System.out.println(String.format("\tPercentage of accepted bad solutions = %.2f", recordPBad.get(i)));
         }
 
@@ -101,10 +108,21 @@ public class Heuristics {
         int i = recordOptimalState.size() - 1;
         System.out.println("Outer loop no " + (i));
         System.out.println("\tNo of found better solutions: " + recordNoBetter.get(i));
-        System.out.println(String.format("\tCurrentState: time = %.2f\tdistance = %.2f", recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
-        System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f", recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
+        System.out.println(String.format("\tCurrentState: time = %.2f\tdistance = %.2f",
+                recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
+        System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f",
+                recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
         System.out.println(String.format("\tPercentage of accepted bad solutions = %.2f", recordPBad.get(i)));
 
+    }
+
+    public static void printBsStats(int noResults) {
+        System.out.println("Total no generated states: " + totalNoStates);
+        System.out.println("No tracked states: " + trackedNoStates);
+
+        for (int i = 0; i < recordNoBetter.size() - 1; i += Math.max(1, (recordNoBetter.size() + 0.5) / noResults)) {
+            System.out.println(String.format("Level %3d: No generated States: %d", i, generatedNoStates.get(i)));
+        }
     }
 
     public static void printParameters() {
@@ -123,6 +141,13 @@ public class Heuristics {
     public static State beamSearch(State state) {
         state.reset();
 
+        if (logBeamSearch) {
+            generatedNoStates.clear();
+            generatedNoStates.add(1);
+            totalNoStates = 1;
+            trackedNoStates = 1;
+        }
+
         int totalOrders = state.getCustomers().stream().mapToInt(c -> c.getOrders().size()).sum();
 
         List<State> currentLevel = new ArrayList<>(List.of(state));// list containing states at current level
@@ -137,6 +162,12 @@ public class Heuristics {
                 currentLevel = new ArrayList<>(newLevel.stream().sorted(State::compare).toList()).subList(0, beta);
             } else {
                 currentLevel = newLevel;
+            }
+
+            if (logBeamSearch) {
+                generatedNoStates.add(newLevel.size());
+                totalNoStates += newLevel.size();
+                trackedNoStates += currentLevel.size();
             }
         }
 
@@ -159,7 +190,8 @@ public class Heuristics {
         recordOptimalState.clear();
         recordNoBetter.clear();
         recordPBad.clear();
-        long kIter = 0; // the number of iterations of the outer loop , the number of temperature states, can be used to reduce relaxations
+        long kIter = 0; // the number of iterations of the outer loop , the number of temperature
+                        // states, can be used to reduce relaxations
         long totalMarkov = 0; // total markov chain length, useful if variable length chain is used
         long totalImprove = 0; // the number of found improvements
 
@@ -175,7 +207,8 @@ public class Heuristics {
             int kBadRefuse = 0; // the number of times a bad solution is rejected
             double scale = 1.0; // limit search radius gradually
 
-            // To achieve thermal equilibrium at the current temperature, iterate nMarkov times
+            // To achieve thermal equilibrium at the current temperature, iterate nMarkov
+            // times
             for (int k = 0; k < nMarkov; k++) {
                 totalMarkov++;
 
@@ -187,23 +220,29 @@ public class Heuristics {
 
                 // switch customers and update their respective position in line
                 State modifiedState = new State(currentState);
-                modifiedState.getCustomers().set(s1, new Customer(currentState.getCustomer(s2), currentState.getCustomer(s1).getId()));
-                modifiedState.getCustomers().set(s2, new Customer(currentState.getCustomer(s1), currentState.getCustomer(s2).getId()));
+                modifiedState.getCustomers().set(s1,
+                        new Customer(currentState.getCustomer(s2), currentState.getCustomer(s1).getId()));
+                modifiedState.getCustomers().set(s2,
+                        new Customer(currentState.getCustomer(s1), currentState.getCustomer(s2).getId()));
 
                 // calculate the new time required to finish all orders
                 State nextState = beamSearch(modifiedState);
 
-                // Accept judgment ： according to Metropolis this criteria decides whether to accept the new interpretation
+                // Accept judgment ： according to Metropolis this criteria decides whether to
+                // accept the new interpretation
                 boolean accept;
                 if (nextState.compareTo(currentState) < 0) {
-                    // better solution： If the objective function of the new solution is better than the current solution, it's accepted
+                    // better solution： If the objective function of the new solution is better than
+                    // the current solution, it's accepted
                     accept = true;
                     // kBetter++;
                 } else {
-                    // tolerance solution ： If the objective function of the new solution is worse than the current solution,
+                    // tolerance solution ： If the objective function of the new solution is worse
+                    // than the current solution,
                     // the new solution is accepted with a certain probability
                     double deltaTime = nextState.getTime() - currentState.getTime();
-                    double pAccept = Math.exp(-deltaTime / tempNow); // calculate the state transition probability of the tolerant solution
+                    double pAccept = Math.exp(-deltaTime / tempNow); // calculate the state transition probability of
+                                                                     // the tolerant solution
                     if (pAccept > rand.nextDouble()) {
                         // accept the bad solution
                         accept = true;
@@ -220,17 +259,20 @@ public class Heuristics {
                     // if the new solution was accepted, ti is saved as the current solution
                     currentState = nextState;
                     if (nextState.compareTo(optimalState) < 0) {
-                        // if the objective function of the new solution is better than the optimal solution to this point,
+                        // if the objective function of the new solution is better than the optimal
+                        // solution to this point,
                         // the new solution is saved as the optimal solution
                         optimalState = nextState;
                         totalImprove++;
-                        scale = scale * 0.99; // Variable search step size , Gradually reduce the search scope , Improve search accuracy
+                        scale = scale * 0.99; // Variable search step size , Gradually reduce the search scope , Improve
+                                              // search accuracy
                     }
                 }
             }
             // --- Data processing after the end of the inner loop
 
-            // Slow down to a new temperature according to the cooling curve ：T(k)=alpha*T(k-1)
+            // Slow down to a new temperature according to the cooling curve
+            // ：T(k)=alpha*T(k-1)
             tempNow = tempNow * alpha;
             kIter++;
 
@@ -239,7 +281,10 @@ public class Heuristics {
             // =======================================
             if (logSimulatedAnnealing) {
                 recordNoBetter.add(totalImprove);
-                double pBadAccept = ((double) kBadAccept) / ((kBadAccept + kBadRefuse) != 0 ? (kBadAccept + kBadRefuse) : 1); // the acceptance probability of the inferior solution
+                double pBadAccept = ((double) kBadAccept)
+                        / ((kBadAccept + kBadRefuse) != 0 ? (kBadAccept + kBadRefuse) : 1); // the acceptance
+                                                                                            // probability of the
+                                                                                            // inferior solution
                 recordCurrentState.add(currentState); // the objective function value of the current solution
                 recordOptimalState.add(optimalState); // the objective function value of the best solution
                 recordPBad.add(pBadAccept); // the objective function value of the best solution
