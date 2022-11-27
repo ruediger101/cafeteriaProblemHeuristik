@@ -224,6 +224,55 @@ public class App {
         printResult(resultState, stopTime - startTime);
     }
 
+    public static double calculateSD(List<Double> list) {
+        double mean = list.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        double variance = list.stream().mapToDouble(v -> Math.pow(v - mean, 2)).average().orElse(0.0);
+
+        return Math.sqrt(variance);
+    }
+
+    private static void PriorityBasedSequencingCompared() {
+        List<Double> times = new ArrayList<>();
+        List<Double> improvements = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+
+            int noCustomers = 50; // number of customers
+            int noCounters = 10; // number of counters
+            int minRequests = 1;
+            int maxRequest = Math.min(10, noCounters);
+
+            State startState = new State();
+            addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
+
+            // Simulated annealing algorithm
+            long startTime = System.currentTimeMillis();
+            State finalState = Heuristics.beamSearch(startState);
+            long stopTime = System.currentTimeMillis();
+
+            // printResult(finalState, stopTime - startTime);
+
+            double time = finalState.getTime();
+            times.add(time);
+
+            finalState.reset();
+            startTime = System.currentTimeMillis();
+            State alternativeState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters);
+            stopTime = System.currentTimeMillis();
+            // printResult(alternativeState, stopTime - startTime);
+
+            double timeImprovement = time - alternativeState.getTime();
+            improvements.add(timeImprovement);
+
+            System.out.println("Time improvement: " + timeImprovement);
+        }
+
+        System.out.println();
+        System.out.println("Average Time before: " + times.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Average Improvement: " + improvements.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation: " + calculateSD(improvements));
+
+    }
+
     public static void main(String[] args) {
         long seed = 42; // "Answer to the Ultimate Question of Life, the Universe, and Everything" ... and a good seed
         Heuristics.setRandSeed(seed);
@@ -232,21 +281,24 @@ public class App {
         Heuristics.setMeanMarkov(100);
         Heuristics.setBeta(300);
 
-        Heuristics.setLogSimulatedAnnealing(false);
+        // Heuristics.setLogSimulatedAnnealing(true);
+        // Heuristics.setLogBeamSearch(true);
 
-        Heuristics.printParameters();
+        // Heuristics.printParameters();
 
         // --- test functions
         // testServeCustomer();
         // testBeamSearchFixedCustomers();
         // testBeamSearchSeminararbeit();
         // testBeamSearchRandomCustomers();
+        PriorityBasedSequencingCompared();
 
         // customerSequencingAndCwspCompleteSeminararbeit();
-        customerSequencingAndCwspComplete();
+        // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
         // Heuristics.printSaStats(10);
+        // Heuristics.printBsStats(10);
     }
 
 }
