@@ -218,7 +218,7 @@ public class App {
         startStates.get(0).printStats();
 
         long startTime = System.currentTimeMillis();
-        State resultState = Heuristics.priorityBasedCustomerSorting(startStates.get(0), noCounters);
+        State resultState = Heuristics.priorityBasedCustomerSorting(startStates.get(0), noCounters, false);
         long stopTime = System.currentTimeMillis();
 
         printResult(resultState, stopTime - startTime);
@@ -256,7 +256,7 @@ public class App {
 
             finalState.reset();
             startTime = System.currentTimeMillis();
-            State alternativeState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters);
+            State alternativeState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters, true);
             stopTime = System.currentTimeMillis();
             // printResult(alternativeState, stopTime - startTime);
 
@@ -297,7 +297,7 @@ public class App {
             times.add(time);
 
             finalState.reset();
-            State prioState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters);
+            State prioState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters, true);
             double prioImprovement = time - prioState.getTime();
             prioImprovements.add(prioImprovement);
 
@@ -336,8 +336,8 @@ public class App {
         // testBeamSearchFixedCustomers();
         // testBeamSearchSeminararbeit();
         // testBeamSearchRandomCustomers();
-        // PriorityBasedSequencingCompared();
-        SAComparedAndPrioCompared();
+        PriorityBasedSequencingCompared();
+        // SAComparedAndPrioCompared();
 
         // customerSequencingAndCwspCompleteSeminararbeit();
         // customerSequencingAndCwspComplete();
