@@ -97,10 +97,12 @@ public class Heuristics {
         for (int i = 0; i < recordNoBetter.size() - 1; i += Math.max(1, (recordNoBetter.size() + 0.5) / noResults)) {
             System.out.println("\nOuter loop no " + (i));
             System.out.println("\tNo of found better solutions: " + recordNoBetter.get(i));
-            System.out.println(String.format("\tCurrentState: time = %.2f\tdistance = %.2f",
+            System.out.println(String.format("\tCurrent State: time = %.2f\tdistance = %.2f",
                     recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
+            System.out.println("\tCurrent State: Customer Order = " + recordCurrentState.get(i).getCustomers().stream().map(c -> c.getInitialId()+1).toList());
             System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f",
                     recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
+            System.out.println("\tOptimal State: Customer Order = " + recordOptimalState.get(i).getCustomers().stream().map(c -> c.getInitialId()+1).toList());
             System.out.println(String.format("\tPercentage of accepted bad solutions = %.2f", recordPBad.get(i)));
         }
 

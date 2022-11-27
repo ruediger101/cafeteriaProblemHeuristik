@@ -100,6 +100,13 @@ public class App {
         return generateStatePermutations(firstState, noStartStates);
     }
 
+    public static double calculateSD(List<Double> list) {
+        double mean = list.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        double variance = list.stream().mapToDouble(v -> Math.pow(v - mean, 2)).average().orElse(0.0);
+
+        return Math.sqrt(variance);
+    }
+
     private static void testServeCustomer() {
         // Test of serve Customer function
         State s = new State();
@@ -117,7 +124,8 @@ public class App {
     }
 
     private static void testBeamSearchFixedCustomers() {
-        // Test of Beams Search
+        Heuristics.setBeta(300);
+
         State s = new State();
 
         s.addCustomer(new Customer(0, List.of(1, 3)));
@@ -134,7 +142,6 @@ public class App {
 
         Heuristics.setLogBeamSearch(true);
 
-
         // Test of Beams Search
         State s = new State();
 
@@ -149,11 +156,11 @@ public class App {
         State result = Heuristics.beamSearch(s);
         printResult(result, System.currentTimeMillis() - start);
 
-        
         Heuristics.printBsStats(100);
     }
 
     private static void testBeamSearchRandomCustomers() {
+        Heuristics.setBeta(300);
 
         int noCustomers = 10; // number of customers
         int noCounters = 10; // number of counters
@@ -172,6 +179,9 @@ public class App {
     }
 
     private static void customerSequencingAndCwspComplete() {
+        Heuristics.setAlpha(0.99);
+        Heuristics.setMeanMarkov(100);
+        Heuristics.setBeta(300);
         int noCustomers = 50;
         int noCounters = 10;
         int minRequest = 1; // minimum no of request per customer
@@ -191,7 +201,13 @@ public class App {
     }
 
     private static void customerSequencingAndCwspCompleteSeminararbeit() {
-        int noStartStates = 10;
+        Heuristics.setAlpha(0.50);
+        Heuristics.setMeanMarkov(2);
+        Heuristics.setBeta(10);
+        
+        Heuristics.setLogSimulatedAnnealing(true);
+
+        int noStartStates = 1;
 
         System.out.println("No Start States: " + noStartStates + "\n");
 
@@ -211,6 +227,8 @@ public class App {
         long stopTime = System.currentTimeMillis();
 
         printResult(resultStates, stopTime - startTime);
+
+        Heuristics.printSaStats(10);
     }
 
     private static void testPriorityBasedSequence() {
@@ -230,13 +248,6 @@ public class App {
         long stopTime = System.currentTimeMillis();
 
         printResult(resultState, stopTime - startTime);
-    }
-
-    public static double calculateSD(List<Double> list) {
-        double mean = list.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-        double variance = list.stream().mapToDouble(v -> Math.pow(v - mean, 2)).average().orElse(0.0);
-
-        return Math.sqrt(variance);
     }
 
     private static void PriorityBasedSequencingCompared() {
@@ -330,9 +341,6 @@ public class App {
         long seed = 42; // "Answer to the Ultimate Question of Life, the Universe, and Everything" ... and a good seed
         Heuristics.setRandSeed(seed);
         rand.setSeed(seed);
-        Heuristics.setAlpha(0.99);
-        Heuristics.setMeanMarkov(100);
-        Heuristics.setBeta(300);
 
         // Heuristics.setLogSimulatedAnnealing(true);
         // Heuristics.setLogBeamSearch(true);
@@ -342,12 +350,12 @@ public class App {
         // --- test functions
         // testServeCustomer();
         // testBeamSearchFixedCustomers();
-        testBeamSearchSeminararbeit();
+        // testBeamSearchSeminararbeit();
         // testBeamSearchRandomCustomers();
         // PriorityBasedSequencingCompared();
         // SAComparedAndPrioCompared();
 
-        // customerSequencingAndCwspCompleteSeminararbeit();
+        customerSequencingAndCwspCompleteSeminararbeit();
         // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
