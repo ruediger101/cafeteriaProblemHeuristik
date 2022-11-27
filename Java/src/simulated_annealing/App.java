@@ -130,6 +130,11 @@ public class App {
     }
 
     private static void testBeamSearchSeminararbeit() {
+        Heuristics.setBeta(10);
+
+        Heuristics.setLogBeamSearch(true);
+
+
         // Test of Beams Search
         State s = new State();
 
@@ -143,6 +148,9 @@ public class App {
         long start = System.currentTimeMillis();
         State result = Heuristics.beamSearch(s);
         printResult(result, System.currentTimeMillis() - start);
+
+        
+        Heuristics.printBsStats(100);
     }
 
     private static void testBeamSearchRandomCustomers() {
@@ -334,9 +342,9 @@ public class App {
         // --- test functions
         // testServeCustomer();
         // testBeamSearchFixedCustomers();
-        // testBeamSearchSeminararbeit();
+        testBeamSearchSeminararbeit();
         // testBeamSearchRandomCustomers();
-        PriorityBasedSequencingCompared();
+        // PriorityBasedSequencingCompared();
         // SAComparedAndPrioCompared();
 
         // customerSequencingAndCwspCompleteSeminararbeit();
