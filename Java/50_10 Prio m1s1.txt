@@ -1,0 +1,345 @@
+PS C:\Users\Ruediger\git\cafeteriaProblemHeuristik\Java>  c:; cd 'c:\Users\Ruediger\git\cafeteriaProblemHeuristik\Java'; & 'C:\Program Files\Eclipse Adoptium\jdk-17.0.5.8-hotspot\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'C:\Users\Ruediger\AppData\Roaming\Code\User\workspaceStorage\900693336d421511c603906b91865d54\redhat.java\jdt_ws\Java_5f66b5c2\bin' 'simulated_annealing.App' 
+
+Initial Temperature: 50,00
+Final Temperature: 1,00
+Alpha: 0,990
+Outer loop (temp reduction): 390 iterations
+Inner loop (Markov Chain): 1 iterations
+Total (outer x inner loop): 390 iterations
+
+Beta: 300
+
+No Start States: 1
+
+No Customers: 50
+No of possible customer sequences: 30414093201713378043612608166064768844377641568960512000000000000
+Last served counter: 10
+Min no Request: 1
+Max no Request: 10
+Unique Orders: true
+
+All start states lead to an equal optimal solution. First solution will be shown in detail.
+Runtime: 167,909 sec
+
+Serving time: 2,00
+Waiter velocity: 1,00
+Customer velocities: [1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 
+| 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00 | 1,00]
+
+Best Result: 869,00 units of time, 289,00 walked units of distance
+
+        Customer Order:
+                 1: original-position = 43, Orders = [2]
+                 2: original-position = 31, Orders = [10]
+                 3: original-position =  2, Orders = [1, 2, 3, 4, 5, 6, 7, 9, 10]
+                 4: original-position = 30, Orders = [2, 4, 5, 7, 8, 10]
+                 5: original-position = 17, Orders = [1, 2, 5, 7, 9, 10]
+                 6: original-position = 44, Orders = [1, 2, 4, 5, 6, 8, 9, 10]
+                 7: original-position = 21, Orders = [4]
+                 8: original-position = 50, Orders = [2, 4, 5, 6, 8, 10]
+                 9: original-position =  5, Orders = [1, 4, 5, 6, 8, 9]
+                10: original-position = 34, Orders = [2, 4, 9]
+                11: original-position =  6, Orders = [1, 2, 3, 4, 5, 8, 10]
+                12: original-position = 28, Orders = [1, 3, 4, 7, 8, 9, 10]
+                13: original-position = 46, Orders = [2, 4, 5, 6, 7, 8, 9, 10]
+                14: original-position = 40, Orders = [1, 9, 10]
+                15: original-position = 42, Orders = [1, 2, 3, 9]
+                16: original-position = 48, Orders = [1, 5, 6, 7, 8, 9]
+                17: original-position =  4, Orders = [1, 3, 4, 5, 6, 7, 8, 10]
+                18: original-position = 24, Orders = [1, 2]
+                19: original-position = 29, Orders = [1, 3, 4, 8, 9, 10]
+                20: original-position = 26, Orders = [1, 5, 6, 7, 8, 9, 10]
+                21: original-position = 19, Orders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                22: original-position = 49, Orders = [1, 2, 4, 5, 7, 8, 9]
+                23: original-position =  9, Orders = [1, 3, 4, 5, 8, 10]
+                24: original-position = 36, Orders = [5, 8, 9, 10]
+                25: original-position = 15, Orders = [2, 5, 7]
+                26: original-position =  7, Orders = [1, 2, 6, 9, 10]
+                27: original-position = 39, Orders = [2, 3, 6, 8, 9]
+                28: original-position = 13, Orders = [1, 2, 3, 4, 5, 6, 8, 9, 10]
+                29: original-position = 45, Orders = [1, 2, 3, 5, 6, 7, 8, 9, 10]
+                30: original-position = 38, Orders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                31: original-position = 25, Orders = [1, 2, 4, 6, 9, 10]
+                32: original-position =  3, Orders = [9]
+                33: original-position = 14, Orders = [2]
+                34: original-position = 20, Orders = [1, 2, 5]
+                35: original-position = 11, Orders = [1, 3, 4, 7, 9, 10]
+                36: original-position = 35, Orders = [2, 3, 4, 5, 7, 8, 9, 10]
+                37: original-position = 41, Orders = [1, 3, 4, 7, 8, 9]
+                38: original-position =  1, Orders = [4]
+                39: original-position = 18, Orders = [3, 7]
+                40: original-position = 12, Orders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                41: original-position = 22, Orders = [1, 2, 4, 5, 6, 7, 8, 9, 10]
+                42: original-position = 47, Orders = [1, 5, 6, 7, 8]
+                43: original-position = 32, Orders = [3, 4, 6, 7]
+                44: original-position = 10, Orders = [4, 7, 8, 9, 10]
+                45: original-position =  8, Orders = [1, 4, 7, 10]
+                46: original-position = 23, Orders = [1, 2, 7, 9]
+                47: original-position = 37, Orders = [1, 7]
+                48: original-position = 27, Orders = [1, 10]
+                49: original-position = 16, Orders = [1]
+                50: original-position = 33, Orders = [1, 2, 4, 5, 6, 7, 8, 9, 10]
+
+        Waiter schedule:
+                Customer  1 served at counter  2
+                Customer  3 served at counter  1
+                Customer  3 served at counter  2
+                Customer  3 served at counter  3
+                Customer  3 served at counter  4
+                Customer  4 served at counter  2
+                Customer  5 served at counter  1
+                Customer  6 served at counter  1
+                Customer  5 served at counter  2
+                Customer  6 served at counter  2
+                Customer  4 served at counter  4
+                Customer  3 served at counter  5
+                Customer  4 served at counter  5
+                Customer  3 served at counter  6
+                Customer  3 served at counter  7
+                Customer  4 served at counter  7
+                Customer  5 served at counter  5
+                Customer  6 served at counter  4
+                Customer  6 served at counter  5
+                Customer  6 served at counter  6
+                Customer  5 served at counter  7
+                Customer  4 served at counter  8
+                Customer  3 served at counter  9
+                Customer  2 served at counter 10
+                Customer  3 served at counter 10
+                Customer  4 served at counter 10
+                Customer  5 served at counter  9
+                Customer  6 served at counter  8
+                Customer  7 served at counter  4
+                Customer  8 served at counter  2
+                Customer  9 served at counter  1
+                Customer  8 served at counter  4
+                Customer  8 served at counter  5
+                Customer  9 served at counter  4
+                Customer 10 served at counter  2
+                Customer 11 served at counter  1
+                Customer 12 served at counter  1
+                Customer 11 served at counter  2
+                Customer 11 served at counter  3
+                Customer 10 served at counter  4
+                Customer  9 served at counter  5
+                Customer  8 served at counter  6
+                Customer  9 served at counter  6
+                Customer  6 served at counter  9
+                Customer  5 served at counter 10
+                Customer  6 served at counter 10
+                Customer  8 served at counter  8
+                Customer  9 served at counter  8
+                Customer  9 served at counter  9
+                Customer  8 served at counter 10
+                Customer 10 served at counter  9
+                Customer 11 served at counter  4
+                Customer 12 served at counter  3
+                Customer 13 served at counter  2
+                Customer 14 served at counter  1
+                Customer 15 served at counter  1
+                Customer 12 served at counter  4
+                Customer 11 served at counter  5
+                Customer 13 served at counter  4
+                Customer 13 served at counter  5
+                Customer 13 served at counter  6
+                Customer 12 served at counter  7
+                Customer 11 served at counter  8
+                Customer 12 served at counter  8
+                Customer 13 served at counter  7
+                Customer 13 served at counter  8
+                Customer 12 served at counter  9
+                Customer 11 served at counter 10
+                Customer 12 served at counter 10
+                Customer 13 served at counter  9
+                Customer 13 served at counter 10
+                Customer 14 served at counter  9
+                Customer 15 served at counter  2
+                Customer 15 served at counter  3
+                Customer 16 served at counter  1
+                Customer 17 served at counter  1
+                Customer 18 served at counter  1
+                Customer 19 served at counter  1
+                Customer 18 served at counter  2
+                Customer 17 served at counter  3
+                Customer 17 served at counter  4
+                Customer 16 served at counter  5
+                Customer 17 served at counter  5
+                Customer 16 served at counter  6
+                Customer 17 served at counter  6
+                Customer 16 served at counter  7
+                Customer 17 served at counter  7
+                Customer 16 served at counter  8
+                Customer 15 served at counter  9
+                Customer 14 served at counter 10
+                Customer 16 served at counter  9
+                Customer 17 served at counter  8
+                Customer 19 served at counter  3
+                Customer 19 served at counter  4
+                Customer 20 served at counter  1
+                Customer 21 served at counter  1
+                Customer 22 served at counter  1
+                Customer 21 served at counter  2
+                Customer 23 served at counter  1
+                Customer 22 served at counter  2
+                Customer 21 served at counter  3
+                Customer 21 served at counter  4
+                Customer 20 served at counter  5
+                Customer 20 served at counter  6
+                Customer 21 served at counter  5
+                Customer 22 served at counter  4
+                Customer 23 served at counter  3
+                Customer 23 served at counter  4
+                Customer 22 served at counter  5
+                Customer 21 served at counter  6
+                Customer 20 served at counter  7
+                Customer 19 served at counter  8
+                Customer 17 served at counter 10
+                Customer 19 served at counter  9
+                Customer 20 served at counter  8
+                Customer 21 served at counter  7
+                Customer 22 served at counter  7
+                Customer 21 served at counter  8
+                Customer 20 served at counter  9
+                Customer 19 served at counter 10
+                Customer 20 served at counter 10
+                Customer 21 served at counter  9
+                Customer 22 served at counter  8
+                Customer 23 served at counter  5
+                Customer 24 served at counter  5
+                Customer 25 served at counter  2
+                Customer 26 served at counter  1
+                Customer 26 served at counter  2
+                Customer 27 served at counter  2
+                Customer 28 served at counter  1
+                Customer 29 served at counter  1
+                Customer 28 served at counter  2
+                Customer 27 served at counter  3
+                Customer 25 served at counter  5
+                Customer 23 served at counter  8
+                Customer 22 served at counter  9
+                Customer 21 served at counter 10
+                Customer 24 served at counter  8
+                Customer 25 served at counter  7
+                Customer 26 served at counter  6
+                Customer 27 served at counter  6
+                Customer 28 served at counter  3
+                Customer 29 served at counter  2
+                Customer 30 served at counter  1
+                Customer 31 served at counter  1
+                Customer 30 served at counter  2
+                Customer 29 served at counter  3
+                Customer 28 served at counter  4
+                Customer 30 served at counter  3
+                Customer 31 served at counter  2
+                Customer 28 served at counter  5
+                Customer 24 served at counter  9
+                Customer 23 served at counter 10
+                Customer 24 served at counter 10
+                Customer 26 served at counter  9
+                Customer 27 served at counter  8
+                Customer 28 served at counter  6
+                Customer 29 served at counter  5
+                Customer 30 served at counter  4
+                Customer 31 served at counter  4
+                Customer 30 served at counter  5
+                Customer 29 served at counter  6
+                Customer 30 served at counter  6
+                Customer 29 served at counter  7
+                Customer 28 served at counter  8
+                Customer 27 served at counter  9
+                Customer 26 served at counter 10
+                Customer 28 served at counter  9
+                Customer 29 served at counter  8
+                Customer 30 served at counter  7
+                Customer 31 served at counter  6
+                Customer 30 served at counter  8
+                Customer 29 served at counter  9
+                Customer 28 served at counter 10
+                Customer 29 served at counter 10
+                Customer 30 served at counter  9
+                Customer 31 served at counter  9
+                Customer 30 served at counter 10
+                Customer 31 served at counter 10
+                Customer 32 served at counter  9
+                Customer 33 served at counter  2
+                Customer 34 served at counter  1
+                Customer 35 served at counter  1
+                Customer 34 served at counter  2
+                Customer 37 served at counter  1
+                Customer 36 served at counter  2
+                Customer 35 served at counter  3
+                Customer 36 served at counter  3
+                Customer 35 served at counter  4
+                Customer 34 served at counter  5
+                Customer 36 served at counter  4
+                Customer 37 served at counter  3
+                Customer 37 served at counter  4
+                Customer 36 served at counter  5
+                Customer 35 served at counter  7
+                Customer 36 served at counter  7
+                Customer 37 served at counter  7
+                Customer 36 served at counter  8
+                Customer 35 served at counter  9
+                Customer 37 served at counter  8
+                Customer 36 served at counter  9
+                Customer 35 served at counter 10
+                Customer 36 served at counter 10
+                Customer 37 served at counter  9
+                Customer 38 served at counter  4
+                Customer 39 served at counter  3
+                Customer 40 served at counter  1
+                Customer 41 served at counter  1
+                Customer 40 served at counter  2
+                Customer 42 served at counter  1
+                Customer 41 served at counter  2
+                Customer 40 served at counter  3
+                Customer 40 served at counter  4
+                Customer 41 served at counter  4
+                Customer 40 served at counter  5
+                Customer 41 served at counter  5
+                Customer 40 served at counter  6
+                Customer 39 served at counter  7
+                Customer 40 served at counter  7
+                Customer 41 served at counter  6
+                Customer 42 served at counter  5
+                Customer 42 served at counter  6
+                Customer 41 served at counter  7
+                Customer 40 served at counter  8
+                Customer 41 served at counter  8
+                Customer 42 served at counter  7
+                Customer 40 served at counter  9
+                Customer 41 served at counter  9
+                Customer 40 served at counter 10
+                Customer 41 served at counter 10
+                Customer 42 served at counter  8
+                Customer 43 served at counter  3
+                Customer 43 served at counter  4
+                Customer 44 served at counter  4
+                Customer 45 served at counter  1
+                Customer 46 served at counter  1
+                Customer 47 served at counter  1
+                Customer 46 served at counter  2
+                Customer 45 served at counter  4
+                Customer 43 served at counter  6
+                Customer 43 served at counter  7
+                Customer 44 served at counter  7
+                Customer 45 served at counter  7
+                Customer 44 served at counter  8
+                Customer 46 served at counter  7
+                Customer 44 served at counter  9
+                Customer 44 served at counter 10
+                Customer 45 served at counter 10
+                Customer 46 served at counter  9
+                Customer 47 served at counter  7
+                Customer 48 served at counter  1
+                Customer 49 served at counter  1
+                Customer 50 served at counter  1
+                Customer 50 served at counter  2
+                Customer 50 served at counter  4
+                Customer 50 served at counter  5
+                Customer 50 served at counter  6
+                Customer 50 served at counter  7
+                Customer 50 served at counter  8
+                Customer 48 served at counter 10
+                Customer 50 served at counter  9
+                Customer 50 served at counter 10
