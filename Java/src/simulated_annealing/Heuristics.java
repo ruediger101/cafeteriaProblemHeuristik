@@ -318,9 +318,9 @@ public class Heuristics {
         return optimalState;
     }
 
-    private static int compareCustomers(Customer c, Customer c2, State state) {
-
-        for (int i = 0; i < Math.min(c.getOrders().size(), c2.getOrders().size()); i++) {
+    private static int compareCustomers(Customer c, Customer c2, State state, boolean allOrders) {
+        int limit = allOrders ? Math.min(c.getOrders().size(), c2.getOrders().size()) : 1;
+        for (int i = 0; i < limit; i++) {
             long no1 = 0;
             long no2 = 0;
 
@@ -342,7 +342,7 @@ public class Heuristics {
     }
 
     public static State priorityBasedCustomerSorting(State state, int noCounters) {
-        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> compareCustomers(a, b, state)).toList();
+        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> compareCustomers(a, b, state, false)).toList();
 
         List<List<Customer>> clusters = new ArrayList<>();
         for (int i = 0; i < noCounters; i++) {
