@@ -320,6 +320,7 @@ public class Heuristics {
 
     private static int compareCustomers(Customer c, Customer c2, State state, boolean allOrders) {
         int limit = allOrders ? Math.min(c.getOrders().size(), c2.getOrders().size()) : 1;
+
         for (int i = 0; i < limit; i++) {
             long no1 = 0;
             long no2 = 0;
@@ -334,15 +335,15 @@ public class Heuristics {
             }
 
             int result = Long.compare(no1, no2);
-            if (true || result != 0) {
+            if (result != 0 || !allOrders) {
                 return result;
             }
         }
         return Integer.compare(c.getOrders().size(), c2.getOrders().size());
     }
 
-    public static State priorityBasedCustomerSorting(State state, int noCounters) {
-        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> compareCustomers(a, b, state, false)).toList();
+    public static State priorityBasedCustomerSorting(State state, int noCounters, boolean allOrders) {
+        List<Customer> sorted = state.getCustomers().stream().sorted((a, b) -> compareCustomers(a, b, state, allOrders)).toList();
 
         List<List<Customer>> clusters = new ArrayList<>();
         for (int i = 0; i < noCounters; i++) {
