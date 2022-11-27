@@ -118,7 +118,7 @@ public class Heuristics {
 
     public static void printBsStats(int noResults) {
         System.out.println("\nTotal no generated states: " + totalNoStates);
-        System.out.println("No tracked states: " + trackedNoStates);
+        System.out.println("No expanded states: " + trackedNoStates);
 
         for (int i = 0; i < generatedStates.size() - 1; i += Math.max(1, (generatedStates.size() + 0.5) / noResults)) {
             System.out.println(String.format("Level %3d: No generated States: %d", i, generatedStates.get(i).size()));
