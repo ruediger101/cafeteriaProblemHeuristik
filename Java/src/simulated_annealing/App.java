@@ -273,13 +273,14 @@ public class App {
 
     }
 
-    private static void SACompared() {
+    private static void SAComparedAndPrioCompared() {
         Heuristics.setAlpha(0.99);
         Heuristics.setMeanMarkov(1);
         Heuristics.setBeta(300);
 
         List<Double> times = new ArrayList<>();
-        List<Double> improvements = new ArrayList<>();
+        List<Double> prioImprovements = new ArrayList<>();
+        List<Double> saImprovements = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
 
             int noCustomers = 50; // number of customers
@@ -290,37 +291,31 @@ public class App {
             State startState = new State();
             addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
 
-            // Simulated annealing algorithm
-            long startTime = System.currentTimeMillis();
             State finalState = Heuristics.beamSearch(startState);
-            long stopTime = System.currentTimeMillis();
-
-            // printResult(finalState, stopTime - startTime);
 
             double time = finalState.getTime();
             times.add(time);
 
             finalState.reset();
-            startTime = System.currentTimeMillis();
-            State alternativeState = Heuristics.simulatedAnnealing(finalState);
-            stopTime = System.currentTimeMillis();
-            // printResult(alternativeState, stopTime - startTime);
+            State prioState = Heuristics.priorityBasedCustomerSorting(finalState, noCounters);
+            double prioImprovement = time - prioState.getTime();
+            prioImprovements.add(prioImprovement);
 
-            double timeImprovement = time - alternativeState.getTime();
-            improvements.add(timeImprovement);
+            finalState.reset();
+            State saState = Heuristics.simulatedAnnealing(finalState);
+
+            double saImprovement = time - saState.getTime();
+            saImprovements.add(saImprovement);
 
             System.out.println();
-            System.out.println("Time improvement: " + timeImprovement);
-            System.out.println("Average Time before: " + times.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
-            System.out.println("Average Improvement: " + improvements.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
-            System.out.println("Standard Deviation: " + calculateSD(improvements));
+            System.out.println("Average Time without Optimization: " + times.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+            System.out.println("Time improvement by Prio: " + prioImprovement);
+            System.out.println("Time improvement by SA: " + saImprovement);
+            System.out.println("Average Improvement by Prio: " + prioImprovements.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+            System.out.println("Average Improvement by SA: " + saImprovements.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+            System.out.println("Standard Deviation Prio: " + calculateSD(prioImprovements));
+            System.out.println("Standard Deviation SA: " + calculateSD(saImprovements));
         }
-
-        System.out.println();
-        System.out.println("Average Time before: " + times.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
-        System.out.println("Average Improvement: " + improvements.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
-        System.out.println("Standard Deviation: " + calculateSD(improvements));
-
     }
 
     public static void main(String[] args) {
@@ -342,7 +337,7 @@ public class App {
         // testBeamSearchSeminararbeit();
         // testBeamSearchRandomCustomers();
         // PriorityBasedSequencingCompared();
-        SACompared();
+        SAComparedAndPrioCompared();
 
         // customerSequencingAndCwspCompleteSeminararbeit();
         // customerSequencingAndCwspComplete();
