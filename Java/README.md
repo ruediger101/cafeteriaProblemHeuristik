@@ -1,18 +1,8 @@
-## Getting Started
+# Implementierung von Heuristiken zur Lösung des Cafeteria Problems
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Für das Cafeteria Problem siehe:
+Füßler, D., Fedtke, S. & Boysen, N. The cafeteria problem: order sequencing and picker routing in on-the-line picking systems. OR Spectrum 41, 727–756 (2019). https://doi.org/10.1007/s00291-019-00553-0
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Die implementierung des Simulated Annealing Algorithmus basiert auf einer Pythonimplementierung von Youcans (c 2021)
+https://pythonmana.com/2021/05/20210502184221296q.html
