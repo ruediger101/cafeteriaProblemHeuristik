@@ -127,7 +127,7 @@ public class Heuristics {
                         "\t WS: " + s.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
                                 .toList() + " | Time: " + s.getTime() + " | WP: " + (s.getWaiterPosition() + 1)
                                 + " | CP: "
-                                + s.getCustomers().stream().map(c -> c.getPosition() + 1).toList() + " | WD: "
+                                + s.getCustomers().stream().map(c -> c.getPosition() == Double.MAX_VALUE ? "inf" : c.getPosition() + 1).toList() + " | WD: "
                                 + s.getWalkedDistance());
             });
 
@@ -138,8 +138,10 @@ public class Heuristics {
         generatedStates.get(i).stream().forEach(s -> {
             System.out.println(
                     "\t WS: " + s.getWaiterSchedule().stream().map(w -> "(" + (w[0] + 1) + "," + (w[1] + 1) + ")")
-                            .toList() + " | Time: " + s.getTime() + " | WP: " + (s.getWaiterPosition() + 1) + " | CP: "
-                            + s.getCustomers().stream().map(c -> c.getPosition() + 1).toList());
+                            .toList() + " | Time: " + s.getTime() + " | WP: " + (s.getWaiterPosition() + 1)
+                            + " | CP: "
+                            + s.getCustomers().stream().map(c -> c.getPosition() == Double.MAX_VALUE ? "inf" : c.getPosition() + 1).toList() + " | WD: "
+                            + s.getWalkedDistance());
         });
     }
 
@@ -174,7 +176,7 @@ public class Heuristics {
                 State nextState = new State(s);
                 nextState.serveCustomer(c);
                 return nextState;
-            }).toList()).flatMap(List::stream).toList();
+            }).toList()).flatMap(List::stream).sorted(State::compare).toList();
 
             if (newLevel.size() > beta) {
                 currentLevel = new ArrayList<>(newLevel.stream().sorted(State::compare).toList()).subList(0, beta);

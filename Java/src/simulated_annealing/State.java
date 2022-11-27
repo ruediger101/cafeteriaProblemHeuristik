@@ -14,6 +14,7 @@ public class State {
     private List<Customer> customers;
     private double waiterVelocity = 1.0;
     private double servingTime = 2.0;
+    private int posBehindLastCounter = Integer.MAX_VALUE;
 
     public State() {
         waiterSchedule = new ArrayList<>();
@@ -29,6 +30,7 @@ public class State {
         walkedDistance = s.walkedDistance;
         customers = new ArrayList<>(s.customers.stream().map(Customer::new).toList());
         totalTime = s.totalTime;
+        posBehindLastCounter = s.posBehindLastCounter;
     }
 
     private static BigInteger factorial(int n) {
@@ -68,11 +70,13 @@ public class State {
         double previousPosition = Double.MAX_VALUE;
         for (Iterator<Customer> it = (new ArrayList<>(getCustomers())).iterator(); it.hasNext();) {
             Customer c = it.next();
-            if (!nextCustomer.equals(c)) {
+            if (c.getPosition() < Double.MAX_VALUE && !nextCustomer.equals(c)) {
                 c.setPosition(Math.min(c.getPosition() + deltaTime * c.getVelocity(), previousPosition - 1));// update position ignoring next order
 
                 if (!c.getOrders().isEmpty()) { // take order into account if one exists
                     c.setPosition(Math.min(c.getOrders().get(0), c.getPosition()));
+                } else if (c.getPosition() >= posBehindLastCounter) {
+                    c.setPosition(Double.MAX_VALUE); // set to max double if customer behind last served counter as blocking is impossible
                 }
             }
             previousPosition = c.getPosition(); // save as previous position to check for blocking of next customer
@@ -126,6 +130,7 @@ public class State {
         walkedDistance = 0.0;
         totalTime = 0.0;
         waiterSchedule.clear();
+        posBehindLastCounter = customers.stream().mapToInt(c -> c.getOrders().stream().mapToInt(Integer::intValue).max().orElse(0)).max().orElse(0) + 1;
     }
 
     public double getTime() {
