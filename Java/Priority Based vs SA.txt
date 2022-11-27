@@ -1,0 +1,801 @@
+PS C:\Users\Ruediger\git\cafeteriaProblemHeuristik\Java>  & 'C:\Program Files\Eclipse Adoptium\jdk-17.0.5.8-hotspot\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'C:\Users\Ruediger\AppData\Roaming\Code\User\workspaceStorage\900693336d421511c603906b91865d54\redhat.java\jdt_ws\Java_5f66b5c2\bin' 'simulated_annealing.App'
+
+Average Time without Optimization: 902.0
+Time improvement by Prio: -8.0
+Time improvement by SA: 23.0
+Average Improvement by Prio: -8.0       
+Average Improvement by SA: 23.0
+Standard Deviation Prio: 0.0
+Standard Deviation SA: 0.0
+
+Average Time without Optimization: 919.0
+Time improvement by Prio: 11.0
+Time improvement by SA: 27.0
+Average Improvement by Prio: 1.5        
+Average Improvement by SA: 25.0
+Standard Deviation Prio: 9.5
+Standard Deviation SA: 2.0
+
+Average Time without Optimization: 908.6666666666666
+Time improvement by Prio: 0.0
+Time improvement by SA: 22.0
+Average Improvement by Prio: 1.0
+Average Improvement by SA: 24.0
+Standard Deviation Prio: 7.788880963698615
+Standard Deviation SA: 2.160246899469287
+
+Average Time without Optimization: 923.5
+Time improvement by Prio: 23.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 6.5
+Average Improvement by SA: 25.0
+Standard Deviation Prio: 11.672617529928752
+Standard Deviation SA: 2.5495097567963922
+
+Average Time without Optimization: 920.4
+Time improvement by Prio: -3.0
+Time improvement by SA: 16.0
+Average Improvement by Prio: 4.6
+Average Improvement by SA: 23.2
+Standard Deviation Prio: 11.110355529864918
+Standard Deviation SA: 4.261455150532504
+
+Average Time without Optimization: 923.8333333333334
+Time improvement by Prio: -4.0
+Time improvement by SA: 12.0
+Average Improvement by Prio: 3.1666666666666665
+Average Improvement by SA: 21.333333333333332
+Standard Deviation Prio: 10.6366765904059
+Standard Deviation SA: 5.70574758954123
+
+Average Time without Optimization: 940.7142857142857
+Time improvement by Prio: 41.0
+Time improvement by SA: 56.0
+Average Improvement by Prio: 8.571428571428571
+Average Improvement by SA: 26.285714285714285
+Standard Deviation Prio: 16.499845391978184
+Standard Deviation SA: 13.23107042116381
+
+Average Time without Optimization: 940.875
+Time improvement by Prio: -2.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 7.25
+Average Improvement by SA: 26.25
+Standard Deviation Prio: 15.82521721809846
+Standard Deviation SA: 12.376893794486563
+
+Average Time without Optimization: 958.4444444444445
+Time improvement by Prio: 41.0
+Time improvement by SA: 60.0
+Average Improvement by Prio: 11.0
+Average Improvement by SA: 30.0
+Standard Deviation Prio: 18.306040290327974
+Standard Deviation SA: 15.769168230019828
+
+Average Time without Optimization: 951.3
+Time improvement by Prio: 6.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 10.5
+Average Improvement by SA: 29.6
+Standard Deviation Prio: 17.431293698403454
+Standard Deviation SA: 15.007997867803686
+
+Average Time without Optimization: 950.0
+Time improvement by Prio: 7.0
+Time improvement by SA: 29.0
+Average Improvement by Prio: 10.181818181818182
+Average Improvement by SA: 29.545454545454547
+Standard Deviation Prio: 16.65051559025989
+Standard Deviation SA: 14.310604055376283
+
+Average Time without Optimization: 955.9166666666666
+Time improvement by Prio: 8.0
+Time improvement by SA: 50.0
+Average Improvement by Prio: 10.0
+Average Improvement by SA: 31.25
+Standard Deviation Prio: 15.953056133543816
+Standard Deviation SA: 14.821858857781638
+
+Average Time without Optimization: 956.8461538461538
+Time improvement by Prio: -1.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 9.153846153846153
+Average Improvement by SA: 31.0
+Standard Deviation Prio: 15.604960522199608
+Standard Deviation SA: 14.266690630221907
+
+Average Time without Optimization: 955.0
+Time improvement by Prio: -15.0
+Time improvement by SA: 23.0
+Average Improvement by Prio: 7.428571428571429
+Average Improvement by SA: 30.428571428571427
+Standard Deviation Prio: 16.27317813245502
+Standard Deviation SA: 13.901255265593235
+
+Average Time without Optimization: 959.4
+Time improvement by Prio: 8.0
+Time improvement by SA: 41.0
+Average Improvement by Prio: 7.466666666666667
+Average Improvement by SA: 31.133333333333333
+Standard Deviation Prio: 15.722029837849252
+Standard Deviation SA: 13.686327321657755
+
+Average Time without Optimization: 958.6875
+Time improvement by Prio: 16.0
+Time improvement by SA: 47.0
+Average Improvement by Prio: 8.0
+Average Improvement by SA: 32.125
+Standard Deviation Prio: 15.362291495737216
+Standard Deviation SA: 13.79707849510178
+
+Average Time without Optimization: 957.5294117647059
+Time improvement by Prio: 11.0
+Time improvement by SA: 48.0
+Average Improvement by Prio: 8.176470588235293
+Average Improvement by SA: 33.05882352941177
+Standard Deviation Prio: 14.92031892940018
+Standard Deviation SA: 13.896553056467315
+
+Average Time without Optimization: 953.3888888888889
+Time improvement by Prio: 29.0
+Time improvement by SA: 42.0
+Average Improvement by Prio: 9.333333333333334
+Average Improvement by SA: 33.55555555555556
+Standard Deviation Prio: 15.264337522473747
+Standard Deviation SA: 13.659438016023216
+
+Average Time without Optimization: 952.8947368421053
+Time improvement by Prio: 5.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 9.105263157894736
+Average Improvement by SA: 33.26315789473684
+Standard Deviation Prio: 14.88869135263089
+Standard Deviation SA: 13.352871188439932
+
+Average Time without Optimization: 952.4
+Time improvement by Prio: 11.0
+Time improvement by SA: 43.0
+Average Improvement by Prio: 9.2
+Average Improvement by SA: 33.75
+Standard Deviation Prio: 14.517575555167605
+Standard Deviation SA: 13.186640967282
+
+Average Time without Optimization: 958.4761904761905
+Time improvement by Prio: -20.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 7.809523809523809
+Average Improvement by SA: 33.476190476190474
+Standard Deviation Prio: 15.472307205114339
+Standard Deviation SA: 12.926970873476849
+
+Average Time without Optimization: 953.0
+Time improvement by Prio: 8.0
+Time improvement by SA: 32.0
+Average Improvement by Prio: 7.818181818181818
+Average Improvement by SA: 33.40909090909091
+Standard Deviation Prio: 15.11662649846899
+Standard Deviation SA: 12.633501965046209
+
+Average Time without Optimization: 956.7826086956521
+Time improvement by Prio: -6.0
+Time improvement by SA: 8.0
+Average Improvement by Prio: 7.217391304347826
+Average Improvement by SA: 32.30434782608695
+Standard Deviation Prio: 15.050513559746003
+Standard Deviation SA: 13.398360647964736
+
+Average Time without Optimization: 957.8333333333334
+Time improvement by Prio: 7.0
+Time improvement by SA: 33.0
+Average Improvement by Prio: 7.208333333333333
+Average Improvement by SA: 32.333333333333336
+Standard Deviation Prio: 14.733689192534984
+Standard Deviation SA: 13.116994913300665
+
+Average Time without Optimization: 957.16
+Time improvement by Prio: 2.0
+Time improvement by SA: 13.0
+Average Improvement by Prio: 7.0
+Average Improvement by SA: 31.56
+Standard Deviation Prio: 14.472042012100435
+Standard Deviation SA: 13.398746210000397
+
+Average Time without Optimization: 955.6923076923077
+Time improvement by Prio: 6.0
+Time improvement by SA: 36.0
+Average Improvement by Prio: 6.961538461538462
+Average Improvement by SA: 31.73076923076923
+Standard Deviation Prio: 14.192307692307693
+Standard Deviation SA: 13.166267189905282
+
+Average Time without Optimization: 956.074074074074
+Time improvement by Prio: 30.0
+Time improvement by SA: 56.0
+Average Improvement by Prio: 7.814814814814815
+Average Improvement by SA: 32.629629629629626
+Standard Deviation Prio: 14.590806433268652
+Standard Deviation SA: 13.709007982448103
+
+Average Time without Optimization: 952.3214285714286
+Time improvement by Prio: 12.0
+Time improvement by SA: 18.0
+Average Improvement by Prio: 7.964285714285714
+Average Improvement by SA: 32.107142857142854
+Standard Deviation Prio: 14.348922664529663
+Standard Deviation SA: 13.733013626488038
+
+Average Time without Optimization: 953.7931034482758
+Time improvement by Prio: 9.0
+Time improvement by SA: 33.0
+Average Improvement by Prio: 8.0
+Average Improvement by SA: 32.13793103448276
+Standard Deviation Prio: 14.100623610567602
+Standard Deviation SA: 13.495143795610675
+
+Average Time without Optimization: 949.5333333333333
+Time improvement by Prio: 18.0
+Time improvement by SA: 45.0
+Average Improvement by Prio: 8.333333333333334
+Average Improvement by SA: 32.56666666666667
+Standard Deviation Prio: 13.979349849768486
+Standard Deviation SA: 13.467697980311591
+
+Average Time without Optimization: 947.0322580645161
+Time improvement by Prio: 38.0
+Time improvement by SA: 50.0
+Average Improvement by Prio: 9.290322580645162
+Average Improvement by SA: 33.12903225806452
+Standard Deviation Prio: 14.717103388710914
+Standard Deviation SA: 13.602044285360009
+
+Average Time without Optimization: 947.40625
+Time improvement by Prio: -2.0
+Time improvement by SA: 36.0
+Average Improvement by Prio: 8.9375
+Average Improvement by SA: 33.21875
+Standard Deviation Prio: 14.617920294966723
+Standard Deviation SA: 13.397141427838253
+
+Average Time without Optimization: 945.5757575757576
+Time improvement by Prio: 0.0
+Time improvement by SA: 25.0
+Average Improvement by Prio: 8.666666666666666
+Average Improvement by SA: 32.96969696969697
+Standard Deviation Prio: 14.476033833738976
+Standard Deviation SA: 13.267606594885812
+
+Average Time without Optimization: 946.2352941176471
+Time improvement by Prio: 27.0
+Time improvement by SA: 46.0
+Average Improvement by Prio: 9.205882352941176
+Average Improvement by SA: 33.35294117647059
+Standard Deviation Prio: 14.594074969707853
+Standard Deviation SA: 13.255148506814862
+
+Average Time without Optimization: 946.2
+Time improvement by Prio: 25.0
+Time improvement by SA: 52.0
+Average Improvement by Prio: 9.657142857142857
+Average Improvement by SA: 33.885714285714286
+Standard Deviation Prio: 14.62276670546477
+Standard Deviation SA: 13.428693008568159
+
+Average Time without Optimization: 948.3611111111111
+Time improvement by Prio: 7.0
+Time improvement by SA: 40.0
+Average Improvement by Prio: 9.583333333333334
+Average Improvement by SA: 34.05555555555556
+Standard Deviation Prio: 14.424853166978473
+Standard Deviation SA: 13.278939977030555
+
+Average Time without Optimization: 947.1351351351351
+Time improvement by Prio: 9.0
+Time improvement by SA: 40.0
+Average Improvement by Prio: 9.567567567567568
+Average Improvement by SA: 34.21621621621622
+Standard Deviation Prio: 14.22890195482523
+Standard Deviation SA: 13.133689165211186
+
+Average Time without Optimization: 946.5263157894736
+Time improvement by Prio: 22.0
+Time improvement by SA: 58.0
+Average Improvement by Prio: 9.894736842105264
+Average Improvement by SA: 34.8421052631579
+Standard Deviation Prio: 14.18076806190288
+Standard Deviation SA: 13.507359233492085
+
+Average Time without Optimization: 945.7948717948718
+Time improvement by Prio: 23.0
+Time improvement by SA: 37.0
+Average Improvement by Prio: 10.23076923076923
+Average Improvement by SA: 34.8974358974359
+Standard Deviation Prio: 14.150222501578604
+Standard Deviation SA: 13.337425407562778
+
+Average Time without Optimization: 944.3
+Time improvement by Prio: -2.0
+Time improvement by SA: 30.0
+Average Improvement by Prio: 9.925
+Average Improvement by SA: 34.775
+Standard Deviation Prio: 14.102105339274699
+Standard Deviation SA: 13.191829857908266
+
+Average Time without Optimization: 946.0975609756098
+Time improvement by Prio: 26.0
+Time improvement by SA: 49.0
+Average Improvement by Prio: 10.317073170731707
+Average Improvement by SA: 35.1219512195122
+Standard Deviation Prio: 14.148065496290613
+Standard Deviation SA: 13.213435737824605
+
+Average Time without Optimization: 946.6666666666666
+Time improvement by Prio: 0.0
+Time improvement by SA: 27.0
+Average Improvement by Prio: 10.071428571428571
+Average Improvement by SA: 34.92857142857143
+Standard Deviation Prio: 14.066835121666
+Standard Deviation SA: 13.113774759213083
+
+Average Time without Optimization: 946.7209302325581
+Time improvement by Prio: 15.0
+Time improvement by SA: 42.0
+Average Improvement by Prio: 10.186046511627907
+Average Improvement by SA: 35.093023255813954
+Standard Deviation Prio: 13.922135317967218
+Standard Deviation SA: 13.004138792847654
+
+Average Time without Optimization: 945.8409090909091
+Time improvement by Prio: 21.0
+Time improvement by SA: 37.0
+Average Improvement by Prio: 10.431818181818182
+Average Improvement by SA: 35.13636363636363
+Standard Deviation Prio: 13.857058797320471
+Standard Deviation SA: 12.858656279810656
+
+Average Time without Optimization: 946.5333333333333
+Time improvement by Prio: 10.0
+Time improvement by SA: 36.0
+Average Improvement by Prio: 10.422222222222222
+Average Improvement by SA: 35.15555555555556
+Standard Deviation Prio: 13.70237430989225
+Standard Deviation SA: 12.715616917013776
+
+Average Time without Optimization: 946.9130434782609
+Time improvement by Prio: 21.0
+Time improvement by SA: 38.0
+Average Improvement by Prio: 10.652173913043478
+Average Improvement by SA: 35.21739130434783
+Standard Deviation Prio: 13.640122068981302
+Standard Deviation SA: 12.583483038039192
+
+Average Time without Optimization: 948.7446808510638
+Time improvement by Prio: 8.0
+Time improvement by SA: 38.0
+Average Improvement by Prio: 10.595744680851064
+Average Improvement by SA: 35.276595744680854
+Standard Deviation Prio: 13.499660475585626
+Standard Deviation SA: 12.45537075929381
+
+Average Time without Optimization: 948.75
+Time improvement by Prio: 13.0
+Time improvement by SA: 32.0
+Average Improvement by Prio: 10.645833333333334
+Average Improvement by SA: 35.208333333333336
+Standard Deviation Prio: 13.36271177464448
+Standard Deviation SA: 12.333826003673348
+
+Average Time without Optimization: 948.7551020408164
+Time improvement by Prio: 11.0
+Time improvement by SA: 30.0
+Average Improvement by Prio: 10.653061224489797
+Average Improvement by SA: 35.10204081632653
+Standard Deviation Prio: 13.225749499086172
+Standard Deviation SA: 12.229514145837193
+
+Average Time without Optimization: 947.62
+Time improvement by Prio: -9.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 10.26
+Average Improvement by SA: 34.92
+Standard Deviation Prio: 13.378804131909549
+Standard Deviation SA: 12.173479371157615
+
+Average Time without Optimization: 944.7254901960785
+Time improvement by Prio: -6.0
+Time improvement by SA: 23.0
+Average Improvement by Prio: 9.941176470588236
+Average Improvement by SA: 34.68627450980392
+Standard Deviation Prio: 13.437453897348556
+Standard Deviation SA: 12.166315110814152
+
+Average Time without Optimization: 942.1730769230769
+Time improvement by Prio: 12.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 9.98076923076923
+Average Improvement by SA: 34.51923076923077
+Standard Deviation Prio: 13.310623843403874
+Standard Deviation SA: 12.107674591913538
+
+Average Time without Optimization: 943.9622641509434
+Time improvement by Prio: 9.0
+Time improvement by SA: 51.0
+Average Improvement by Prio: 9.962264150943396
+Average Improvement by SA: 34.83018867924528
+Standard Deviation Prio: 13.185129222327308
+Standard Deviation SA: 12.200735902730365
+
+Average Time without Optimization: 944.9074074074074
+Time improvement by Prio: -17.0
+Time improvement by SA: 5.0
+Average Improvement by Prio: 9.462962962962964
+Average Improvement by SA: 34.27777777777778
+Standard Deviation Prio: 13.558806025992114
+Standard Deviation SA: 12.738708386568268
+
+Average Time without Optimization: 946.7818181818182
+Time improvement by Prio: 31.0
+Time improvement by SA: 51.0
+Average Improvement by Prio: 9.854545454545455
+Average Improvement by SA: 34.58181818181818
+Standard Deviation Prio: 13.739681327279996
+Standard Deviation SA: 12.818581554050793
+
+Average Time without Optimization: 946.5714285714286
+Time improvement by Prio: 6.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 9.785714285714286
+Average Improvement by SA: 34.464285714285715
+Standard Deviation Prio: 13.62601802974511
+Standard Deviation SA: 12.733482698486421
+
+Average Time without Optimization: 945.3684210526316
+Time improvement by Prio: -8.0
+Time improvement by SA: 21.0
+Average Improvement by Prio: 9.473684210526315
+Average Improvement by SA: 34.228070175438596
+Standard Deviation Prio: 13.706324911038104
+Standard Deviation SA: 12.74447598787811
+
+Average Time without Optimization: 947.6724137931035
+Time improvement by Prio: -13.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 9.086206896551724
+Average Improvement by SA: 34.08620689655172
+Standard Deviation Prio: 13.899000810972016
+Standard Deviation SA: 12.679449137874737
+
+Average Time without Optimization: 946.3220338983051
+Time improvement by Prio: 4.0
+Time improvement by SA: 24.0
+Average Improvement by Prio: 9.0
+Average Improvement by SA: 33.91525423728814
+Standard Deviation Prio: 13.796339480124699
+Standard Deviation SA: 12.638772917794148
+
+Average Time without Optimization: 944.3
+Time improvement by Prio: 2.0
+Time improvement by SA: 20.0
+Average Improvement by Prio: 8.883333333333333
+Average Improvement by SA: 33.68333333333333
+Standard Deviation Prio: 13.71020503939391
+Standard Deviation SA: 12.658977929604832
+
+Average Time without Optimization: 942.311475409836
+Time improvement by Prio: 18.0
+Time improvement by SA: 37.0
+Average Improvement by Prio: 9.032786885245901
+Average Improvement by SA: 33.73770491803279
+Standard Deviation Prio: 13.646553895283498
+Standard Deviation SA: 12.561849137328158
+
+Average Time without Optimization: 941.9677419354839
+Time improvement by Prio: 11.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 9.064516129032258
+Average Improvement by SA: 33.645161290322584
+Standard Deviation Prio: 13.538321914097768
+Standard Deviation SA: 12.481078290619207
+
+Average Time without Optimization: 941.6825396825396
+Time improvement by Prio: 38.0
+Time improvement by SA: 56.0
+Average Improvement by Prio: 9.523809523809524
+Average Improvement by SA: 34.0
+Standard Deviation Prio: 13.908838280493637
+Standard Deviation SA: 12.692955176439847
+
+Average Time without Optimization: 941.890625
+Time improvement by Prio: 5.0
+Time improvement by SA: 28.0
+Average Improvement by Prio: 9.453125
+Average Improvement by SA: 33.90625
+Standard Deviation Prio: 13.81114777034751
+Standard Deviation SA: 12.615366064347874
+
+Average Time without Optimization: 940.7384615384616
+Time improvement by Prio: 29.0
+Time improvement by SA: 61.0
+Average Improvement by Prio: 9.753846153846155
+Average Improvement by SA: 34.323076923076925
+Standard Deviation Prio: 13.914055725975878
+Standard Deviation SA: 12.954485641076301
+
+Average Time without Optimization: 942.9090909090909
+Time improvement by Prio: 0.0
+Time improvement by SA: 32.0
+Average Improvement by Prio: 9.606060606060606
+Average Improvement by SA: 34.28787878787879
+Standard Deviation Prio: 13.859553960944302
+Standard Deviation SA: 12.859102602549036
+
+Average Time without Optimization: 943.9402985074627
+Time improvement by Prio: 4.0
+Time improvement by SA: 31.0
+Average Improvement by Prio: 9.522388059701493
+Average Improvement by SA: 34.23880597014925
+Standard Deviation Prio: 13.772520996378198
+Standard Deviation SA: 12.769003458397268
+
+Average Time without Optimization: 944.1470588235294
+Time improvement by Prio: 19.0
+Time improvement by SA: 36.0
+Average Improvement by Prio: 9.661764705882353
+Average Improvement by SA: 34.26470588235294
+Standard Deviation Prio: 13.718397151825897
+Standard Deviation SA: 12.676538828804993
+
+Average Time without Optimization: 943.4782608695652
+Time improvement by Prio: 13.0
+Time improvement by SA: 25.0
+Average Improvement by Prio: 9.710144927536232
+Average Improvement by SA: 34.130434782608695
+Standard Deviation Prio: 13.624468025009389
+Standard Deviation SA: 12.63296016061397
+
+Average Time without Optimization: 944.2714285714286
+Time improvement by Prio: 6.0
+Time improvement by SA: 23.0
+Average Improvement by Prio: 9.657142857142857
+Average Improvement by SA: 33.97142857142857
+Standard Deviation Prio: 13.533963324366818
+Standard Deviation SA: 12.611753507368128
+
+Average Time without Optimization: 945.5492957746479
+Time improvement by Prio: 33.0
+Time improvement by SA: 53.0
+Average Improvement by Prio: 9.985915492957746
+Average Improvement by SA: 34.23943661971831
+Standard Deviation Prio: 13.716950506731669
+Standard Deviation SA: 12.721795414006706
+
+Average Time without Optimization: 945.5138888888889
+Time improvement by Prio: 9.0
+Time improvement by SA: 40.0
+Average Improvement by Prio: 9.972222222222221
+Average Improvement by SA: 34.31944444444444
+Standard Deviation Prio: 13.621849505504649
+Standard Deviation SA: 12.65111588061272
+
+Average Time without Optimization: 946.3013698630137
+Time improvement by Prio: -18.0
+Time improvement by SA: 29.0
+Average Improvement by Prio: 9.58904109589041
+Average Improvement by SA: 34.24657534246575
+Standard Deviation Prio: 13.913466046843514
+Standard Deviation SA: 12.579370829397691
+
+Average Time without Optimization: 946.6216216216217
+Time improvement by Prio: 21.0
+Time improvement by SA: 39.0
+Average Improvement by Prio: 9.743243243243244
+Average Improvement by SA: 34.310810810810814
+Standard Deviation Prio: 13.881799099473023
+Standard Deviation SA: 12.506134360380235
+
+Average Time without Optimization: 946.5333333333333
+Time improvement by Prio: 7.0
+Time improvement by SA: 15.0
+Average Improvement by Prio: 9.706666666666667
+Average Improvement by SA: 34.053333333333335
+Standard Deviation Prio: 13.792532601214164
+Standard Deviation SA: 12.618392220176952
+
+Average Time without Optimization: 946.7631578947369
+Time improvement by Prio: 30.0
+Time improvement by SA: 56.0
+Average Improvement by Prio: 9.973684210526315
+Average Improvement by SA: 34.3421052631579
+Standard Deviation Prio: 13.895260157609336
+Standard Deviation SA: 12.782134563089205
+
+Average Time without Optimization: 946.038961038961
+Time improvement by Prio: 1.0
+Time improvement by SA: 55.0
+Average Improvement by Prio: 9.857142857142858
+Average Improvement by SA: 34.61038961038961
+Standard Deviation Prio: 13.84207240481393
+Standard Deviation SA: 12.912448281694084
+
+Average Time without Optimization: 945.8589743589744
+Time improvement by Prio: 1.0
+Time improvement by SA: 45.0
+Average Improvement by Prio: 9.743589743589743
+Average Improvement by SA: 34.743589743589745
+Standard Deviation Prio: 13.789103741198549
+Standard Deviation SA: 12.88254224934072
+
+Average Time without Optimization: 946.6075949367089
+Time improvement by Prio: 20.0
+Time improvement by SA: 31.0
+Average Improvement by Prio: 9.873417721518987
+Average Improvement by SA: 34.69620253164557
+Standard Deviation Prio: 13.749446100334918
+Standard Deviation SA: 12.807587180132815
+
+Average Time without Optimization: 947.4875
+Time improvement by Prio: -1.0
+Time improvement by SA: 16.0
+Average Improvement by Prio: 9.7375
+Average Improvement by SA: 34.4625
+Standard Deviation Prio: 13.716544526592694
+Standard Deviation SA: 12.895681205349332
+
+Average Time without Optimization: 949.4444444444445
+Time improvement by Prio: 2.0
+Time improvement by SA: 34.0
+Average Improvement by Prio: 9.641975308641975
+Average Improvement by SA: 34.45679012345679
+Standard Deviation Prio: 13.658361199867903
+Standard Deviation SA: 12.81593277551693
+
+Average Time without Optimization: 948.5121951219512
+Time improvement by Prio: 3.0
+Time improvement by SA: 34.0
+Average Improvement by Prio: 9.560975609756097
+Average Improvement by SA: 34.451219512195124
+Standard Deviation Prio: 13.594383310204659
+Standard Deviation SA: 12.73764579755653
+
+Average Time without Optimization: 948.2530120481928
+Time improvement by Prio: -19.0
+Time improvement by SA: 22.0
+Average Improvement by Prio: 9.216867469879517
+Average Improvement by SA: 34.30120481927711
+Standard Deviation Prio: 13.866878448234065
+Standard Deviation SA: 12.733349571872079
+
+Average Time without Optimization: 947.6428571428571
+Time improvement by Prio: 19.0
+Time improvement by SA: 35.0
+Average Improvement by Prio: 9.333333333333334
+Average Improvement by SA: 34.30952380952381
+Standard Deviation Prio: 13.824868322229479
+Standard Deviation SA: 12.657555799634528
+
+Average Time without Optimization: 947.035294117647
+Time improvement by Prio: 11.0
+Time improvement by SA: 35.0
+Average Improvement by Prio: 9.352941176470589
+Average Improvement by SA: 34.31764705882353
+Standard Deviation Prio: 13.744479860787699
+Standard Deviation SA: 12.583099557091163
+
+Average Time without Optimization: 946.1744186046511
+Time improvement by Prio: 22.0
+Time improvement by SA: 40.0
+Average Improvement by Prio: 9.5
+Average Improvement by SA: 34.383720930232556
+Standard Deviation Prio: 13.731435670802792
+Standard Deviation SA: 12.524551335464206
+
+Average Time without Optimization: 946.8045977011494
+Time improvement by Prio: 8.0
+Time improvement by SA: 35.0
+Average Improvement by Prio: 9.482758620689655
+Average Improvement by SA: 34.39080459770115
+Standard Deviation Prio: 13.653227540587952
+Standard Deviation SA: 12.45253639107364
+
+Average Time without Optimization: 945.5909090909091
+Time improvement by Prio: 9.0
+Time improvement by SA: 35.0
+Average Improvement by Prio: 9.477272727272727
+Average Improvement by SA: 34.39772727272727
+Standard Deviation Prio: 13.575527172693109
+Standard Deviation SA: 12.381749557612528
+
+Average Time without Optimization: 945.4044943820224
+Time improvement by Prio: 7.0
+Time improvement by SA: 24.0
+Average Improvement by Prio: 9.44943820224719
+Average Improvement by SA: 34.28089887640449
+Standard Deviation Prio: 13.501569809649272
+Standard Deviation SA: 12.360674106235491
+
+Average Time without Optimization: 945.9444444444445
+Time improvement by Prio: 2.0
+Time improvement by SA: 23.0
+Average Improvement by Prio: 9.366666666666667
+Average Improvement by SA: 34.15555555555556
+Standard Deviation Prio: 13.449039618748495
+Standard Deviation SA: 12.34855917021281
+
+Average Time without Optimization: 945.9560439560439
+Time improvement by Prio: 16.0
+Time improvement by SA: 32.0
+Average Improvement by Prio: 9.43956043956044
+Average Improvement by SA: 34.13186813186813
+Standard Deviation Prio: 13.392805015395878
+Standard Deviation SA: 12.282578380572968
+
+Average Time without Optimization: 946.3913043478261
+Time improvement by Prio: 5.0
+Time improvement by SA: 32.0
+Average Improvement by Prio: 9.391304347826088
+Average Improvement by SA: 34.108695652173914
+Standard Deviation Prio: 13.327771366699857
+Standard Deviation SA: 12.217642732984569
+
+Average Time without Optimization: 946.7096774193549
+Time improvement by Prio: 3.0
+Time improvement by SA: 30.0
+Average Improvement by Prio: 9.32258064516129
+Average Improvement by SA: 34.064516129032256
+Standard Deviation Prio: 13.272302220922201
+Standard Deviation SA: 12.159165268828534
+
+Average Time without Optimization: 947.0106382978723
+Time improvement by Prio: 13.0
+Time improvement by SA: 29.0
+Average Improvement by Prio: 9.361702127659575
+Average Improvement by SA: 34.01063829787234
+Standard Deviation Prio: 13.206905885187803
+Standard Deviation SA: 12.105471490946057
+
+Average Time without Optimization: 946.8315789473684
+Time improvement by Prio: 24.0
+Time improvement by SA: 26.0
+Average Improvement by Prio: 9.51578947368421
+Average Improvement by SA: 33.92631578947368
+Standard Deviation Prio: 13.221882307188805
+Standard Deviation SA: 12.069310454522473
+
+Average Time without Optimization: 946.28125
+Time improvement by Prio: 8.0
+Time improvement by SA: 43.0
+Average Improvement by Prio: 9.5
+Average Improvement by SA: 34.020833333333336
+Standard Deviation Prio: 13.153738378625802
+Standard Deviation SA: 12.041576556756272
+
+Average Time without Optimization: 946.6701030927835
+Time improvement by Prio: 15.0
+Time improvement by SA: 29.0
+Average Improvement by Prio: 9.556701030927835
+Average Improvement by SA: 33.96907216494845
+Standard Deviation Prio: 13.097547635540659
+Standard Deviation SA: 11.990076316143995
+
+Average Time without Optimization: 946.4489795918367
+Time improvement by Prio: 16.0
+Time improvement by SA: 30.0
+Average Improvement by Prio: 9.622448979591837
+Average Improvement by SA: 33.92857142857143
+Standard Deviation Prio: 13.046631675805507
+Standard Deviation SA: 11.935412922586845
+
+Average Time without Optimization: 946.7676767676768
+Time improvement by Prio: 20.0
+Time improvement by SA: 45.0
+Average Improvement by Prio: 9.727272727272727
+Average Improvement by SA: 34.04040404040404
+Standard Deviation Prio: 13.021984659842577
+Standard Deviation SA: 11.926474405956828
+
+Average Time without Optimization: 946.87
+Time improvement by Prio: 0.0
+Time improvement by SA: 20.0
+Average Improvement by Prio: 9.63
+Average Improvement by SA: 33.9
+Standard Deviation Prio: 12.992809549901054
+Standard Deviation SA: 11.948640089985137
