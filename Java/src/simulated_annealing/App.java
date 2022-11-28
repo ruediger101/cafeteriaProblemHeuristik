@@ -204,7 +204,7 @@ public class App {
         Heuristics.setAlpha(0.50);
         Heuristics.setMeanMarkov(2);
         Heuristics.setBeta(10);
-        
+
         Heuristics.setLogSimulatedAnnealing(true);
 
         int noStartStates = 1;
@@ -337,15 +337,65 @@ public class App {
         }
     }
 
+    private static void BeamSearchCompared() {
+        List<Double> beta3 = new ArrayList<>();
+        List<Double> beta30 = new ArrayList<>();
+        List<Double> beta300 = new ArrayList<>();
+        List<Double> beta3000 = new ArrayList<>();
+        List<Double> improvements = new ArrayList<>();
+        Heuristics.setLogBeamSearch(false);
+        for (int i = 0; i < 100; i++) {
+            System.out.println("Iteration: " + i);
+
+            int noCustomers = 50; // number of customers
+            int noCounters = 10; // number of counters
+            int minRequests = 1;
+            int maxRequest = Math.min(10, noCounters);
+
+            State startState = new State();
+            addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
+
+            Heuristics.setBeta(3);
+            State resultState = Heuristics.beamSearch(startState);
+            beta3.add(resultState.getTime());
+
+            startState.reset();
+            Heuristics.setBeta(30);
+            resultState = Heuristics.beamSearch(startState);
+            beta30.add(resultState.getTime());
+
+            startState.reset();
+            Heuristics.setBeta(300);
+            resultState = Heuristics.beamSearch(startState);
+            beta300.add(resultState.getTime());
+
+            startState.reset();
+            Heuristics.setBeta(3000);
+            resultState = Heuristics.beamSearch(startState);
+            beta3000.add(resultState.getTime());
+
+        }
+
+        System.out.println();
+        System.out.println("Average Time (Beta=3): " + beta3.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation (Beta=3): " + calculateSD(beta3));
+        System.out.println();
+        System.out.println();
+        System.out.println("Average Time (Beta=30): " + beta30.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation (Beta=30): " + calculateSD(beta30));
+        System.out.println();
+        System.out.println("Average Time (Beta=300): " + beta300.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation (Beta=300): " + calculateSD(beta300));
+        System.out.println();
+        System.out.println("Average Time (Beta=3000): " + beta3000.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation (Beta=3000): " + calculateSD(beta3000));
+
+    }
+
     public static void main(String[] args) {
         long seed = 42; // "Answer to the Ultimate Question of Life, the Universe, and Everything" ... and a good seed
         Heuristics.setRandSeed(seed);
         rand.setSeed(seed);
-
-        // Heuristics.setLogSimulatedAnnealing(true);
-        // Heuristics.setLogBeamSearch(true);
-
-        // Heuristics.printParameters();
 
         // --- test functions
         // testServeCustomer();
@@ -355,12 +405,11 @@ public class App {
         // PriorityBasedSequencingCompared();
         // SAComparedAndPrioCompared();
 
-        customerSequencingAndCwspCompleteSeminararbeit();
+        // customerSequencingAndCwspCompleteSeminararbeit();
         // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
-        // Heuristics.printSaStats(10);
-        // Heuristics.printBsStats(10);
+        BeamSearchCompared();
     }
 
 }
