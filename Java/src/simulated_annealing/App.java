@@ -203,7 +203,7 @@ public class App {
     private static void customerSequencingAndCwspCompleteSeminararbeit() {
         Heuristics.setAlpha(0.50);
         Heuristics.setMeanMarkov(2);
-        Heuristics.setBeta(10);
+        Heuristics.setBeta(300);
 
         Heuristics.setLogSimulatedAnnealing(true);
 
@@ -541,12 +541,12 @@ public class App {
         // PriorityBasedSequencingCompared();
         // SAComparedAndPrioCompared();
 
-        // customerSequencingAndCwspCompleteSeminararbeit();
+        customerSequencingAndCwspCompleteSeminararbeit();
         // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
         // BeamSearchCompared();
-        SaCompared();
+        // SaCompared();
     }
 
 }
