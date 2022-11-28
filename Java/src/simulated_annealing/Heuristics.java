@@ -99,10 +99,10 @@ public class Heuristics {
             System.out.println("\tNo of found better solutions: " + recordNoBetter.get(i));
             System.out.println(String.format("\tCurrent State: time = %.2f\tdistance = %.2f",
                     recordCurrentState.get(i).getTime(), recordCurrentState.get(i).getWalkedDistance()));
-            System.out.println("\tCurrent State: Customer Order = " + recordCurrentState.get(i).getCustomers().stream().map(c -> c.getInitialId()+1).toList());
+            System.out.println("\tCurrent State: Customer Order = " + recordCurrentState.get(i).getCustomers().stream().map(c -> c.getInitialId() + 1).toList());
             System.out.println(String.format("\tOptimal State: time = %.2f\tdistance = %.2f",
                     recordOptimalState.get(i).getTime(), recordOptimalState.get(i).getWalkedDistance()));
-            System.out.println("\tOptimal State: Customer Order = " + recordOptimalState.get(i).getCustomers().stream().map(c -> c.getInitialId()+1).toList());
+            System.out.println("\tOptimal State: Customer Order = " + recordOptimalState.get(i).getCustomers().stream().map(c -> c.getInitialId() + 1).toList());
             System.out.println(String.format("\tPercentage of accepted bad solutions = %.2f", recordPBad.get(i)));
         }
 
@@ -198,7 +198,7 @@ public class Heuristics {
 
     // Simulated Annealing
     public static State simulatedAnnealing(State state) {
-        State initialState = beamSearch(state);
+        State initialState = beamSearch(new State(state));
 
         if (logBeamSearch)
             Heuristics.printBsStats(10);

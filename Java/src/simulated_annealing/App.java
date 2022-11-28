@@ -367,7 +367,7 @@ public class App {
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
             beta3.add(resultState.getTime());
-            beta3Times.add(stop-start);
+            beta3Times.add(stop - start);
 
             startState.reset();
             Heuristics.setBeta(30);
@@ -375,7 +375,7 @@ public class App {
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
             beta30.add(resultState.getTime());
-            beta30Times.add(stop-start);
+            beta30Times.add(stop - start);
 
             startState.reset();
             Heuristics.setBeta(300);
@@ -383,7 +383,7 @@ public class App {
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
             beta300.add(resultState.getTime());
-            beta300Times.add(stop-start);
+            beta300Times.add(stop - start);
 
             startState.reset();
             Heuristics.setBeta(3000);
@@ -391,25 +391,140 @@ public class App {
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
             beta3000.add(resultState.getTime());
-            beta3000Times.add(stop-start);
+            beta3000Times.add(stop - start);
         }
 
         System.out.println();
-        System.out.println("Average Runtime (Beta=3)[ms]: " + beta3Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
+        System.out.println("Average Runtime (Beta=3)[ms]: " + beta3Times.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=3): " + beta3.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=3): " + calculateSD(beta3));
         System.out.println();
-        System.out.println("Average Runtime (Beta=30)[ms]: " + beta30Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
+        System.out.println("Average Runtime (Beta=30)[ms]: " + beta30Times.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=30): " + beta30.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=30): " + calculateSD(beta30));
         System.out.println();
-        System.out.println("Average Runtime (Beta=300)[ms]: " + beta300Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
+        System.out.println("Average Runtime (Beta=300)[ms]: " + beta300Times.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=300): " + beta300.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=300): " + calculateSD(beta300));
         System.out.println();
-        System.out.println("Average Runtime (Beta=3000)[ms]: " + beta3000Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
+        System.out.println("Average Runtime (Beta=3000)[ms]: " + beta3000Times.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=3000): " + beta3000.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=3000): " + calculateSD(beta3000));
+
+    }
+
+    private static void SaCompared() {
+        long seed = 1669654886;
+        Heuristics.setRandSeed(seed);
+        rand.setSeed(seed);
+
+        int noCustomers = 50; // number of customers
+        int noCounters = 10; // number of counters
+        int minRequests = 1;
+        int maxRequest = Math.min(10, noCounters);
+
+        State result;
+        long start;
+        long stop;
+
+        for (int i = 0; i < 1; i++) {
+            State startState = new State();
+            addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
+
+            Heuristics.setBeta(300);
+
+            double baseline = Heuristics.beamSearch(startState).getTime();
+            System.out.println("Time (unoptimized): " + baseline);
+            System.out.println();
+
+            Heuristics.setAlpha(0.50);
+            Heuristics.setMeanMarkov(1);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=50, markov=1): " + result.getTime());
+            System.out.println("Improvement (a=50, markov=1): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=50, markov=1): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 6");
+            System.out.println();
+
+            Heuristics.setAlpha(0.90);
+            Heuristics.setMeanMarkov(1);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=90, markov=1): " + result.getTime());
+            System.out.println("Improvement (a=90, markov=1): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=90, markov=1): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 38");
+            System.out.println();
+
+            Heuristics.setAlpha(0.99);
+            Heuristics.setMeanMarkov(1);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=99, markov=1): " + result.getTime());
+            System.out.println("Improvement (a=99, markov=1): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=99, markov=1): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 390");
+            System.out.println();
+
+            Heuristics.setAlpha(0.50);
+            Heuristics.setMeanMarkov(10);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=50, markov=10): " + result.getTime());
+            System.out.println("Improvement (a=50, markov=10): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=50, markov=10): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 60");
+            System.out.println();
+
+            Heuristics.setAlpha(0.90);
+            Heuristics.setMeanMarkov(10);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=90, markov=10): " + result.getTime());
+            System.out.println("Improvement (a=90, markov=10): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=90, markov=10): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 380");
+            System.out.println();
+
+            Heuristics.setAlpha(0.99);
+            Heuristics.setMeanMarkov(10);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=99, markov=10): " + result.getTime());
+            System.out.println("Improvement (a=99, markov=10): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=99, markov=10): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 3900");
+            System.out.println();
+
+            Heuristics.setAlpha(0.50);
+            Heuristics.setMeanMarkov(100);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=50, markov=100): " + result.getTime());
+            System.out.println("Improvement (a=50, markov=100): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=50, markov=100): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 600");
+            System.out.println();
+
+            Heuristics.setAlpha(0.90);
+            Heuristics.setMeanMarkov(100);
+            start = System.nanoTime();
+            result = Heuristics.simulatedAnnealing(startState);
+            stop = System.nanoTime();
+            System.out.println("Time (a=90, markov=100): " + result.getTime());
+            System.out.println("Improvement (a=90, markov=100): " + (baseline - result.getTime()));
+            System.out.println("Runtime (a=90, markov=100): " + ((stop - start) * 1E-6));
+            System.out.println("Iterations: 3800");
+            System.out.println();
+        }
 
     }
 
@@ -430,7 +545,8 @@ public class App {
         // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
-        BeamSearchCompared();
+        // BeamSearchCompared();
+        SaCompared();
     }
 
 }
