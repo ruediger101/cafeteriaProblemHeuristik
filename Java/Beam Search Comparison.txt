@@ -1,0 +1,11 @@
+Average Time (Beta=3): 977.17
+Standard Deviation (Beta=3): 68.19106319746012
+
+Average Time (Beta=30): 955.78
+Standard Deviation (Beta=30): 67.6380928175832
+
+Average Time (Beta=300): 946.89
+Standard Deviation (Beta=300): 64.318099318932
+
+Average Time (Beta=3000): 942.35
+Standard Deviation (Beta=3000): 64.4534521961392

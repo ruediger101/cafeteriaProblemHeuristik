@@ -380,7 +380,6 @@ public class App {
         System.out.println("Average Time (Beta=3): " + beta3.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=3): " + calculateSD(beta3));
         System.out.println();
-        System.out.println();
         System.out.println("Average Time (Beta=30): " + beta30.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=30): " + calculateSD(beta30));
         System.out.println();
