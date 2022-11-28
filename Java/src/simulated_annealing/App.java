@@ -338,13 +338,16 @@ public class App {
     }
 
     private static void BeamSearchCompared() {
+        List<Long> beta3Times = new ArrayList<>();
+        List<Long> beta30Times = new ArrayList<>();
+        List<Long> beta300Times = new ArrayList<>();
+        List<Long> beta3000Times = new ArrayList<>();
         List<Double> beta3 = new ArrayList<>();
         List<Double> beta30 = new ArrayList<>();
         List<Double> beta300 = new ArrayList<>();
         List<Double> beta3000 = new ArrayList<>();
-        List<Double> improvements = new ArrayList<>();
         Heuristics.setLogBeamSearch(false);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println("Iteration: " + i);
 
             int noCustomers = 50; // number of customers
@@ -352,40 +355,59 @@ public class App {
             int minRequests = 1;
             int maxRequest = Math.min(10, noCounters);
 
+            State resultState;
+            long start;
+            long stop;
+
             State startState = new State();
             addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
 
             Heuristics.setBeta(3);
-            State resultState = Heuristics.beamSearch(startState);
+            start = System.nanoTime();
+            resultState = Heuristics.beamSearch(startState);
+            stop = System.nanoTime();
             beta3.add(resultState.getTime());
+            beta3Times.add(stop-start);
 
             startState.reset();
             Heuristics.setBeta(30);
+            start = System.nanoTime();
             resultState = Heuristics.beamSearch(startState);
+            stop = System.nanoTime();
             beta30.add(resultState.getTime());
+            beta30Times.add(stop-start);
 
             startState.reset();
             Heuristics.setBeta(300);
+            start = System.nanoTime();
             resultState = Heuristics.beamSearch(startState);
+            stop = System.nanoTime();
             beta300.add(resultState.getTime());
+            beta300Times.add(stop-start);
 
             startState.reset();
             Heuristics.setBeta(3000);
+            start = System.nanoTime();
             resultState = Heuristics.beamSearch(startState);
+            stop = System.nanoTime();
             beta3000.add(resultState.getTime());
-
+            beta3000Times.add(stop-start);
         }
 
         System.out.println();
+        System.out.println("Average Runtime (Beta=3)[ms]: " + beta3Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=3): " + beta3.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=3): " + calculateSD(beta3));
         System.out.println();
+        System.out.println("Average Runtime (Beta=30)[ms]: " + beta30Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=30): " + beta30.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=30): " + calculateSD(beta30));
         System.out.println();
+        System.out.println("Average Runtime (Beta=300)[ms]: " + beta300Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=300): " + beta300.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=300): " + calculateSD(beta300));
         System.out.println();
+        System.out.println("Average Runtime (Beta=3000)[ms]: " + beta3000Times.stream().mapToDouble(t->t*1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=3000): " + beta3000.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
         System.out.println("Standard Deviation (Beta=3000): " + calculateSD(beta3000));
 

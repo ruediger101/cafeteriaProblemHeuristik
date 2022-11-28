@@ -7,21 +7,17 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class State {
-    private List<int[]> waiterSchedule;
-    private double waiterPosition;
-    private double walkedDistance;
-    private double totalTime;
-    private List<Customer> customers;
+    private List<int[]> waiterSchedule = new ArrayList<>();
+    private double waiterPosition = -1.0;
+    private double walkedDistance = 0.0;
+    private double totalTime = 0.0;
+    private List<Customer> customers = new ArrayList<>();
     private double waiterVelocity = 1.0;
     private double servingTime = 2.0;
     private int posBehindLastCounter = Integer.MAX_VALUE;
 
     public State() {
-        waiterSchedule = new ArrayList<>();
-        waiterPosition = -1.0;
-        walkedDistance = 0.0;
-        customers = new ArrayList<>();
-        totalTime = 0;
+        // Nothing to do here
     }
 
     public State(State s) {
@@ -68,7 +64,7 @@ public class State {
 
         // update customer position of each of the n customers
         double previousPosition = Double.MAX_VALUE;
-        for (Iterator<Customer> it = (new ArrayList<>(getCustomers())).iterator(); it.hasNext();) {
+        for (Iterator<Customer> it = getCustomers().iterator(); it.hasNext();) {
             Customer c = it.next();
             if (c.getPosition() < Double.MAX_VALUE && !nextCustomer.equals(c)) {
                 c.setPosition(Math.min(c.getPosition() + deltaTime * c.getVelocity(), previousPosition - 1));// update position ignoring next order
@@ -85,7 +81,7 @@ public class State {
 
     // function checks if order must not be changed
     private static boolean mustPrecede(Customer i, Customer j) {
-        if (i.getId() < j.getId()) {//could be removed as i will always be smaller than j in current implementation
+        if (i.getId() < j.getId()) {// could be removed as i will always be smaller than j in current implementation
             return i.getOrders().get(0) <= j.getOrders().get(0) + (j.getId() - i.getId() - 1);
         } else
             return false;
