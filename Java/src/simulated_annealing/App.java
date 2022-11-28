@@ -347,7 +347,7 @@ public class App {
         List<Double> beta300 = new ArrayList<>();
         List<Double> beta3000 = new ArrayList<>();
         Heuristics.setLogBeamSearch(false);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println("Iteration: " + i);
 
             int noCustomers = 50; // number of customers
