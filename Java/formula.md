@@ -32,7 +32,7 @@ Wegen $i < j$ gilt:
 
 $$
 \begin{align}
-    d_{j,l} &le; d_{j,l} + (j - i - 1)
+    d_{j,l} \le d_{j,l} + (j - i - 1)
 \end{align}
 $$
 
