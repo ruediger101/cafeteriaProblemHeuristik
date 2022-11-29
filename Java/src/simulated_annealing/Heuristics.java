@@ -265,7 +265,7 @@ public class Heuristics {
                     double deltaTime = nextState.getTime() - currentState.getTime();
                     double pAccept = Math.exp(-deltaTime / tempNow); // calculate the state transition probability of the tolerant solution
 
-                    if (pAccept > rand.nextDouble()) {
+                    if (pAccept >= rand.nextDouble()) {
                         // accept the bad solution
                         accept = true;
                         kBadAccept++;
