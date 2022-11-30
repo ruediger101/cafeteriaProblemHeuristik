@@ -1,0 +1,156 @@
+Time (unoptimized): 911.0
+
+Time (a=50, markov=1): 901.0
+Improvement (a=50, markov=1): 10.0
+Runtime (a=50, markov=1): 3570.1088
+Iterations: 6
+
+Multi-start: 4
+Time (a=50, markov=1): 881.0
+Improvement (a=50, markov=1): 30.0
+Runtime (a=50, markov=1): 13376.388799999999
+Iterations: 24
+
+Time (a=90, markov=1): 885.0
+Improvement (a=90, markov=1): 26.0
+Runtime (a=90, markov=1): 16486.6905
+Iterations: 38
+
+Multi-start: 4
+Time (a=90, markov=1): 881.0
+Improvement (a=90, markov=1): 30.0
+Runtime (a=90, markov=1): 61604.3935
+Iterations: 152
+
+Time (a=99, markov=1): 866.0
+Improvement (a=99, markov=1): 45.0
+Runtime (a=99, markov=1): 162602.7473
+Iterations: 390
+
+Multi-start: 4
+Time (a=99, markov=1): 859.0
+Improvement (a=99, markov=1): 52.0
+Runtime (a=99, markov=1): 639279.2979
+Iterations: 1560
+
+Time (a=50, markov=10): 882.0
+Improvement (a=50, markov=10): 29.0
+Runtime (a=50, markov=10): 24409.727
+Iterations: 60
+
+Multi-start: 4
+Time (a=50, markov=10): 875.0
+Improvement (a=50, markov=10): 36.0
+Runtime (a=50, markov=10): 99704.8914
+Iterations: 240
+
+Time (a=90, markov=10): 867.0
+Improvement (a=90, markov=10): 44.0
+Runtime (a=90, markov=10): 156550.0013
+Iterations: 380
+
+Multi-start: 4
+Time (a=90, markov=10): 863.0
+Improvement (a=90, markov=10): 48.0
+Runtime (a=90, markov=10): 623734.5451999999
+Iterations: 1520
+
+Time (a=99, markov=10): 848.0
+Improvement (a=99, markov=10): 63.0
+Runtime (a=99, markov=10): 1599573.1958009999
+Iterations: 3900
+
+Time (a=50, markov=100): 866.0
+Improvement (a=50, markov=100): 45.0
+Runtime (a=50, markov=100): 247762.5544
+Iterations: 600
+
+Multi-start: 4
+Time (a=50, markov=100): 857.0
+Improvement (a=50, markov=100): 54.0
+Runtime (a=50, markov=100): 971735.2546
+Iterations: 2400
+
+Time (a=90, markov=100): 848.0
+Improvement (a=90, markov=100): 63.0
+Runtime (a=90, markov=100): 1564998.8440989999
+Iterations: 3800
+
+Time (unoptimized): 866.0
+
+Time (a=50, markov=1): 866.0
+Improvement (a=50, markov=1): 0.0
+Runtime (a=50, markov=1): 2497.0080989999997
+Iterations: 6
+
+Multi-start: 4
+Time (a=50, markov=1): 846.0
+Improvement (a=50, markov=1): 20.0
+Runtime (a=50, markov=1): 10489.437399999999
+Iterations: 24
+
+Time (a=90, markov=1): 841.0
+Improvement (a=90, markov=1): 25.0
+Runtime (a=90, markov=1): 14140.2609
+Iterations: 38
+
+Multi-start: 4
+Time (a=90, markov=1): 838.0
+Improvement (a=90, markov=1): 28.0
+Runtime (a=90, markov=1): 57429.8117
+Iterations: 152
+
+Time (a=99, markov=1): 825.0
+Improvement (a=99, markov=1): 41.0
+Runtime (a=99, markov=1): 144712.467101
+Iterations: 390
+
+Multi-start: 4
+Time (a=99, markov=1): 821.0
+Improvement (a=99, markov=1): 45.0
+Runtime (a=99, markov=1): 580024.6185999999
+Iterations: 1560
+
+Time (a=50, markov=10): 849.0
+Improvement (a=50, markov=10): 17.0
+Runtime (a=50, markov=10): 22282.481
+Iterations: 60
+
+Multi-start: 4
+Time (a=50, markov=10): 832.0
+Improvement (a=50, markov=10): 34.0
+Runtime (a=50, markov=10): 90106.50499999999
+Iterations: 240
+
+Time (a=90, markov=10): 839.0
+Improvement (a=90, markov=10): 27.0
+Runtime (a=90, markov=10): 142055.0527
+Iterations: 380
+
+Multi-start: 4
+Time (a=90, markov=10): 829.0
+Improvement (a=90, markov=10): 37.0
+Runtime (a=90, markov=10): 573002.5258
+Iterations: 1520
+
+Time (a=99, markov=10): 815.0
+Improvement (a=99, markov=10): 51.0
+Runtime (a=99, markov=10): 1608930.8457
+Iterations: 3900
+
+Time (a=50, markov=100): 834.0
+Improvement (a=50, markov=100): 32.0
+Runtime (a=50, markov=100): 226462.71029999998
+Iterations: 600
+
+Multi-start: 4
+Time (a=50, markov=100): 829.0
+Improvement (a=50, markov=100): 37.0
+Runtime (a=50, markov=100): 891899.0286999999
+Iterations: 2400
+
+Time (a=90, markov=100): 814.0
+Improvement (a=90, markov=100): 52.0
+Runtime (a=90, markov=100): 1435017.5248999998
+Iterations: 3800
+
