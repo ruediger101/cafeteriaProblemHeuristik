@@ -1,21 +1,44 @@
 Time (unoptimized): OptionalDouble[935.8]
+
 Time (a=50, markov=1): OptionalDouble[925.3]
-Runtime (a=50, markov=1): 30179.4371
+Runtime (a=50, markov=1): 30733.4047
+
 Time (a=50, markov=1, Multi-start): OptionalDouble[915.2]
-Runtime (a=50, markov=1, Multi-start): 118962.6703
+Runtime (a=50, markov=1, Multi-start): 121544.1754
+
 Time (a=90, markov=1): OptionalDouble[910.4]
-Runtime (a=90, markov=1): 168770.4611
+Runtime (a=90, markov=1): 169156.22699999998
+
 Time (a=90, markov=1, Multi-start): OptionalDouble[908.1]
-Runtime (a=90, markov=1, Multi-start): 665108.2123
+Runtime (a=90, markov=1, Multi-start): 664924.1141
+
 Time (a=99, markov=1): OptionalDouble[901.8]
-Runtime (a=99, markov=1): 1683925.4748
+Runtime (a=99, markov=1): 1688433.9002
+
 Time (a=99, markov=1, Multi-start): OptionalDouble[893.1]
-Runtime (a=99, markov=1, Multi-start): 6707531.935699999
+Runtime (a=99, markov=1, Multi-start): 6795006.4262999995
+
 Time (a=50, markov=10): OptionalDouble[909.2]
-Runtime (a=50, markov=10): 259936.65399999998
+Runtime (a=50, markov=10): 272566.7917
+
 Time (a=50, markov=10, Multi-start): OptionalDouble[909.3]
-Runtime (a=50, markov=10, Multi-start): 1041534.7936999999
+Runtime (a=50, markov=10, Multi-start): 1091749.5405
+
 Time (a=90, markov=10): OptionalDouble[900.8]
-Runtime (a=90, markov=10): 1641253.2648999998
+Runtime (a=90, markov=10): 1859864.304
+
 Time (a=90, markov=10, Multi-start): OptionalDouble[895.3]
-Runtime (a=90, markov=10, Multi-start): 6543750.1964
+Runtime (a=90, markov=10, Multi-start): 7841479.6902
+
+Time (a=99, markov=10): OptionalDouble[884.6]
+Runtime (a=99, markov=10): 1.8683424875299998E7
+
+Time (a=50, markov=100): OptionalDouble[898.9]
+Runtime (a=50, markov=100): 2597419.0524999998
+
+Time (a=50, markov=100, Multi-start): OptionalDouble[892.2]
+Runtime (a=50, markov=100, Multi-start): 1.0375019711099999E7
+
+Time (a=90, markov=100): OptionalDouble[887.8]
+Runtime (a=90, markov=100): 1.6437756506298998E7
+

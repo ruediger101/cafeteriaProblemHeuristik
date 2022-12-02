@@ -427,7 +427,6 @@ public class App {
         int minRequests = 1;
         int maxRequest = Math.min(10, noCounters);
 
-        State result;
         long start;
         long stop;
 
@@ -447,6 +446,7 @@ public class App {
 
             Heuristics.setBeta(300);
             pw.println("Time (unoptimized): " + states.stream().mapToDouble(s -> Heuristics.beamSearch(s.get(0)).getTime()).average());
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.50);
@@ -455,12 +455,14 @@ public class App {
             pw.println("Time (a=50, markov=1): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=1): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=50, markov=1, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=1, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.90);
@@ -469,12 +471,14 @@ public class App {
             pw.println("Time (a=90, markov=1): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=90, markov=1): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=90, markov=1, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=90, markov=1, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.99);
@@ -483,12 +487,14 @@ public class App {
             pw.println("Time (a=99, markov=1): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=99, markov=1): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=99, markov=1, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=99, markov=1, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.50);
@@ -497,12 +503,14 @@ public class App {
             pw.println("Time (a=50, markov=10): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=10): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=50, markov=10, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=10, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.90);
@@ -511,12 +519,14 @@ public class App {
             pw.println("Time (a=90, markov=10): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=90, markov=10): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=90, markov=10, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=90, markov=10, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.99);
@@ -525,6 +535,7 @@ public class App {
             pw.println("Time (a=99, markov=10): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=99, markov=10): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.50);
@@ -533,12 +544,14 @@ public class App {
             pw.println("Time (a=50, markov=100): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=100): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             start = System.nanoTime();
             pw.println("Time (a=50, markov=100, Multi-start): " + states.stream().map(s -> s.stream().map(Heuristics::simulatedAnnealing).sorted(State::compare).findFirst().orElse(null)).mapToDouble(State::getTime).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=50, markov=100, Multi-start): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
 
             Heuristics.setAlpha(0.90);
@@ -547,6 +560,7 @@ public class App {
             pw.println("Time (a=90, markov=100): " + states.stream().mapToDouble(s -> Heuristics.simulatedAnnealing(s.get(0)).getTime()).average());
             stop = System.nanoTime();
             pw.println("Runtime (a=90, markov=100): " + ((stop - start) * 1E-6));
+            pw.println();
             pw.flush();
         } catch (IOException e) {
             e.printStackTrace();
