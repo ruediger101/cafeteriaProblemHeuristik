@@ -342,10 +342,12 @@ public class App {
     }
 
     private static void BeamSearchCompared() {
+        List<Long> orderByOrderTimes = new ArrayList<>();
         List<Long> beta3Times = new ArrayList<>();
         List<Long> beta30Times = new ArrayList<>();
         List<Long> beta300Times = new ArrayList<>();
         List<Long> beta3000Times = new ArrayList<>();
+        List<Double> orderByOrder = new ArrayList<>();
         List<Double> beta3 = new ArrayList<>();
         List<Double> beta30 = new ArrayList<>();
         List<Double> beta300 = new ArrayList<>();
@@ -365,9 +367,20 @@ public class App {
 
             State startState = new State();
             addRandomCustomers(startState, noCustomers, noCounters, minRequests, maxRequest);
+            
 
-            Heuristics.setBeta(3);
             start = System.nanoTime();
+            for (int j = 0; j < startState.getCustomers().size(); j++){
+                while(!startState.getCustomer(j).getOrders().isEmpty()){
+                    startState.serveCustomer(j);
+                }
+            }
+            stop = System.nanoTime();
+            orderByOrderTimes.add(stop-start);
+            orderByOrder.add(startState.getTime());
+
+            startState.reset();
+            Heuristics.setBeta(3);
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
             beta3.add(resultState.getTime());
@@ -398,6 +411,10 @@ public class App {
             beta3000Times.add(stop - start);
         }
 
+        System.out.println();
+        System.out.println("Average Runtime (order by order)[ms]: " + orderByOrderTimes.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
+        System.out.println("Average Time (order by order): " + orderByOrder.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
+        System.out.println("Standard Deviation (order by order): " + calculateSD(orderByOrder));
         System.out.println();
         System.out.println("Average Runtime (Beta=3)[ms]: " + beta3Times.stream().mapToDouble(t -> t * 1E-6).average().orElse(0.0));
         System.out.println("Average Time (Beta=3): " + beta3.stream().mapToDouble(Double::doubleValue).average().orElse(0.0));
@@ -584,8 +601,8 @@ public class App {
         // customerSequencingAndCwspComplete();
         // testPriorityBasedSequence();
 
-        // BeamSearchCompared();
-        SaCompared();
+        BeamSearchCompared();
+        // SaCompared();
     }
 
 }
