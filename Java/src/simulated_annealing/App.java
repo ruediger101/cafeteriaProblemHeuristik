@@ -380,19 +380,12 @@ public class App {
             orderByOrder.add(startState.getTime());
 
             startState.reset();
-            Heuristics.setBeta(3);
-            resultState = Heuristics.beamSearch(startState);
-            stop = System.nanoTime();
-            beta3.add(resultState.getTime());
-            beta3Times.add(stop - start);
-
-            startState.reset();
-            Heuristics.setBeta(30);
+            Heuristics.setBeta(3000);
             start = System.nanoTime();
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
-            beta30.add(resultState.getTime());
-            beta30Times.add(stop - start);
+            beta3000.add(resultState.getTime());
+            beta3000Times.add(stop - start);
 
             startState.reset();
             Heuristics.setBeta(300);
@@ -403,12 +396,19 @@ public class App {
             beta300Times.add(stop - start);
 
             startState.reset();
-            Heuristics.setBeta(3000);
+            Heuristics.setBeta(30);
             start = System.nanoTime();
             resultState = Heuristics.beamSearch(startState);
             stop = System.nanoTime();
-            beta3000.add(resultState.getTime());
-            beta3000Times.add(stop - start);
+            beta30.add(resultState.getTime());
+            beta30Times.add(stop - start);
+
+            startState.reset();
+            Heuristics.setBeta(3);
+            resultState = Heuristics.beamSearch(startState);
+            stop = System.nanoTime();
+            beta3.add(resultState.getTime());
+            beta3Times.add(stop - start);
         }
 
         System.out.println();
